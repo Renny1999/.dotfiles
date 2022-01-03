@@ -1,4 +1,6 @@
 nvim/.local/share/nvim/plugged/*
 nvim/.local/share/nvim/lsp_servers/*
+#!nvim/.local/share/nvim/plugged/nvim-lspconfig
+
 vim/.vim/colors/*
 vim/.vim/plugged/*

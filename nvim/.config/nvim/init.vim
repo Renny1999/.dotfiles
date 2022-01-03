@@ -26,6 +26,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set backspace=2
+set signcolumn=yes
 
 " for insert mode, highlight current line
 autocmd InsertEnter,InsertLeave * set cul!
