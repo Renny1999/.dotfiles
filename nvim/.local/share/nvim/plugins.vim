@@ -27,5 +27,6 @@ Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
 Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
 
 call plug#end()
