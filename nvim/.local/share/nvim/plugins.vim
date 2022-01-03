@@ -26,7 +26,11 @@ Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
 " allow vim to detect focus lost/gain in tmux 
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
+""" LSP stuff
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
 
 call plug#end()
