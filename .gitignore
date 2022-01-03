@@ -1,1 +1,3 @@
 nvim/.local/share/nvim/plugged/*
+vim/.vim/colors/*
+vim/.vim/plugged/*
