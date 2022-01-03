@@ -58,6 +58,9 @@ inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
 inoremap <SPACE> <SPACE><c-g>u
 
+" Esc in termianl mode will enter insert mode in terminal
+tnoremap <Esc> <C-\><C-n>
+
 " always show file name
 set laststatus=2
 set statusline+=%F
