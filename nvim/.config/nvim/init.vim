@@ -12,6 +12,8 @@ let mapleader = " "
 " :Q to forcifully exit vim
 nnoremap :QWE :q!
 
+nnoremap :sorc :source ~/.config/nvim/init.vim
+
 " :ec to edit init.vim
 nnoremap :ec :tabe $HOME/.config/nvim/init.vim
 
