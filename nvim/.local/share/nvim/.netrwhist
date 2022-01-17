@@ -1,12 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
-let g:netrw_dirhist_1='/Users/rehong/Documents/Code/index rebuild model'
-let g:netrw_dirhist_0='/Users/rehong/.config/nvim'
-let g:netrw_dirhist_9='/Users/rehong/Documents/Code/index rebuild model'
-let g:netrw_dirhist_8='/Users/rehong/.dotfiles/.git'
-let g:netrw_dirhist_7='/home/renny/.local/share/nvim/plugged/nvim-lspconfig/plugin'
-let g:netrw_dirhist_6='/home/renny/.local/share/nvim/plugged/nvim-lspconfig'
-let g:netrw_dirhist_5='/home/renny/.local/share/nvim/plugged/nvim-lspconfig/scripts'
-let g:netrw_dirhist_4='/home/renny/.local/share/nvim/plugged/nvim-lspconfig'
-let g:netrw_dirhist_3='/home/renny/.local/share/nvim/plugged/nvim-lspconfig/autoload'
-let g:netrw_dirhist_2='/home/renny/.local/share/nvim/plugged/nvim-lspconfig'
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/home/renny/ism24/src'
+let g:netrw_dirhist_1='/home/renny/ism24'
