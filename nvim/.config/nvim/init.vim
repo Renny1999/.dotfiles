@@ -63,6 +63,10 @@ inoremap <SPACE> <SPACE><c-g>u
 " Esc in termianl mode will enter insert mode in terminal
 tnoremap <Esc> <C-\><C-n>
 
+" Ctrl-s to save
+inoremap <C-s> <Esc>:w<Cr>a
+nnoremap <C-s> <Esc>:w<Cr>
+
 " always show file name
 set laststatus=2
 set statusline+=%F
