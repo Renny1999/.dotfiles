@@ -17,6 +17,10 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-j>'] = cmp.mapping.select_next_item(),
     ['<C-k>'] = cmp.mapping.select_prev_item(),
+
+    -- I'm lazy so I'm gonna pretend I use qwerty
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-e>'] = cmp.mapping.select_prev_item(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   },
   sources = cmp.config.sources({
@@ -48,3 +52,4 @@ cmp.setup.cmdline(':', {
 
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.rust_analyzer.setup{}
+require'lspconfig'.clangd.setup{}
