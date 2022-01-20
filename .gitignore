@@ -5,5 +5,5 @@ nvim/.local/share/nvim/lsp_servers/*
 vim/.vim/colors/*
 vim/.vim/plugged/*
 
-!tmux/.tmux/plugins/tpm
 tmux/.tmux/plugins/*
+!tmux/.tmux/plugins/tpm
