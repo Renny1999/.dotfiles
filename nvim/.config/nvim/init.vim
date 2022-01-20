@@ -17,8 +17,6 @@ nnoremap :sorc :source ~/.config/nvim/init.vim
 " :ec to edit init.vim
 nnoremap :ec :tabe $HOME/.config/nvim/init.vim
 
-" transparent background
-hi Normal guibg=NONE ctermbg=NONE
 " disable preset styles for certain filetypes
 let g:python_recommended_style=0
 
@@ -36,6 +34,12 @@ set signcolumn=yes
 
 " for insert mode, highlight current line
 autocmd InsertEnter,InsertLeave * set cul!
+
+" remove background color when not focused to allow pane dimming in tmux
+" this color is for gruvbox; might not work otherwise
+autocmd FocusLost * hi Normal guibg=NONE ctermbg=NONE
+"autocmd FocusGained * hi Normal guibg=NONE ctermbg=235
+
 
 " add a vertival line at column 80
 set cc=80
@@ -89,17 +93,14 @@ let g:airline_theme = 'dark'
 
 command! Vb normal! <C-v>
 
-" remove background color when not focused to allow pane dimming in tmux
-" this color is for gruvbox; might not work otherwise
-autocmd FocusLost * hi Normal guibg=NONE ctermbg=NONE
-autocmd FocusGained * hi Normal guibg=NONE ctermbg=235
-
 source ~/.local/share/nvim/plugins.vim
 
 " setting colors after sourcing plugins because some colorschemes are
 " installed there
 set background=dark
 colorscheme gruvbox
+" transparent background
+hi Normal guibg=NONE ctermbg=NONE
 
 " execute init.lua
 lua require("renny")
