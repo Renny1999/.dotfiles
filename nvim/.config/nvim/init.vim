@@ -14,10 +14,9 @@ nnoremap :QWE :q!
 
 command Initlua :tabe ~/.config/nvim/
 command Initvim :tabe ~/.local/share/nvim
-nnoremap :sorc :source ~/.config/nvim/init.vim
+command Ec :tabe $HOME/.config/nvim/init.vim
+command Src :tabe $HOME/.config/nvim/init.vim
 
-" :ec to edit init.vim
-nnoremap :ec :tabe $HOME/.config/nvim/init.vim
 
 " disable preset styles for certain filetypes
 let g:python_recommended_style=0
