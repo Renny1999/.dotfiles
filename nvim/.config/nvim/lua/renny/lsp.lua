@@ -52,4 +52,5 @@ cmp.setup.cmdline(':', {
 
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.rust_analyzer.setup{}
-require'lspconfig'.clangd.setup{}
+-- require'lspconfig'.clangd.setup{}
+require'lspconfig'.ccls.setup{}
