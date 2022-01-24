@@ -15,7 +15,7 @@ Plug 'morhetz/gruvbox'
 " real-time markdown
 "   MarkdownPreview -> opens preview window
 "   MarkdownPreviewStop -> closes preview window and server
-" Plug 'iamcco/markdown-preview.vim'
+ Plug 'iamcco/markdown-preview.vim'
 
 " better python syntax highlighting
 Plug 'sheerun/vim-polyglot'
@@ -25,6 +25,14 @@ Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
 
 " allow vim to detect focus lost/gain in tmux 
 Plug 'tmux-plugins/vim-tmux-focus-events'
+
+" TreeSitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+
+" Draws vertical lines for indents
+Plug 'lukas-reineke/indent-blankline.nvim'
+
 
 """ LSP stuff
 Plug 'neovim/nvim-lspconfig'
