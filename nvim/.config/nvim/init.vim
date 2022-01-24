@@ -15,7 +15,7 @@ nnoremap :QWE :q!
 command Initlua :tabe ~/.config/nvim/
 command Initvim :tabe ~/.local/share/nvim
 command Ec :tabe $HOME/.config/nvim/init.vim
-command Src :tabe $HOME/.config/nvim/init.vim
+command Src :source $HOME/.config/nvim/init.vim
 
 
 " disable preset styles for certain filetypes
