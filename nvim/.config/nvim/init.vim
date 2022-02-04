@@ -38,7 +38,7 @@ autocmd InsertEnter,InsertLeave * set cul!
 
 " remove background color when not focused to allow pane dimming in tmux
 " this color is for gruvbox; might not work otherwise
-autocmd FocusLost * hi Normal guibg=NONE ctermbg=NONE
+"autocmd FocusLost * hi Normal guibg=NONE ctermbg=NONE
 "autocmd FocusGained * hi Normal guibg=NONE ctermbg=235
 
 
@@ -46,8 +46,7 @@ autocmd FocusLost * hi Normal guibg=NONE ctermbg=NONE
 set cc=80
 
 """" Key mappings """"
-" Shift + TAB to remove tab in normal mode
-nnoremap <S-Tab> <C-d>
+
 " scroll more lines
 nnoremap <C-e> 10<C-e>
 nnoremap <C-y> 10<C-y>
@@ -67,10 +66,6 @@ inoremap <SPACE> <SPACE><c-g>u
 
 " Esc in termianl mode will enter insert mode in terminal
 tnoremap <Esc> <C-\><C-n>
-
-" Ctrl-s to save
-inoremap <C-s> <Esc>:w<Cr>a
-nnoremap <C-s> <Esc>:w<Cr>
 
 " always show file name
 set laststatus=2
