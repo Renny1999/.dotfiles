@@ -83,7 +83,7 @@ source ~/.local/share/nvim/plugins.vim
 set background=dark
 colorscheme gruvbox
 " transparent background
-hi Normal guibg=NONE ctermbg=NONE
+"hi Normal guibg=NONE ctermbg=NONE
 
 " execute init.lua
 lua require("renny")
