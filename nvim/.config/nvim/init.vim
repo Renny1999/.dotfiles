@@ -78,8 +78,7 @@ command! Vb normal! <C-v>
 
 source ~/.local/share/nvim/plugins.vim
 
-" setting colors after sourcing plugins because some colorschemes are
-" installed there
+" setting colors after sourcing plugins because some colorschemes are installed there
 set background=dark
 colorscheme gruvbox
 " transparent background

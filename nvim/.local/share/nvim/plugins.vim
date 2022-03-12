@@ -33,6 +33,9 @@ Plug 'nvim-treesitter/playground'
 " Draws vertical lines for indents
 Plug 'lukas-reineke/indent-blankline.nvim'
 
+" Commenting plugin
+Plug 'numToStr/Comment.nvim'
+
 
 """ LSP stuff
 Plug 'neovim/nvim-lspconfig'
@@ -40,6 +43,8 @@ Plug 'williamboman/nvim-lsp-installer'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
+
+Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 
 Plug 'onsails/lspkind-nvim'
