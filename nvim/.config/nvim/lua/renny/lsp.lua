@@ -1,14 +1,12 @@
 -- Setup nvim-cmp.
-local cmp = require'cmp'
+local cmp = require 'cmp'
+--local lspkind = require 'lspkind'
 
-cmp.setup({
+cmp.setup {
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
   mapping = {
@@ -16,23 +14,36 @@ cmp.setup({
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-j>'] = cmp.mapping.select_next_item(),
-    ['<C-k>'] = cmp.mapping.select_prev_item(),
-
-    -- I'm lazy so I'm gonna pretend I use qwerty
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-e>'] = cmp.mapping.select_prev_item(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   },
-  sources = cmp.config.sources({
+
+  sources = cmp.config.sources{
     { name = 'nvim_lsp' },
-    { name = 'vsnip' }, -- For vsnip users.
-    -- { name = 'luasnip' }, -- For luasnip users.
-    -- { name = 'ultisnips' }, -- For ultisnips users.
-    -- { name = 'snippy' }, -- For snippy users.
-  }, {
-    { name = 'buffer' },
-  })
-})
+    { name = 'path' },
+    { name = 'luasnip' }, -- For luasnip users.
+    { name = 'buffer', keyword_length = 5},
+  },
+
+  --formatting = {
+  --  format = lspkind.cmp_format {
+  --    with_text = true,
+  --    menu = {
+  --      buffer = "[buf]",
+  --      nvim_lsp = "[LSP]",
+  --      nvim_lua = "[api]",
+  --      path = "[path]",
+  --      luasnip = "[snip]",
+  --      gh_issues = "[issues]",
+  --      tn = "[TabNine]",
+  --    },
+  --  },
+  --},
+
+  experimental = {
+    native_menu = false,
+    ghost_text = false,
+  }
+}
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
@@ -83,4 +94,5 @@ end
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.rust_analyzer.setup{}
 require'lspconfig'.clangd.setup{}
+require'lspconfig'.sumneko_lua.setup{}
 -- require'lspconfig'.ccls.setup{}
