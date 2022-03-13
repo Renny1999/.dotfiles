@@ -76,11 +76,13 @@ let g:airline_theme = 'dark'
 
 command! Vb normal! <C-v>
 
-source ~/.local/share/nvim/plugins.vim
+source ~/.config/nvim/plugins.vim
 
 " setting colors after sourcing plugins because some colorschemes are installed there
 set background=dark
-colorscheme gruvbox
+"colorscheme gruvbox
+lua require('colorbuddy').colorscheme('gruvbuddy')
+
 " transparent background
 "hi Normal guibg=NONE ctermbg=NONE
 
