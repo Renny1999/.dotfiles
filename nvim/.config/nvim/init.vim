@@ -88,6 +88,6 @@ colorscheme gruvbox
 lua require("renny")
 
 """ source additional settings """
-for f in split(glob('~/.local/share/nvim/extra-plugins/*.vim'), '\n')
+for f in split(glob('~/.config/nvim/extra-plugins/*.vim'), '\n')
   exe 'source' f
 endfor
