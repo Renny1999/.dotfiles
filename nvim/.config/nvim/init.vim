@@ -80,8 +80,8 @@ source ~/.config/nvim/plugins.vim
 
 " setting colors after sourcing plugins because some colorschemes are installed there
 set background=dark
-"colorscheme gruvbox
-lua require('colorbuddy').colorscheme('gruvbuddy')
+colorscheme gruvbox
+"lua require('colorbuddy').colorscheme('gruvbuddy')
 
 " transparent background
 "hi Normal guibg=NONE ctermbg=NONE
