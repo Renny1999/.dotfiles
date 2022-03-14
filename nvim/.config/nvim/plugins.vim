@@ -11,6 +11,7 @@ Plug 'https://github.com/justinmk/vim-syntax-extra.git'
 
 " said to be the best colorscheme
 Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 Plug 'tjdevries/colorbuddy.vim'
 Plug 'tjdevries/gruvbuddy.nvim'
 
