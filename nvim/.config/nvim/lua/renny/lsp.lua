@@ -91,8 +91,16 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 end
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.rust_analyzer.setup{}
-require'lspconfig'.clangd.setup{}
-require'lspconfig'.sumneko_lua.setup{}
+
+local servers = {
+  'pyright',
+  'rust_analyzer',
+  'clangd',
+  'sumneko_lua',
+}
+
+require'lspconfig'.pyright.setup{on_attach = on_attach}
+require'lspconfig'.rust_analyzer.setup{on_attach = on_attach}
+require'lspconfig'.clangd.setup{on_attach = on_attach}
+require'lspconfig'.sumneko_lua.setup{on_attach = on_attach}
 -- require'lspconfig'.ccls.setup{}

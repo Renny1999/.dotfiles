@@ -4,7 +4,9 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'https://github.com/bfrg/vim-cpp-modern.git'
 
 " airline (prettier vim status bar)
-Plug 'https://github.com/vim-airline/vim-airline.git'
+" Plug 'https://github.com/vim-airline/vim-airline.git'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 
 " better vim syntax highlighting
 Plug 'https://github.com/justinmk/vim-syntax-extra.git'
