@@ -15,6 +15,8 @@ if has("cscope")
     elseif $CSCOPE_DB != ""
         cs add $TIMESTEN_ROOT/cscope.out
         cs add $CSCOPE_DB
+    else
+        cs add $TIMESTEN_ROOT/cscope.out
     endif
 
     " show msg when any other cscope db added
