@@ -11,7 +11,7 @@ if has("cscope")
     " add any cscope database in current directory
     if filereadable("cscope.out")
         cs add cscope.out
-        ca add $TIMESTEN_ROOT/cscope.out
+        cs add $TIMESTEN_ROOT/cscope.out
     " else add the database pointed to by environment variable
     elseif $CSCOPE_DB != ""
         cs add $CSCOPE_DB
