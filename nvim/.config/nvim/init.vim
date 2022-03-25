@@ -6,8 +6,8 @@ let &t_Co=256
 
 
 " map leader key to space
-nnoremap <SPACE> <Nop>
-let mapleader = " "
+" nnoremap <SPACE> <Nop>
+" let mapleader = " "
 
 " :Q to forcifully exit vim
 nnoremap :QWE :q!
