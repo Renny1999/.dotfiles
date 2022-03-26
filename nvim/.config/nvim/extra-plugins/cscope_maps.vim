@@ -3,6 +3,7 @@ if has("cscope")
 
     " use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
     set cscopetag
+    " set cscopequickfix=s-
 
     " check cscope for definition of a symbol before checking ctags: set to 1
     " if you want the reverse search order.
@@ -32,6 +33,7 @@ if has("cscope")
     "   'i'   includes: find files that include the filename under cursor
     "   'd'   called: find functions that function under cursor calls
     nnoremap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nnoremap gr :cs find s <C-R>=expand("<cword>")<CR><CR>
     nnoremap <C-\>s :cs find g <C-R>=expand("<cword>")<CR><CR>
     nnoremap <C-\>s :cs find c <C-R>=expand("<cword>")<CR><CR>
     nnoremap <C-\>s :cs find t <C-R>=expand("<cword>")<CR><CR>
