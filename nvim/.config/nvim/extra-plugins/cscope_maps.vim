@@ -33,6 +33,8 @@ if has("cscope")
     "   'i'   includes: find files that include the filename under cursor
     "   'd'   called: find functions that function under cursor calls
     nnoremap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    " open in quickfix
+    " nnoremap gr :cs find s <C-R>=expand("<cword>")<CR><CR>:bd<CR>:cwindow<CR>
     nnoremap gr :cs find s <C-R>=expand("<cword>")<CR><CR>
     nnoremap <C-\>s :cs find g <C-R>=expand("<cword>")<CR><CR>
     nnoremap <C-\>s :cs find c <C-R>=expand("<cword>")<CR><CR>
@@ -41,13 +43,4 @@ if has("cscope")
     nnoremap <C-\>s :cs find f <C-R>=expand("<cfile>")<CR><CR>
     nnoremap <C-\>s :cs find i ^<C-R>=expand("<cfile>")<CR><CR>
     nnoremap <C-\>s :cs find d <C-R>=expand("<cword>")<CR><CR>
-
-    nmap <C-SPACE>s :scs find s <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-SPACE>g :scs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-SPACE>c :scs find c <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-SPACE>t :scs find t <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-SPACE>e :scs find e <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-SPACE>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
-    nmap <C-SPACE>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-    nmap <C-SPACE>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 endif
