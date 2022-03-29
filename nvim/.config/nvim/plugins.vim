@@ -1,8 +1,5 @@
 call plug#begin(stdpath('data') . '/plugged')
 
-" modern cpp syntax highlighting
-Plug 'https://github.com/bfrg/vim-cpp-modern.git'
-
 " airline (prettier vim status bar)
 " Plug 'https://github.com/vim-airline/vim-airline.git'
 Plug 'nvim-lualine/lualine.nvim'
@@ -14,8 +11,6 @@ Plug 'https://github.com/justinmk/vim-syntax-extra.git'
 " said to be the best colorscheme
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
-Plug 'tjdevries/colorbuddy.vim'
-Plug 'tjdevries/gruvbuddy.nvim'
 
 " real-time markdown
 "   MarkdownPreview -> opens preview window

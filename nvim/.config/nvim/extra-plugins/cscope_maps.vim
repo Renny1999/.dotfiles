@@ -14,10 +14,9 @@ if has("cscope")
         cs add cscope.out
     " else add the database pointed to by environment variable
     elseif $CSCOPE_DB != ""
-        cs add $TIMESTEN_ROOT/cscope.out
         cs add $CSCOPE_DB
     else
-        cs add $TIMESTEN_ROOT/cscope.out
+        " cs add $TIMESTEN_ROOT/cscope.out
     endif
 
     " show msg when any other cscope db added

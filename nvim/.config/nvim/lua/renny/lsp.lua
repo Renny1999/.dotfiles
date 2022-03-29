@@ -40,8 +40,8 @@ cmp.setup {
   --},
 
   experimental = {
-    native_menu = false,
-    ghost_text = false,
+    native_menu = true,
+    ghost_text = true,
   }
 }
 
@@ -67,7 +67,6 @@ local opts = { noremap=true, silent=true }
 vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
 -- Use an on_attach function to only map the following keys
@@ -82,11 +81,12 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-space>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 end
 
 -- special one for c and cpp
-local on_attach_c = function(client, bufnr) 
+local on_attach_c = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   -- Mappings.
@@ -96,6 +96,7 @@ local on_attach_c = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-space>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 end
 local servers = {
   'pyright',
@@ -107,5 +108,32 @@ local servers = {
 require'lspconfig'.pyright.setup{on_attach = on_attach}
 require'lspconfig'.rust_analyzer.setup{on_attach = on_attach}
 require'lspconfig'.clangd.setup{on_attach = on_attach_c}
-require'lspconfig'.sumneko_lua.setup{on_attach = on_attach}
--- require'lspconfig'.ccls.setup{}
+
+require'lspconfig'.sumneko_lua.setup({
+  -- cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+  -- An example of settings for an LSP server.
+  --    For more options, see nvim-lspconfig
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = vim.split(package.path, ';'),
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+        },
+      },
+    }
+  },
+
+  on_attach = on_attach
+})
