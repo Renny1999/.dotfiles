@@ -45,8 +45,9 @@ autocmd InsertEnter,InsertLeave * set cul!
 " add a vertival line at column 80
 set cc=80
 
-"""" Key mappings """"
+set tags=tags;/
 
+"""" Key mappings """"
 " scroll more lines
 nnoremap <C-e> 10<C-e>
 nnoremap <C-y> 10<C-y>
@@ -70,9 +71,6 @@ tnoremap <Esc> <C-\><C-n>
 " always show file name
 set laststatus=2
 set statusline+=%F
-
-" Set airline theme to 'dark'
-let g:airline_theme = 'dark'
 
 command! Vb normal! <C-v>
 
