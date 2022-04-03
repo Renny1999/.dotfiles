@@ -21,9 +21,9 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'sheerun/vim-polyglot'
 
 " fzf (requirs fzf to be installed)
-" Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'nvim-telescope/telescope.nvim'
 
 
 " allow vim to detect focus lost/gain in tmux 
