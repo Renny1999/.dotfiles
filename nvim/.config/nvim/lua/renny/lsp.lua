@@ -38,11 +38,6 @@ cmp.setup {
   --    },
   --  },
   --},
-
-  experimental = {
-    -- native_menu = true,
-    ghost_text = true,
-  }
 }
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
