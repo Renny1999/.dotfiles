@@ -39,6 +39,8 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 " Commenting plugin
 Plug 'numToStr/Comment.nvim'
 
+" Smoother scrolling
+Plug 'karb94/neoscroll.nvim'
 
 """ LSP stuff
 Plug 'neovim/nvim-lspconfig'
