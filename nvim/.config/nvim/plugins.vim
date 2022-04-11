@@ -8,9 +8,12 @@ Plug 'kyazdani42/nvim-web-devicons'
 " better vim syntax highlighting
 Plug 'https://github.com/justinmk/vim-syntax-extra.git'
 
-" said to be the best colorscheme
+" color schemes
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
+Plug 'altercation/vim-colors-solarized'
+
+
 
 " real-time markdown
 "   MarkdownPreview -> opens preview window
