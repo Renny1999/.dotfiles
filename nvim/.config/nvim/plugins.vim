@@ -12,11 +12,6 @@ Plug 'https://github.com/justinmk/vim-syntax-extra.git'
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'altercation/vim-colors-solarized'
-<<<<<<< HEAD
-=======
-
-
->>>>>>> ee273fd2b8401b786e27e7d5e7cd6e09baab96ca
 
 " real-time markdown
 "   MarkdownPreview -> opens preview window
