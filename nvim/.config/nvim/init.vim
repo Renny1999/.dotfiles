@@ -53,8 +53,8 @@ nnoremap <C-e> 10<C-e>
 nnoremap <C-y> 10<C-y>
 
 " Keep cursor centered for search (n/N) and J
-nnoremap n nzz
-nnoremap N Nzzz
+" nnoremap n nzz
+" nnoremap N Nzzz
 nnoremap J mzJ`z
 
 " set break points for undo

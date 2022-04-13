@@ -8,10 +8,15 @@ Plug 'kyazdani42/nvim-web-devicons'
 " better vim syntax highlighting
 Plug 'https://github.com/justinmk/vim-syntax-extra.git'
 
-" said to be the best colorscheme
+" color schemes
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'altercation/vim-colors-solarized'
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> ee273fd2b8401b786e27e7d5e7cd6e09baab96ca
 
 " real-time markdown
 "   MarkdownPreview -> opens preview window
@@ -42,6 +47,8 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 " Commenting plugin
 Plug 'numToStr/Comment.nvim'
 
+" Smoother scrolling
+Plug 'karb94/neoscroll.nvim'
 
 """ LSP stuff
 Plug 'neovim/nvim-lspconfig'
