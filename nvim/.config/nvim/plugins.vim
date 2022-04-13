@@ -11,6 +11,7 @@ Plug 'https://github.com/justinmk/vim-syntax-extra.git'
 " said to be the best colorscheme
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
+Plug 'altercation/vim-colors-solarized'
 
 " real-time markdown
 "   MarkdownPreview -> opens preview window
@@ -25,9 +26,11 @@ Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
 " Plug 'nvim-lua/plenary.nvim'
 " Plug 'nvim-telescope/telescope.nvim'
 
-
 " allow vim to detect focus lost/gain in tmux 
 Plug 'tmux-plugins/vim-tmux-focus-events'
+
+" tmux pane switching integration
+Plug 'christoomey/vim-tmux-navigator'
 
 " TreeSitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}

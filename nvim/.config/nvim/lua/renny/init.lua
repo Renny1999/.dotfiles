@@ -4,3 +4,5 @@ require("renny.comment")
 require("renny.lualine")
 
 require'nvim-treesitter.configs'.setup { highlight = { enable = true }}
+
+
