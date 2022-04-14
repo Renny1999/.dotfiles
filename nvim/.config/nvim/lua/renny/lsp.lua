@@ -102,7 +102,7 @@ local servers = {
 
 require'lspconfig'.pyright.setup{on_attach = on_attach}
 require'lspconfig'.rust_analyzer.setup{on_attach = on_attach}
-require'lspconfig'.clangd.setup{on_attach = on_attach_c}
+-- require'lspconfig'.clangd.setup{on_attach = on_attach_c}
 
 require'lspconfig'.sumneko_lua.setup({
   -- cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};

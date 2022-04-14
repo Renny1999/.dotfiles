@@ -210,3 +210,4 @@ nnoremap <silent> <expr> <Plug>OSCYank OSCYankOperator('')
 command! -range OSCYank <line1>,<line2>call OSCYankVisual()
 command! -nargs=1 OSCYankReg call OSCYankString(getreg(<f-args>))
 
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | OSCYankReg " | endif
