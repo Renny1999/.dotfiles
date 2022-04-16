@@ -35,11 +35,14 @@ set backspace=2
 set scrolloff=3
 
 
-" for lsp signs 
+" for lsp signs
 set signcolumn=yes
 
+" highlight current line
+set cursorline
+
 " for insert mode, highlight current line
-autocmd InsertEnter,InsertLeave * set cul!
+" autocmd InsertEnter,InsertLeave * set cul!
 
 " remove background color when not focused to allow pane dimming in tmux
 " this color is for gruvbox; might not work otherwise
