@@ -69,7 +69,7 @@ inoremap <SPACE> <SPACE><c-g>u
 tnoremap <Esc> <C-\><C-n>
 
 " always show file name
-set laststatus=2
+set laststatus=3
 set statusline+=%F
 
 command! Vb normal! <C-v>
@@ -78,10 +78,8 @@ source ~/.config/nvim/plugins.vim
 
 " setting colors after sourcing plugins because some colorschemes are installed there
 set background=dark
-" colorscheme gruvbox-material
 " colorscheme gruvbox
 colorscheme solarized
-"lua require('colorbuddy').colorscheme('gruvbuddy')
 
 " transparent background
 hi Normal guibg=NONE ctermbg=NONE

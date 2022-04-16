@@ -1,25 +1,19 @@
 call plug#begin(stdpath('data') . '/plugged')
 
 " airline (prettier vim status bar)
-" Plug 'https://github.com/vim-airline/vim-airline.git'
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
 
-" better vim syntax highlighting
+" better vim syntax highlighting for C
 Plug 'https://github.com/justinmk/vim-syntax-extra.git'
 
 " color schemes
 Plug 'morhetz/gruvbox'
-Plug 'sainnhe/gruvbox-material'
 Plug 'altercation/vim-colors-solarized'
 
 " real-time markdown
 "   MarkdownPreview -> opens preview window
 "   MarkdownPreviewStop -> closes preview window and server
  Plug 'iamcco/markdown-preview.vim'
-
-" better python syntax highlighting
-Plug 'sheerun/vim-polyglot'
 
 " fzf (requirs fzf to be installed)
 Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
@@ -34,16 +28,13 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " TreeSitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
+" Plug 'nvim-treesitter/playground'
 
 " Draws vertical lines for indents
 Plug 'lukas-reineke/indent-blankline.nvim'
 
 " Commenting plugin
 Plug 'numToStr/Comment.nvim'
-
-" Smoother scrolling
-Plug 'karb94/neoscroll.nvim'
 
 """ LSP stuff
 Plug 'neovim/nvim-lspconfig'
@@ -55,6 +46,5 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 
-Plug 'onsails/lspkind-nvim'
 
 call plug#end()
