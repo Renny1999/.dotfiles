@@ -1,8 +1,13 @@
 syntax enable
 syntax on
 filetype plugin indent on
+
 " let vim know that the termianl supports 256 colors
 let &t_Co=256
+" This is only necessary if you use "set termguicolors".
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
 
 
 " map leader key to space
@@ -17,7 +22,6 @@ command Initvim :tabe ~/.local/share/nvim
 command Ec :tabe $HOME/.config/nvim/init.vim
 command Src :source $HOME/.config/nvim/init.vim
 
-
 " disable preset styles for certain filetypes
 let g:python_recommended_style=0
 
@@ -30,10 +34,6 @@ set backspace=2
 
 set scrolloff=3
 
-" This is only necessary if you use "set termguicolors".
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-set termguicolors
 
 " for lsp signs 
 set signcolumn=yes
