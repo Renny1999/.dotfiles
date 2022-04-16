@@ -30,6 +30,9 @@ set backspace=2
 
 set scrolloff=3
 
+" This is only necessary if you use "set termguicolors".
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 
 " for lsp signs 
