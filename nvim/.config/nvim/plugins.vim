@@ -8,6 +8,7 @@ Plug 'https://github.com/justinmk/vim-syntax-extra.git'
 
 " color schemes
 Plug 'morhetz/gruvbox'
+Plug 'overcache/NeoSolarized'
 Plug 'altercation/vim-colors-solarized'
 
 " real-time markdown

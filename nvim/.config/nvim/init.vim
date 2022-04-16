@@ -30,6 +30,8 @@ set backspace=2
 
 set scrolloff=3
 
+set termguicolors
+
 " for lsp signs 
 set signcolumn=yes
 
@@ -79,10 +81,11 @@ source ~/.config/nvim/plugins.vim
 " setting colors after sourcing plugins because some colorschemes are installed there
 set background=dark
 " colorscheme gruvbox
-colorscheme solarized
+" colorscheme solarized
+colorscheme NeoSolarized
 
 " transparent background
-hi Normal guibg=NONE ctermbg=NONE
+" hi Normal guibg=NONE ctermbg=NONE
 
 " execute init.lua
 lua require("renny")
