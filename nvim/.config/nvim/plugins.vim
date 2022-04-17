@@ -1,25 +1,21 @@
 call plug#begin(stdpath('data') . '/plugged')
 
-" airline (prettier vim status bar)
+" lualine (prettier vim status bar)
 Plug 'nvim-lualine/lualine.nvim'
 
 " better vim syntax highlighting for C
 Plug 'https://github.com/justinmk/vim-syntax-extra.git'
 
-" color schemes
+" colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'overcache/NeoSolarized'
 Plug 'altercation/vim-colors-solarized'
 
 " real-time markdown
-"   MarkdownPreview -> opens preview window
-"   MarkdownPreviewStop -> closes preview window and server
  Plug 'iamcco/markdown-preview.vim'
 
 " fzf (requirs fzf to be installed)
 Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
-" Plug 'nvim-lua/plenary.nvim'
-" Plug 'nvim-telescope/telescope.nvim'
 
 " allow vim to detect focus lost/gain in tmux 
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -29,7 +25,6 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " TreeSitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Plug 'nvim-treesitter/playground'
 
 " Draws vertical lines for indents
 Plug 'lukas-reineke/indent-blankline.nvim'
