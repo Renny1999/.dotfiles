@@ -7,12 +7,13 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'https://github.com/justinmk/vim-syntax-extra.git'
 
 " colorschemes
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
 Plug 'overcache/NeoSolarized'
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
+Plug 'ishan9299/nvim-solarized-lua'
 
 " real-time markdown
- Plug 'iamcco/markdown-preview.vim'
+Plug 'iamcco/markdown-preview.vim'
 
 " fzf (requirs fzf to be installed)
 Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
@@ -25,6 +26,7 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " TreeSitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 
 " Draws vertical lines for indents
 Plug 'lukas-reineke/indent-blankline.nvim'

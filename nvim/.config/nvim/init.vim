@@ -12,7 +12,7 @@ set termguicolors
 
 " map leader key to space
 " nnoremap <SPACE> <Nop>
-" let mapleader = " "
+let mapleader = " "
 
 " :Q to forcifully exit vim
 nnoremap :QWE :q!
@@ -87,11 +87,12 @@ source ~/.config/nvim/plugins.vim
 " setting colors after sourcing plugins because some colorschemes are installed there
 set background=dark
 " colorscheme gruvbox
-" colorscheme solarized
-colorscheme NeoSolarized
+" colorscheme NeoSolarized
 
 " transparent background
 " hi Normal guibg=NONE ctermbg=NONE
+colorsche solarized
+let g:solarized_visibility= 'low'
 
 " execute init.lua
 lua require("renny")
