@@ -1,10 +1,15 @@
 require'nvim-treesitter.configs'.setup{
-  ensure_installed = {"c", "lua", "rust", "python"},
-  sync_install = false,
   highlight = {
     enable = true,
-    disable = {"c", "rust"},
-    additional_vim_regex_highlighting = false,
+    custom_captures = {
+    },
   }
+}
 
+-- These are for solarized-dark and C
+require'nvim-treesitter.highlight'.set_custom_captures{
+  ["type"] = "TSType",
+  ["punctuation.delimiter"] = "TSString",
+  ["property"] = "",
+  ["parameter"] = "",
 }

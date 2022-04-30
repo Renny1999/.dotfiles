@@ -4,7 +4,7 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'nvim-lualine/lualine.nvim'
 
 " better vim syntax highlighting for C
-Plug 'https://github.com/justinmk/vim-syntax-extra.git'
+" Plug 'https://github.com/justinmk/vim-syntax-extra.git'
 
 " colorschemes
 " Plug 'morhetz/gruvbox'
