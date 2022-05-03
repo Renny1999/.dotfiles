@@ -91,7 +91,7 @@ set background=dark
 
 " transparent background
 " hi Normal guibg=NONE ctermbg=NONE
-colorsche solarized
+colorscheme solarized
 let g:solarized_visibility= 'low'
 
 " execute init.lua
