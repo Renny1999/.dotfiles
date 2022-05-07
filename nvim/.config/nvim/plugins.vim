@@ -7,9 +7,7 @@ Plug 'nvim-lualine/lualine.nvim'
 " Plug 'https://github.com/justinmk/vim-syntax-extra.git'
 
 " colorschemes
-" Plug 'morhetz/gruvbox'
-Plug 'overcache/NeoSolarized'
-" Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 Plug 'ishan9299/nvim-solarized-lua'
 
 " real-time markdown

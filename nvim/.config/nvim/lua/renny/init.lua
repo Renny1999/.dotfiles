@@ -3,4 +3,3 @@ require("renny.indent_blankline")
 require("renny.comment")
 require("renny.lualine")
 require("renny.ts")
-

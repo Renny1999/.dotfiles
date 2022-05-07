@@ -21,6 +21,9 @@ font:
 
   size: 9
 
+window:
+  opacity: 0.95
+
 colors: 
   primary:
       background: '0x002b36'

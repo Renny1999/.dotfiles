@@ -86,13 +86,17 @@ source ~/.config/nvim/plugins.vim
 
 " setting colors after sourcing plugins because some colorschemes are installed there
 set background=dark
-" colorscheme gruvbox
-" colorscheme NeoSolarized
 
-" transparent background
-" hi Normal guibg=NONE ctermbg=NONE
+""" gruvbox 
+" colorscheme gruvbox
+
+""" solarized
 colorscheme solarized
 let g:solarized_visibility= 'low'
+let g:solarized_termtrans = 1
+
+" transparent background
+hi Normal guibg=NONE ctermbg=NONE
 
 " execute init.lua
 lua require("renny")
