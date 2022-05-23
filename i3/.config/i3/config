@@ -211,6 +211,8 @@ bar {
 exec --no-startup-id picom -b --no-fading-openclose
 exec --no-startup-id feh --bg-fill ~/Pictures/night.jpg
 exec --no-startup-id redshift
+exec --no-startup-id discord
+exec --no-startup-id firefox
 
 bindsym $mod+b exec "firefox"
 
