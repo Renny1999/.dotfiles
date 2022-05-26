@@ -1,5 +1,13 @@
-theme = "solarized-dark"
+# theme = "solarized-dark"
+# theme = "gruvbox-dark"
 # icons = "awesome"
+
+
+[theme]
+name = "solarized-dark"
+[theme.overrides]
+separator = ""
+
 
 [[block]]
 block = "disk_space"
