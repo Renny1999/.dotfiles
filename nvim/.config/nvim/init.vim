@@ -65,9 +65,6 @@ nnoremap <C-y> 10<C-y>
 " nnoremap N Nzzz
 nnoremap J mzJ`z
 
-nnoremap * *``
-nnoremap # #``
-
 " set break points for undo
 "   <c-g>u sets undo break point
 inoremap , ,<c-g>u
