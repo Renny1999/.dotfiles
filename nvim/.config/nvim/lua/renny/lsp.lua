@@ -1,62 +1,4 @@
--- Setup nvim-cmp.
-local cmp = require 'cmp'
---local lspkind = require 'lspkind'
-
-cmp.setup {
-  snippet = {
-    -- REQUIRED - you must specify a snippet engine
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-    end,
-  },
-  mapping = {
-    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-d>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-  },
-
-  sources = cmp.config.sources{
-    { name = 'nvim_lsp' },
-    { name = 'path' },
-    { name = 'luasnip' }, -- For luasnip users.
-    { name = 'buffer', keyword_length = 5},
-  },
-
-  --formatting = {
-  --  format = lspkind.cmp_format {
-  --    with_text = true,
-  --    menu = {
-  --      buffer = "[buf]",
-  --      nvim_lsp = "[LSP]",
-  --      nvim_lua = "[api]",
-  --      path = "[path]",
-  --      luasnip = "[snip]",
-  --      gh_issues = "[issues]",
-  --      tn = "[TabNine]",
-  --    },
-  --  },
-  --},
-}
-
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline('/', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' }
-  }
-})
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
-})
+local has_lsp, lspconfig = pcall(require, "lspconfig")
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -95,21 +37,43 @@ local on_attach_c = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-space>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 end
-local servers = {
-  'pyright',
-  'rust_analyzer',
-  'clangd',
-  'sumneko_lua',
+
+local lsp_servers = {
+  pyright = true,
+  rust_analyzer = true,
 }
 
-require'lspconfig'.pyright.setup{on_attach = on_attach}
-require'lspconfig'.rust_analyzer.setup{on_attach = on_attach}
--- require'lspconfig'.clangd.setup{on_attach = on_attach_c}
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+-- Setup Servers
+local setup_server = function (server, config)
+  if not config then
+    return
+  end
+
+  if type(config) ~= "table" then
+    config = {}
+  end
+
+  config = vim.tbl_deep_extend("force", {
+    -- on_init = custom_init,
+    on_attach = on_attach,
+    capabilities = capabilities
+  }, config)
+
+  lspconfig[server].setup(config)
+end
+
+
+-- Standard setup for the servers in lsp_servers
+for server,config in pairs(lsp_servers) do
+  setup_server(server, config)
+end
+
+-- Custom setup
+require'lspconfig'.clangd.setup{on_attach = on_attach_c, capabilities=capabilities}
 require'lspconfig'.sumneko_lua.setup({
   -- cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
-  -- An example of settings for an LSP server.
-  --    For more options, see nvim-lspconfig
   settings = {
     Lua = {
       runtime = {
@@ -132,5 +96,6 @@ require'lspconfig'.sumneko_lua.setup({
     }
   },
 
-  on_attach = on_attach
+  on_attach = on_attach,
+  capabilities = capabilities
 })
