@@ -1,5 +1,29 @@
 local has_lsp, lspconfig = pcall(require, "lspconfig")
 
+-- LSP Configuration
+
+-- disable virtual text diagnostic messages
+vim.diagnostic.config({
+  virtual_text = false,
+})
+
+-- Show diagnostics for the current line in a flating window
+vim.api.nvim_set_keymap(
+  -- 'n', '<C-s>', ':lua vim.diagnostic.open_float()<CR>',
+  'n', '<Leader>d', ':lua vim.diagnostic.open_float()<CR>',
+  {noremap = true, silent = true}
+)
+
+vim.api.nvim_set_keymap(
+  'n', '<Leader>n', ':lua vim.diagnostic.goto_next()<CR>',
+  {noremap = true, silent = true}
+)
+
+vim.api.nvim_set_keymap(
+  'n', '<Leader>p', ':lua vim.diagnostic.goto_prev()<CR>',
+  {noremap = true, silent = true}
+)
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
