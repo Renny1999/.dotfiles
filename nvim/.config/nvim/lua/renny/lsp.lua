@@ -24,6 +24,11 @@ vim.api.nvim_set_keymap(
   {noremap = true, silent = true}
 )
 
+vim.api.nvim_set_keymap(
+  'n', '<C-q>', ':lua vim.diagnostic.setloclist()<CR>',
+  {noremap = true, silent = true}
+)
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
