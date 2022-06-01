@@ -41,15 +41,6 @@ set signcolumn=yes
 " highlight current line
 set cursorline
 
-" for insert mode, highlight current line
-" autocmd InsertEnter,InsertLeave * set cul!
-
-" remove background color when not focused to allow pane dimming in tmux
-" this color is for gruvbox; might not work otherwise
-"autocmd FocusLost * hi Normal guibg=NONE ctermbg=NONE
-"autocmd FocusGained * hi Normal guibg=NONE ctermbg=235
-
-
 " add a vertival line at column 80
 set cc=80
 

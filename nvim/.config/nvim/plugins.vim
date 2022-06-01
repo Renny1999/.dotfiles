@@ -3,9 +3,6 @@ call plug#begin(stdpath('data') . '/plugged')
 " lualine (prettier vim status bar)
 Plug 'nvim-lualine/lualine.nvim'
 
-" better vim syntax highlighting for C
-" Plug 'https://github.com/justinmk/vim-syntax-extra.git'
-
 " colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'ishan9299/nvim-solarized-lua'
@@ -15,9 +12,6 @@ Plug 'iamcco/markdown-preview.vim'
 
 " fzf (requirs fzf to be installed)
 Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
-
-" allow vim to detect focus lost/gain in tmux 
-Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " tmux pane switching integration
 Plug 'christoomey/vim-tmux-navigator'
