@@ -14,12 +14,14 @@ set termguicolors
 " nnoremap <SPACE> <Nop>
 let mapleader = " "
 
+" for command mode tab completion
+set nocompatible
+
 " :Q to forcifully exit vim
 nnoremap :QWE :q!
 
 command Initlua :tabe ~/.config/nvim/
 command Initvim :tabe ~/.local/share/nvim
-command Ec :tabe $HOME/.config/nvim/init.vim
 command Src :source $HOME/.config/nvim/init.vim
 
 " disable preset styles for certain filetypes
@@ -75,6 +77,9 @@ command! Vb normal! <C-v>
 
 source ~/.config/nvim/plugins.vim
 
+" execute init.lua
+lua require("renny")
+
 " setting colors after sourcing plugins because some colorschemes are installed there
 set background=dark
 
@@ -87,21 +92,19 @@ let g:solarized_visibility= 'low'
 let g:solarized_termtrans = 1
 
 " transparent background
-" hi Normal guibg=none ctermbg=none
-" hi LineNr guibg=none ctermbg=none
-" hi Folded guibg=none ctermbg=none
-" hi NonText guibg=none ctermbg=none
-" hi SpecialKey guibg=none ctermbg=none
-" hi VertSplit guibg=none ctermbg=none
-" hi SignColumn guibg=none ctermbg=none
-" hi EndOfBuffer guibg=none ctermbg=none
-" set cc=0
+hi Normal guibg=none ctermbg=none
+hi LineNr guibg=none ctermbg=none
+hi Folded guibg=none ctermbg=none
+hi NonText guibg=none ctermbg=none
+hi SpecialKey guibg=none ctermbg=none
+hi VertSplit guibg=none ctermbg=none
+hi SignColumn guibg=none ctermbg=none
+hi EndOfBuffer guibg=none ctermbg=none
+set cc=0
 
 
-" execute init.lua
-lua require("renny")
 
-""" source additional settings """
+""" source additional settings
 for f in split(glob('~/.config/nvim/extra-plugins/*.vim'), '\n')
   exe 'source' f
 endfor
