@@ -20,8 +20,8 @@ set nocompatible
 " :Q to forcifully exit vim
 nnoremap :QWE :q!
 
-command Initlua :tabe ~/.config/nvim/
-command Initvim :tabe ~/.local/share/nvim
+command Conf :tabe ~/.config/nvim/
+command Data :tabe ~/.local/share/nvim
 command Src :source $HOME/.config/nvim/init.vim
 
 " disable preset styles for certain filetypes
