@@ -70,7 +70,7 @@ inoremap <SPACE> <SPACE><c-g>u
 tnoremap <Esc> <C-\><C-n>
 
 " always show file name
-set laststatus=3
+set laststatus=2
 set statusline+=%F
 
 command! Vb normal! <C-v>
