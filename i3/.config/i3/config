@@ -214,13 +214,16 @@ bar {
 }
 
 # Custom configs
+assign [class="firefox"] $ws2
+assign [class="discord"] $ws4
+assign [class="pavucontrol"] $ws9
+
 exec --no-startup-id picom -b --no-fading-openclose
 exec --no-startup-id feh --bg-fill ~/Pictures/night.jpg
 exec --no-startup-id redshift
 exec --no-startup-id discord
 exec --no-startup-id firefox
+# exec --no-startup-id pavucontrol
 
 bindsym $mod+b exec "firefox"
 
-assign [class="firefox"] $ws2
-assign [class="discord"] $ws4

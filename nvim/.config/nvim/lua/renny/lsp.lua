@@ -67,40 +67,12 @@ local on_attach_c = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-space>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 end
 
-local lsp_servers = {
-  pyright = true,
-  rust_analyzer = true,
-}
-
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
--- Setup Servers
-local setup_server = function (server, config)
-  if not config then
-    return
-  end
-
-  if type(config) ~= "table" then
-    config = {}
-  end
-
-  config = vim.tbl_deep_extend("force", {
-    -- on_init = custom_init,
-    on_attach = on_attach,
-    capabilities = capabilities
-  }, config)
-
-  lspconfig[server].setup(config)
-end
-
-
--- Standard setup for the servers in lsp_servers
-for server,config in pairs(lsp_servers) do
-  setup_server(server, config)
-end
 
 -- Custom setup
 require'lspconfig'.clangd.setup{on_attach = on_attach_c, capabilities=capabilities}
+require'lspconfig'.rust_analyzer.setup{on_attach = on_attach, capabilities=capabilities}
+
 require'lspconfig'.sumneko_lua.setup({
   -- cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
   settings = {
