@@ -13,6 +13,9 @@ Plug 'iamcco/markdown-preview.vim'
 " fzf (requirs fzf to be installed)
 Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
 
+" tagbar 
+Plug 'preservim/tagbar'
+
 " tmux pane switching integration
 Plug 'christoomey/vim-tmux-navigator'
 
