@@ -72,6 +72,7 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 -- Custom setup
 require'lspconfig'.clangd.setup{on_attach = on_attach_c, capabilities=capabilities}
 require'lspconfig'.rust_analyzer.setup{on_attach = on_attach, capabilities=capabilities}
+require'lspconfig'.pyright.setup{on_attach = on_attach, capabilities=capabilities}
 
 require'lspconfig'.sumneko_lua.setup({
   -- cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};

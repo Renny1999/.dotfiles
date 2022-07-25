@@ -6,6 +6,7 @@ Plug 'nvim-lualine/lualine.nvim'
 " colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'ishan9299/nvim-solarized-lua'
+Plug 'folke/tokyonight.nvim'
 
 " real-time markdown
 Plug 'iamcco/markdown-preview.vim'
