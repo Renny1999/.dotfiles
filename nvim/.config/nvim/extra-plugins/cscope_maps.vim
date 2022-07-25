@@ -24,8 +24,8 @@ if has("cscope")
             " set cscopeverbose
             exe "cs add " . db . " " . path
             set cscopeverbose
-          " else add the database pointed to by environment variable 
-          elseif $CSCOPE_DB != "" 
+          " else add the database pointed to by environment variable
+          elseif $CSCOPE_DB != ""
             cs add $CSCOPE_DB
           endif
         endfunction

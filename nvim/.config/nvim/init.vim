@@ -20,9 +20,9 @@ set nocompatible
 " :Q to forcifully exit vim
 nnoremap :QWE :q!
 
-command Conf :tabe ~/.config/nvim/
-command Data :tabe ~/.local/share/nvim
-command Src :source $HOME/.config/nvim/init.vim
+command! Conf :tabe ~/.config/nvim/
+command! Data :tabe ~/.local/share/nvim
+command! Src :source $HOME/.config/nvim/init.vim
 
 " disable preset styles for certain filetypes
 let g:python_recommended_style=0
@@ -78,8 +78,6 @@ command! Vb normal! <C-v>
 
 source ~/.config/nvim/plugins.vim
 
-" execute init.lua
-lua require("renny")
 
 " setting colors after sourcing plugins because some colorschemes are installed there
 set background=dark
@@ -88,25 +86,28 @@ set background=dark
 " colorscheme gruvbox
 
 """ solarized
-colorscheme solarized
 let g:solarized_visibility= 'low'
 let g:solarized_termtrans = 1
+colorscheme solarized
 
 """ tokyo night
+" let g:tokyonight_style = 'storm'
 " colorscheme tokyonight
 
 " transparent background
-hi Normal guibg=none ctermbg=none
-hi LineNr guibg=none ctermbg=none
-hi Folded guibg=none ctermbg=none
-hi NonText guibg=none ctermbg=none
-hi SpecialKey guibg=none ctermbg=none
-hi VertSplit guibg=none ctermbg=none
-hi SignColumn guibg=none ctermbg=none
-hi EndOfBuffer guibg=none ctermbg=none
+" hi Normal guibg=none ctermbg=none
+" hi LineNr guibg=none ctermbg=none
+" hi Folded guibg=none ctermbg=none
+" hi NonText guibg=none ctermbg=none
+" hi SpecialKey guibg=none ctermbg=none
+" hi VertSplit guibg=none ctermbg=none
+" hi SignColumn guibg=none ctermbg=none
+" hi EndOfBuffer guibg=none ctermbg=none
 " set cc=0
 
 
+" execute init.lua
+lua require("renny")
 
 """ source additional settings
 for f in split(glob('~/.config/nvim/extra-plugins/*.vim'), '\n')
