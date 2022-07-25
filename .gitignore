@@ -1,6 +1,10 @@
 nvim/.local/share/nvim/plugged/*
 nvim/.local/share/nvim/lsp_servers
 nvim/.local/share/nvim/shada
+
+nvim/.local/share/nvim/site/pack/packer/start/*
+!nvim/.local/share/nvim/site/pack/packer/start/packer
+
 nvim/.local/share/nvim/swap
 nvim/.local/share/nvim/.netrwhist
 nvim/.local/share/nvim/telescope_history 
