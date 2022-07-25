@@ -1,5 +1,3 @@
-require("renny.plugins")
-
 require("renny.lsp")
 require("renny.indent_blankline")
 require("renny.comment")
