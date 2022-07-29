@@ -44,6 +44,8 @@ set signcolumn=yes
 " highlight current line
 set cursorline
 
+set splitright
+
 " add a vertival line at column 80
 set cc=80
 
@@ -69,6 +71,11 @@ inoremap <SPACE> <SPACE><c-g>u
 
 " Esc in termianl mode will enter insert mode in terminal
 tnoremap <Esc> <C-\><C-n>
+
+nnoremap <M-m> <c-w>h
+nnoremap <M-i> <c-w>l
+nnoremap <M-n> <c-w>j
+nnoremap <M-e> <c-w>k
 
 " always show file name
 set laststatus=2
