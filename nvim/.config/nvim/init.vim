@@ -41,9 +41,6 @@ set mouse=a
 " for lsp signs
 set signcolumn=yes
 
-" highlight current line
-set cursorline
-
 set splitright
 
 " add a vertival line at column 80
@@ -94,7 +91,7 @@ set background=dark
 
 """ solarized
 let g:solarized_visibility= 'low'
-let g:solarized_termtrans = 1
+" let g:solarized_termtrans = 1
 colorscheme solarized
 
 """ tokyo night
@@ -112,6 +109,8 @@ colorscheme solarized
 " hi EndOfBuffer guibg=none ctermbg=none
 " set cc=0
 
+" highlight current line
+set cursorline
 
 " execute init.lua
 lua require("renny")
