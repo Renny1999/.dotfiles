@@ -14,6 +14,9 @@ Plug 'iamcco/markdown-preview.vim'
 " fzf (requirs fzf to be installed)
 Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
 
+" bufferline
+Plug 'akinsho/bufferline.nvim', {'tag': 'v2.*'}
+
 " tagbar 
 Plug 'preservim/tagbar'
 

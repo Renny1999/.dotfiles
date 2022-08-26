@@ -8,6 +8,7 @@ else
 endif
 
 let g:fzf_layout = {'down' : '25%'}
+let g:fzf_buffers_jump = 1
 
 " Tagbar
 nnoremap <leader>t :TagbarToggle<CR>
