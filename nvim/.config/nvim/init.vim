@@ -100,14 +100,11 @@ colorscheme solarized
 
 " transparent background
 " hi Normal guibg=none ctermbg=none
-" hi LineNr guibg=none ctermbg=none
+" hi FoldColumn guibg=none ctermbg=none
 " hi Folded guibg=none ctermbg=none
-" hi NonText guibg=none ctermbg=none
-" hi SpecialKey guibg=none ctermbg=none
-" hi VertSplit guibg=none ctermbg=none
-" hi SignColumn guibg=none ctermbg=none
-" hi EndOfBuffer guibg=none ctermbg=none
-" set cc=0
+" hi ToolbarButton guibg=none ctermbg=none
+" hi ToolbarLine guibg=none ctermbg=none
+" hi FloatBorder guibg=none ctermbg=none
 
 " highlight current line
 set cursorline
