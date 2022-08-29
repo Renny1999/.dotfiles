@@ -110,7 +110,7 @@ colorscheme solarized
 
 " highlight current line
 set cursorline
-
+set wildcharm=<tab>
 " execute init.lua
 lua require("renny")
 
