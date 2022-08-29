@@ -74,6 +74,8 @@ nnoremap <M-i> <c-w>l
 nnoremap <M-n> <c-w>j
 nnoremap <M-e> <c-w>k
 
+nnoremap <leader>b :ls<CR>:b<space>
+
 " always show file name
 set laststatus=2
 set statusline+=%F
