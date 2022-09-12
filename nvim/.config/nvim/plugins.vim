@@ -12,11 +12,9 @@ Plug 'cranberry-clockworks/coal.nvim'
 " real-time markdown
 Plug 'iamcco/markdown-preview.vim'
 
-" fzf (requirs fzf to be installed)
-Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
+" telescope for fuzzy-finding
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
-" or                                , { 'branch': '0.1.x' }
 
 " bufferline
 Plug 'akinsho/bufferline.nvim', {'tag': 'v2.*'}
