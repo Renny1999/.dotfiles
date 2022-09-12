@@ -7,12 +7,16 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'morhetz/gruvbox'
 Plug 'ishan9299/nvim-solarized-lua'
 Plug 'folke/tokyonight.nvim'
+Plug 'cranberry-clockworks/coal.nvim'
 
 " real-time markdown
 Plug 'iamcco/markdown-preview.vim'
 
 " fzf (requirs fzf to be installed)
 Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+" or                                , { 'branch': '0.1.x' }
 
 " bufferline
 Plug 'akinsho/bufferline.nvim', {'tag': 'v2.*'}
@@ -42,6 +46,6 @@ Plug 'hrsh7th/nvim-cmp'
 
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
-
+Plug 'sunjon/shade.nvim'
 
 call plug#end()
