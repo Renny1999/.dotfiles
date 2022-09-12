@@ -2,6 +2,11 @@ require('telescope').setup{
   defaults = {
     layout_strategy = 'horizontal',
     layout_config = {'height = 0.95'},
+    mappings = {
+      i = {
+        ["<esc>"] = require('telescope.actions').close,
+      },
+    },
   },
   pickers = {
     -- Default configuration for builtin pickers goes here:
