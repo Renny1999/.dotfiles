@@ -30,10 +30,9 @@ require('telescope').setup{
 
 local tt = os.getenv("TIMESTEN_ROOT")
 
-print(tt)
-if (tt == '')
+if (tt ~= '')
 then
-  vim.api.nvim_buf_set_keymap(0, 'n', '<C-p>', ":lua require('telescope.builtin').find_files({cwd='$TIMESTEN_ROOT'})<CR>", {})
+  vim.api.nvim_buf_set_keymap(0, 'n', '<C-p>', ":lua require('telescope.builtin').find_files({cwd='" .. tt .. "'})<CR>", {})
 else
   vim.api.nvim_buf_set_keymap(0, 'n', '<C-p>', ":lua require('telescope.builtin').find_files()<CR>", {})
 end
