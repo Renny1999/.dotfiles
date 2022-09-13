@@ -1,3 +1,5 @@
+local builtin = require('telescope.builtin');
+
 require('telescope').setup{
   defaults = {
     layout_strategy = 'horizontal',
@@ -25,3 +27,13 @@ require('telescope').setup{
     -- please take a look at the readme of the extension you want to configure
   }
 }
+
+local tt = os.getenv("TIMESTEN_ROOT")
+
+print(tt)
+if (tt == '')
+then
+  vim.api.nvim_buf_set_keymap(0, 'n', '<C-p>', ":lua require('telescope.builtin').find_files({cwd='$TIMESTEN_ROOT'})<CR>", {})
+else
+  vim.api.nvim_buf_set_keymap(0, 'n', '<C-p>', ":lua require('telescope.builtin').find_files()<CR>", {})
+end
