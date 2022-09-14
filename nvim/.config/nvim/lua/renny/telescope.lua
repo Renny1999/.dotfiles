@@ -2,8 +2,8 @@ local builtin = require('telescope.builtin');
 
 require('telescope').setup{
   defaults = {
-    layout_strategy = 'horizontal',
-    layout_config = {'height = 0.95'},
+    -- layout_strategy = 'horizontal',
+    -- layout_config = {'height = 0.95'},
     mappings = {
       i = {
         ["<esc>"] = require('telescope.actions').close,
@@ -32,7 +32,7 @@ local tt = os.getenv("TIMESTEN_ROOT")
 
 if (tt ~= nil)
 then
-  vim.api.nvim_buf_set_keymap(0, 'n', '<C-p>', ":lua require('telescope.builtin').find_files({cwd='" .. tt .. "'})<CR>", {})
+  vim.api.nvim_set_keymap('n', '<C-p>', ":lua require('telescope.builtin').find_files({cwd='" .. tt .. "'})<CR>", {noremap=true,})
 else
-  vim.api.nvim_buf_set_keymap(0, 'n', '<C-p>', ":lua require('telescope.builtin').find_files()<CR>", {})
+  vim.api.nvim_set_keymap('n', '<C-p>', ":lua require('telescope.builtin').find_files()<CR>", {noremap=true,})
 end
