@@ -74,7 +74,8 @@ nnoremap <M-i> <c-w>l
 nnoremap <M-n> <c-w>j
 nnoremap <M-e> <c-w>k
 
-nnoremap <leader>b :ls<CR>:b<space>
+" nnoremap <leader>b :ls<CR>:b<space>
+nnoremap <leader>b :Telescope buffers<CR>
 
 " always show file name
 set laststatus=2
@@ -95,6 +96,8 @@ set background=dark
 let g:solarized_visibility= 'low'
 " let g:solarized_termtrans = 1
 colorscheme solarized
+
+" colorscheme coal
 
 """ tokyo night
 " let g:tokyonight_style = 'storm'
