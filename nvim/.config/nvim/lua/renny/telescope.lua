@@ -28,11 +28,12 @@ require('telescope').setup{
   }
 }
 
-local tt = os.getenv("TIMESTEN_ROOT")
+local tt = os.getenv("ADE_PRODUCT_ROOT")
 
 if (tt ~= nil)
 then
-  vim.api.nvim_set_keymap('n', '<C-p>', ":lua require('telescope.builtin').find_files({cwd='" .. tt .. "'})<CR>", {noremap=true,})
+  print("$ADE_PRODUCT_ROOT="..tt)
+  vim.api.nvim_set_keymap('n', '<C-p>', ":lua require('telescope.builtin').find_files({cwd='" .. tt .. "', follow=true})<CR>", {noremap=true,})
 else
   vim.api.nvim_set_keymap('n', '<C-p>', ":lua require('telescope.builtin').find_files()<CR>", {noremap=true,})
 end
