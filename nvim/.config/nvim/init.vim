@@ -36,7 +36,7 @@ set backspace=2
 
 set scrolloff=3
 
-set mouse=a
+set mouse=""
 
 " for lsp signs
 set signcolumn=yes
