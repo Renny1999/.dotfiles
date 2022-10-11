@@ -25,7 +25,8 @@ function M.load_syntax(colors)
 	syntax['Terminal'] = syntax['Normal']
 	syntax['ToolbarButton'] = {fg=colors.base1,bg=utils.termtrans(colors.base02),style='bold'}
 	syntax['ToolbarLine'] = {fg=colors.none,bg=utils.termtrans(colors.base02)}
-	syntax['CursorLine'] = {fg=colors.none,bg=utils.termtrans(colors.base02)}
+	-- syntax['CursorLine'] = {fg=colors.none,bg=utils.termtrans(colors.base02)}
+	syntax['CursorLine'] = {fg=colors.none,bg=colors.base02}
 	syntax['LineNr'] = {fg=colors.base00,bg=utils.termtrans(colors.base02)}
 	syntax['FloatBorder'] = {fg=colors.base1, bg=colors.none}
 
