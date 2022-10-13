@@ -7,4 +7,3 @@ require("renny.luasnip")
 require("renny.completion")
 require("renny.telescope")
 
--- require("renny.bufferline")
