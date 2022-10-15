@@ -11,7 +11,7 @@ set termguicolors
 
 
 " map leader key to space
-" nnoremap <SPACE> <Nop>
+nnoremap <SPACE> <Nop>
 let mapleader = " "
 
 " for command mode tab completion
