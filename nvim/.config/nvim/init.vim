@@ -93,7 +93,7 @@ set background=dark
 " colorscheme gruvbox
 
 """ solarized
-let g:solarized_visibility= 'low'
+" let g:solarized_visibility= 'low'
 " let g:solarized_termtrans = 1
 colorscheme solarized
 
