@@ -19,6 +19,11 @@ require('telescope').setup{
     -- Now the picker_config_key will be applied every time you call this
     -- builtin picker
       find_files = {
+        -- find_command = {
+        --   "fd",
+        --   "-j",
+        --   "2",
+        -- }
         find_command = {
           "find",
         }
@@ -48,5 +53,6 @@ then
   -- vim.api.nvim_set_keymap('n', '<C-p>', ":lua require('telescope.builtin').find_files({cwd='" .. tt .. "', follow=true})<CR>", {noremap=true,})
   vim.api.nvim_set_keymap('n', '<C-p>', ":lua require('telescope.builtin').find_files({cwd='" .. tt .. "' })<CR>", {noremap=true,})
 else
-  vim.api.nvim_set_keymap('n', '<C-p>', ":lua require('telescope.builtin').find_files({follow=true})<CR>", {noremap=true,})
+  -- vim.api.nvim_set_keymap('n', '<C-p>', ":lua require('telescope.builtin').find_files({follow=true})<CR>", {noremap=true,})
+  vim.api.nvim_set_keymap('n', '<C-p>', ":lua require('telescope.builtin').find_files()<CR>", {noremap=true,})
 end
