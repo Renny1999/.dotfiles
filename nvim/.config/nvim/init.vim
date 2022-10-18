@@ -26,6 +26,7 @@ command! Src :source $HOME/.config/nvim/init.vim
 
 " disable preset styles for certain filetypes
 let g:python_recommended_style=0
+let g:rust_recommended_style=0
 
 set relativenumber
 set number
