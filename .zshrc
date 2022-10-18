@@ -118,14 +118,26 @@ export NVM_DIR="$HOME/.nvm"
 export MYSETUP=/home/renny/mysetup
 export CSCOPE_EDITOR=/usr/bin/nvim
 
-# function precmd {
-#   COLOROFF='\033[0m'
-#   newpath="";
-#   user=`whoami`;
-#   hname=`hostname`;
-#   fullusername=$user@$hname
-#   originalPath=`pwd | sed 's/\//\\\033[38;5;9m\/\\\033[34m/g'`$COLOROFF;
-#   GREETING='\033[0;32m'$fullusername': '$COLOROFF$originalPath;
-#   echo $GREETING
-# }
+function precmd {
+  res=${PWD##*/}
+  res=${res:-/}
+  wd=""
+  if [ -z "$res" ]
+  then
+  else
+    wd=`pwd | sed "s|$res||g"`
+  fi
+  MY_ZSH_THEME_PWD=$wd
+}
+local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)"
+PROMPT=$'%{$fg[green]%}%n@%m: %{$reset_color%}%{$fg[blue]%}%{$fg[green]%}$MY_ZSH_THEME_PWD%{$reset_color%}%{$fg[blue]%}%C%{$reset_color%}  %{$reset_color%}%{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}
+${ret_status} %{$reset_color%} '
+
+PROMPT2="%{$fg_blod[black]%}%_> %{$reset_color%}"
+
+ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[red]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+
 
