@@ -95,7 +95,7 @@ set background=dark
 
 """ solarized
 " let g:solarized_visibility= 'low'
-" let g:solarized_termtrans = 1
+let g:solarized_termtrans = 1
 colorscheme solarized
 
 " colorscheme coal
