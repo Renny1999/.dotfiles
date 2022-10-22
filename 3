@@ -9,7 +9,6 @@ export ZSH="/home/renny/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="jispwoso"
-ZSH_THEME="jispwoso"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -118,29 +117,14 @@ export NVM_DIR="$HOME/.nvm"
 export MYSETUP=/home/renny/mysetup
 export CSCOPE_EDITOR=/usr/bin/nvim
 
-function precmd {
-  local  res=${PWD##*/}
-  local res=${res:-/}
-  local RED_SLASH_GREEN="%{$reset_color%}%{$fg[red]%}/%{$reset_color%}%{$fg[green]%}"
-  local RED_SLASH_BLUE="%{$reset_color%}%{$fg[red]%}/%{$reset_color%}%{$fg[blue]%}"
-  local wd=""
-  local wd2=""
-  if [ -z "$res" ]
-  then
-  else
-    wd=`pwd | sed "s|$res||g"`
-    wd2=`echo $wd | sed "s|/|$RED_SLASH_BLUE|g"`
-  fi
-  MY_ZSH_THEME_PWD=$wd2
-}
-local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)"
-PROMPT=$'%{$fg[green]%}%n@%m: %{$reset_color%}%{$fg[blue]%}%{$fg[blue]%}$MY_ZSH_THEME_PWD%{$reset_color%}%{$fg_bold[blue]%}%C%{$reset_color%}  %{$reset_color%}%{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}
-${ret_status} %{$reset_color%} '
-
-PROMPT2="%{$fg_blod[black]%}%_> %{$reset_color%}"
-
-ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[red]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+# function precmd {
+#   COLOROFF='\033[0m'
+#   newpath="";
+#   user=`whoami`;
+#   hname=`hostname`;
+#   fullusername=$user@$hname
+#   originalPath=`pwd | sed 's/\//\\\033[38;5;9m\/\\\033[34m/g'`$COLOROFF;
+#   GREETING='\033[0;32m'$fullusername': '$COLOROFF$originalPath;
+#   echo $GREETING
+# }
 
