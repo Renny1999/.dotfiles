@@ -24,9 +24,9 @@ require('telescope').setup{
         --   "-j",
         --   "2",
         -- }
-        find_command = {
-          "find",
-        }
+        -- find_command = {
+        --   "find",
+        -- }
       }
   },
   extensions = {
