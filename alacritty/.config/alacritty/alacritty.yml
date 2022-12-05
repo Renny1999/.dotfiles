@@ -54,8 +54,10 @@ key_bindings:
   - { key: V,                 mods: Command|Shift,    action: Paste }
   - { key: C,                 mods: Command|Shift,    action: Copy }
 
+
 ####### cmd-n to spawn new instance
   - { key: N,                 mods: Control, action: SpawnNewInstance }
+
 ####### Ctrl Key
   - { key: A,                 mods: Command,       chars: "\x01"                       }
   - { key: B,                 mods: Command,       chars: "\x02"                       }
@@ -116,7 +118,6 @@ key_bindings:
   - { key: X,         mods: Alt,       chars: "\x1bx"                       }
   - { key: Y,         mods: Alt,       chars: "\x1by"                       }
   - { key: Z,         mods: Alt,       chars: "\x1bz"                       }
-
   - { key: Key1,      mods: Alt,       chars: "\x1b1"                       }
   - { key: Key2,      mods: Alt,       chars: "\x1b2"                       }
   - { key: Key3,      mods: Alt,       chars: "\x1b3"                       }
@@ -127,7 +128,39 @@ key_bindings:
   - { key: Key8,      mods: Alt,       chars: "\x1b8"                       }
   - { key: Key9,      mods: Alt,       chars: "\x1b9"                       }
   - { key: Key0,      mods: Alt,       chars: "\x1b0"                       }
-  #
+
+######### Alt-Ctrl
+  - { key: A,         mods: Command|Alt,       chars: "\x1b\x01"                       }
+  - { key: B,         mods: Command|Alt,       chars: "\x1b\x02"                       }
+  - { key: C,         mods: Command|Alt,       chars: "\x1b\x03"                       }
+  - { key: D,         mods: Command|Alt,       chars: "\x1b\x04"                       }
+  - { key: E,         mods: Command|Alt,       chars: "\x1b\x05"                       }
+  - { key: F,         mods: Command|Alt,       chars: "\x1b\x06"                       }
+  - { key: G,         mods: Command|Alt,       chars: "\x1b\x07"                       }
+  - { key: H,         mods: Command|Alt,       chars: "\x1b\x08"                       }
+  - { key: I,         mods: Command|Alt,       chars: "\x1b\x09"                       }
+  - { key: J,         mods: Command|Alt,       chars: "\x1b\x0A"                       }
+  - { key: K,         mods: Command|Alt,       chars: "\x1b\x0B"                       }
+  - { key: L,         mods: Command|Alt,       chars: "\x1b\x0C"                       }
+  - { key: M,         mods: Command|Alt,       chars: "\x1b\x0D"                       }
+  - { key: N,         mods: Command|Alt,       chars: "\x1b\x0E"                       }
+  - { key: O,         mods: Command|Alt,       chars: "\x1b\x0F"                       }
+  - { key: P,         mods: Command|Alt,       chars: "\x1b\x10"                       }
+  - { key: Q,         mods: Command|Alt,       chars: "\x1b\x11"                       }
+  - { key: R,         mods: Command|Alt,       chars: "\x1b\x12"                       }
+  - { key: S,         mods: Command|Alt,       chars: "\x1b\x13"                       }
+  - { key: T,         mods: Command|Alt,       chars: "\x1b\x14"                       }
+  - { key: U,         mods: Command|Alt,       chars: "\x1b\x15"                       }
+  - { key: V,         mods: Command|Alt,       chars: "\x1b\x16"                       }
+  - { key: W,         mods: Command|Alt,       chars: "\x1b\x17"                       }
+  - { key: X,         mods: Command|Alt,       chars: "\x1b\x18"                       }
+  - { key: Y,         mods: Command|Alt,       chars: "\x1b\x19"                       }
+  - { key: Z,         mods: Command|Alt,       chars: "\x1b\x1A"                       }
+  - { key: H,         mods: Command|Alt,       chars: "\x1b\x08"                      } 
+  - { key: L,         mods: Command|Alt,       chars: "\x1b\x0C"                      } 
+  - { key: J,         mods: Command|Alt,       chars: "\x1b\x0A"                      } 
+  - { key: K,         mods: Command|Alt,       chars: "\x1b\x0B"                      }
+
   # ####### Alt+Shift Key
   - { key: A,         mods: Alt|Shift, chars: "\x1bA"                       }
   - { key: B,         mods: Alt|Shift, chars: "\x1bB"                       }
@@ -156,37 +189,6 @@ key_bindings:
   - { key: Y,         mods: Alt|Shift, chars: "\x1bY"                       }
   - { key: Z,         mods: Alt|Shift, chars: "\x1bZ"                       }
 
-  ######### Alt-Ctrl
-  - { key: A,         mods: Alt|Command,       chars: "\x1b\x01"                       }
-  - { key: B,         mods: Alt|Command,       chars: "\x1b\x02"                       }
-  - { key: C,         mods: Alt|Command,       chars: "\x1b\x03"                       }
-  - { key: D,         mods: Alt|Command,       chars: "\x1b\x04"                       }
-  - { key: E,         mods: Alt|Command,       chars: "\x1b\x05"                       }
-  - { key: F,         mods: Alt|Command,       chars: "\x1b\x06"                       }
-  - { key: G,         mods: Alt|Command,       chars: "\x1b\x07"                       }
-  - { key: H,         mods: Alt|Command,       chars: "\x1b\x08"                       }
-  - { key: I,         mods: Alt|Command,       chars: "\x1b\x09"                       }
-  - { key: J,         mods: Alt|Command,       chars: "\x1b\x10"                       }
-  - { key: K,         mods: Alt|Command,       chars: "\x1b\x11"                       }
-  - { key: L,         mods: Alt|Command,       chars: "\x1b\x12"                       }
-  - { key: M,         mods: Alt|Command,       chars: "\x1b\x13"                       }
-  - { key: N,         mods: Alt|Command,       chars: "\x1b\x14"                       }
-  - { key: O,         mods: Alt|Command,       chars: "\x1b\x15"                       }
-  - { key: P,         mods: Alt|Command,       chars: "\x1b\x16"                       }
-  - { key: Q,         mods: Alt|Command,       chars: "\x1b\x17"                       }
-  - { key: R,         mods: Alt|Command,       chars: "\x1b\x18"                       }
-  - { key: S,         mods: Alt|Command,       chars: "\x1b\x19"                       }
-  - { key: T,         mods: Alt|Command,       chars: "\x1b\x20"                       }
-  - { key: U,         mods: Alt|Command,       chars: "\x1b\x21"                       }
-  - { key: V,         mods: Alt|Command,       chars: "\x1b\x22"                       }
-  - { key: W,         mods: Alt|Command,       chars: "\x1b\x23"                       }
-  - { key: X,         mods: Alt|Command,       chars: "\x1b\x24"                       }
-  - { key: Y,         mods: Alt|Command,       chars: "\x1b\x25"                       }
-  - { key: Z,         mods: Alt|Command,       chars: "\x1b\x26"                       }
-  - { key: H, mods: Alt|Command, chars: "\x1b\x08" } 
-  - { key: L, mods: Alt|Command, chars: "\x1b\x0C"} 
-  - { key: J, mods: Alt|Command, chars: "\x1b\x0A"} 
-  - { key: K, mods: Alt|Command, chars: "\x1b\x0B"}
   #
   # - { key: Grave,     mods: Alt,       chars: "\x1b`"                       } # Alt + `
   # - { key: Grave,     mods: Alt|Shift, chars: "\x1b~"                       } # Alt + ~
