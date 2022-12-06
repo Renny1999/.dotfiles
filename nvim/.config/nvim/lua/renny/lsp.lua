@@ -67,7 +67,7 @@ local on_attach_c = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-space>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 end
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- Custom setup
 require'lspconfig'.clangd.setup{on_attach = on_attach_c, capabilities=capabilities}
