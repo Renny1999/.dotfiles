@@ -56,7 +56,7 @@ key_bindings:
 
 
 ####### cmd-n to spawn new instance
-  - { key: N,                 mods: Command, action: SpawnNewInstance }
+  - { key: N,                 mods: Control, action: SpawnNewInstance }
 
 ####### Ctrl Key
   - { key: A,                 mods: Command,       chars: "\x01"                       }
