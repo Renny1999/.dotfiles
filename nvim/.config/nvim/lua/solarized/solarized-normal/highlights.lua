@@ -134,6 +134,8 @@ function M.load_syntax(colors)
 	syntax['Statement'] = {fg=colors.green}
 	syntax['Todo'] = {fg=colors.magenta,style='bold'}
 	syntax['Type'] = {fg=colors.yellow}
+	syntax['Text'] = {fg=colors.cyan}
+	syntax['Strikethrough'] = {fg=colors.base01,strikethrough=true}
 	syntax['Underlined'] = {fg=colors.violet}
 	syntax['NormalMode'] = {fg=colors.base0,bg=colors.base3,style='reverse'}
 	syntax['InsertMode'] = {fg=colors.cyan,bg=colors.base3,style='reverse'}
@@ -308,7 +310,7 @@ function M.load_syntax(colors)
 	syntax['StatusLineTerm'] = syntax['StatusLine']
 	syntax['StatusLineTermNC'] = syntax['StatusLineNC']
 	syntax['StorageClass'] = syntax['Type']
-	syntax['String'] = syntax['Constant']
+	syntax['String'] = syntax['Text']
 	syntax['Structure'] = syntax['Type']
 	syntax['Tag'] = syntax['Special']
 	syntax['Typedef'] = syntax['Type']
@@ -389,13 +391,121 @@ function M.load_syntax(colors)
 	syntax['TSTypeBuiltin'] = syntax['Type']
 	-- syntax['TSEmphasis'] = syntax['']
 
+	-- BEGIN Neovim >= 0.8
+	-- Misc {{{
+	syntax['@comment'] = syntax['Comment']
+	syntax['@error'] = {fg=colors.red}
+	syntax['@none'] = syntax['NONE']
+	syntax['@preproc'] = syntax['PreProc']
+	syntax['@define'] = syntax['Define']
+	syntax['@operator'] = syntax['Operator']
+	-- }}}
+
+	-- Punctuation {{{
+	syntax['@punctuation.delimiter'] = syntax['Statement']
+	syntax['@punctuation.bracket'] = syntax['Delimiter']
+	syntax['@punctuation.special'] = syntax['Delimiter']
+	-- }}}
+
+	-- Literals {{{
+	syntax['@string'] = syntax['String']
+	syntax['@string.regex'] = syntax['String']
+	syntax['@string.escape'] = syntax['Special']
+	syntax['@string.special'] = syntax['Special']
+
+	syntax['@character'] = syntax['Character']
+	syntax['@character.special'] = syntax['Special']
+
+	syntax['@boolean'] = syntax['Boolean']
+	syntax['@number'] = syntax['Number']
+	syntax['@float'] = syntax['Float']
+	-- }}}
+
+	-- Functions {{{
+	syntax['@function'] = syntax['Function']
+	syntax['@function.call'] = syntax['Function']
+	syntax['@function.builtin'] = syntax['Function']
+	syntax['@function.macro'] = syntax['Macro']
+
+	syntax['@method'] = syntax['Function']
+	syntax['@method.call'] = syntax['Function']
+
+	syntax['@constructor'] = syntax['Special']
+	syntax['@parameter'] = syntax['Normal']
+	-- }}}
+
+	-- Keywords {{{
+	syntax['@keyword'] = syntax['Keyword']
+	syntax['@keyword.function'] = syntax['Keyword']
+	syntax['@keyword.operator'] = syntax['Keyword']
+	syntax['@keyword.return'] = syntax['Keyword']
+
+	syntax['@conditional'] = syntax['Conditional']
+	syntax['@repeat'] = syntax['Repeat']
+	syntax['@debug'] = syntax['Debug']
+	syntax['@label'] = syntax['Label']
+	syntax['@include'] = syntax['Include']
+	syntax['@exception'] = syntax['Exception']
+	-- }}}
+
+	-- Types {{{
+	syntax['@type'] = syntax['Type']
+	syntax['@type.builtin'] = syntax['Type']
+	syntax['@type.qualifier'] = syntax['Type']
+	syntax['@type.definition'] = syntax['Typedef']
+
+	syntax['@storageclass'] = syntax['StorageClass']
+	syntax['@attribute'] = syntax['Identifier']
+	syntax['@field'] = syntax['Identifier']
+	syntax['@property'] = syntax['Identifier']
+	-- }}}
+
+	-- Identifiers {{{
+	syntax['@variable'] = {fg=colors.base1}
+	syntax['@variable.builtin'] = syntax['Special']
+
+	syntax['@constant'] = syntax['Constant']
+	syntax['@constant.builtin'] = syntax['Type']
+	syntax['@constant.macro'] = syntax['Define']
+
+	syntax['@namespace'] = syntax['Identifier']
+	syntax['@symbol'] = syntax['Identifier']
+	-- }}}
+
+	-- Text {{{
+	syntax['@text'] = syntax['Normal']
+	syntax['@text.strong'] = {fg=colors.base1,bg=colors.base03,style='bold'}
+	syntax['@text.emphasis'] = {fg=colors.base1,bg=colors.base03,style='bold'}
+	syntax['@text.underline'] = syntax['Underlined']
+	syntax['@text.strike'] = syntax['Strikethrough']
+	syntax['@text.title'] = syntax['Title']
+	syntax['@text.literal'] = syntax['String']
+	syntax['@text.uri'] = syntax['Underlined']
+	syntax['@text.math'] = syntax['Special']
+	syntax['@text.environment'] = syntax['Macro']
+	syntax['@text.environment.name'] = syntax['Type']
+	syntax['@text.reference'] = syntax['Constant']
+
+	syntax['@text.todo'] = syntax['Todo']
+	syntax['@text.note'] = syntax['WarningMsg']
+	syntax['@text.warning'] = syntax['WarningMsg']
+	syntax['@text.danger'] = {fg=colors.red,style='bold'}
+	-- }}}
+
+	-- Tags {{{
+	syntax['@tag'] = syntax['Tag']
+	syntax['@tag.attribute'] = syntax['Identifier']
+	syntax['@tag.delimiter'] = syntax['Delimiter']
+	-- }}}
+	-- END Neovim >= 0.8
+
 	syntax['DiagnosticError'] = {fg=colors.red,guisp=colors.red,style='none'}
-	syntax['DiagnosticWarning'] = {fg=colors.yellow,guisp=colors.yellow,style='none'}
-	syntax['DiagnosticInformation'] = {fg=colors.cyan,guisp=colors.cyan,style='none'}
+	syntax['DiagnosticWarn'] = {fg=colors.yellow,guisp=colors.yellow,style='none'}
+	syntax['DiagnosticInfo'] = {fg=colors.cyan,guisp=colors.cyan,style='none'}
 	syntax['DiagnosticHint'] = {fg=colors.green,guisp=colors.green,style='none'}
 	syntax['DiagnosticUnderlineError'] = {fg=colors.none,guisp=colors.red,style='underline'}
-	syntax['DiagnosticUnderlineWarning'] = {fg=colors.none,guisp=colors.yellow,style='underline'}
-	syntax['DiagnosticUnderlineInformation'] = {fg=colors.none,guisp=colors.cyan,style='underline'}
+	syntax['DiagnosticUnderlineWarn'] = {fg=colors.none,guisp=colors.yellow,style='underline'}
+	syntax['DiagnosticUnderlineInfo'] = {fg=colors.none,guisp=colors.cyan,style='underline'}
 	syntax['DiagnosticUnderlineHint'] = {fg=colors.none,guisp=colors.green,style='underline'}
 
 	syntax['LspReferenceRead'] = {fg=colors.none,style='underline'}
@@ -413,6 +523,69 @@ function M.load_syntax(colors)
 	syntax['VGitSignAdd'] = syntax['DiffAdd']
 	syntax['VgitSignChange'] = syntax['DiffChange']
 	syntax['VGitSignRemove'] = syntax['DiffDelete']
+
+	-- nvim-cmp syntax support
+	syntax['CmpDocumentation' ] = {fg=colors.base2, bg=colors.base02 }
+	syntax['CmpDocumentationBorder' ] = {fg=colors.base2, bg=colors.base02 }
+
+	syntax['CmpItemAbbr' ] = {fg=colors.base1, bg=colors.none }
+	syntax['CmpItemAbbrDeprecated' ] = {fg=colors.base0, bg=colors.none }
+	syntax['CmpItemAbbrMatch' ] = {fg=colors.base2, bg=colors.none }
+	syntax['CmpItemAbbrMatchFuzzy' ] = {fg=colors.base2, bg=colors.none }
+
+	syntax['CmpItemKindDefault' ] = {fg=colors.base1, bg=colors.none }
+	syntax['CmpItemMenu' ] = {fg=colors.base1, bg=colors.none }
+	syntax['CmpItemKindKeyword' ] = {fg=colors.yellow, bg=colors.none }
+	syntax['CmpItemKindVariable' ] = {fg=colors.green, bg=colors.none }
+	syntax['CmpItemKindConstant' ] = {fg=colors.base1, bg=colors.none }
+	syntax['CmpItemKindReference' ] = {fg=colors.base1, bg=colors.none }
+	syntax['CmpItemKindValue' ] = {fg=colors.base1, bg=colors.none }
+	syntax['CmpItemKindFunction' ] = {fg=colors.blue, bg=colors.none }
+	syntax['CmpItemKindMethod' ] = {fg=colors.blue, bg=colors.none }
+	syntax['CmpItemKindConstructor' ] = {fg=colors.blue, bg=colors.none }
+	syntax['CmpItemKindClass' ] = {fg=colors.red, bg=colors.none }
+	syntax['CmpItemKindInterface' ] = {fg=colors.base1, bg=colors.none }
+	syntax['CmpItemKindStruct' ] = {fg=colors.base1, bg=colors.none }
+	syntax['CmpItemKindEvent' ] = {fg=colors.base1, bg=colors.none }
+	syntax['CmpItemKindEnum' ] = {fg=colors.base1, bg=colors.none }
+	syntax['CmpItemKindUnit' ] = {fg=colors.base1, bg=colors.none }
+	syntax['CmpItemKindModule' ] = {fg=colors.base1, bg=colors.none }
+	syntax['CmpItemKindProperty' ] = {fg=colors.base1, bg=colors.none }
+	syntax['CmpItemKindField' ] = {fg=colors.base1, bg=colors.none }
+	syntax['CmpItemKindTypeParameter' ] = {fg=colors.base1, bg=colors.none }
+	syntax['CmpItemKindEnumMember' ] = {fg=colors.base1, bg=colors.none }
+	syntax['CmpItemKindOperator' ] = {fg=colors.base1, bg=colors.none }
+	syntax['CmpItemKindSnippet' ] = {fg=colors.orange, bg=colors.none }
+
+	syntax['NavicIconsFile'] = syntax['CmpItemKindFile']
+	syntax['NavicIconsModule'] = syntax['CmpItemKindModule']
+	syntax['NavicIconsNamespace'] = syntax['CmpItemKindModule']
+	syntax['NavicIconsPackage'] = syntax['CmpItemKindModule']
+	syntax['NavicIconsClass'] = syntax['CmpItemKindClass']
+	syntax['NavicIconsMethod'] = syntax['CmpItemKindMethod']
+	syntax['NavicIconsProperty'] = syntax['CmpItemKindProperty']
+	syntax['NavicIconsField'] = syntax['CmpItemKindField']
+	syntax['NavicIconsConstructor'] = syntax['CmpItemKindConstructor']
+	syntax['NavicIconsEnum'] = syntax['CmpItemKindEnum']
+	syntax['NavicIconsInterface'] = syntax['CmpItemKindInterface']
+	syntax['NavicIconsFunction'] = syntax['CmpItemKindFunction']
+	syntax['NavicIconsVariable'] = syntax ['CmpItemKindVariable']
+	syntax['NavicIconsConstant'] = syntax['CmpItemKindConstant']
+	syntax['NavicIconsString'] = syntax['String']
+	syntax['NavicIconsNumber'] = syntax['Number']
+	syntax['NavicIconsBoolean'] = syntax['Boolean']
+	syntax['NavicIconsArray'] = syntax['CmpItemKindClass']
+	syntax['NavicIconsObject'] = syntax['CmpItemKindClass']
+	syntax['NavicIconsKey'] = syntax['CmpItemKindKeyword']
+	syntax['NavicIconsKeyword'] = syntax['CmpItemKindKeyword']
+	syntax['NavicIconsNull'] =  {fg=colors.blue, bg=colors.none }
+	syntax['NavicIconsEnumMember'] = syntax['CmpItemKindEnumMember']
+	syntax['NavicIconsStruct'] = syntax['CmpItemKindStruct']
+	syntax['NavicIconsEvent'] = syntax['CmpItemKindEvent']
+	syntax['NavicIconsOperator'] = syntax['CmpItemKindOperator']
+	syntax['NavicIconsTypeParameter'] = syntax['CmpItemKindTypeParameter']
+	syntax['NavicText'] = syntax['LineNr']
+	syntax['NavicSeparator'] = syntax['Comment']
 
 	for group, highlights in pairs(syntax) do
 		utils.highlighter(group, highlights)
