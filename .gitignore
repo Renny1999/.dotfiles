@@ -6,6 +6,7 @@ nvim/.local/share/nvim/shada
 nvim/.local/share/nvim/swap
 nvim/.local/share/nvim/.netrwhist
 nvim/.local/share/nvim/telescope_history
+nvim/.local/share/nvim/tree-sitter-help
 #!nvim/.local/share/nvim/plugged/nvim-lspconfig
 
 vim/.vim/colors/*
