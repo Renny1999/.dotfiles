@@ -15,7 +15,16 @@ if fn.exists("syntax_on") then
 end
 
 g.colors_name = 'solarized'
-
+local dark1   = {'#3c3836', 237}
+local dark2   = {'#504945', 239}
+local dark3   = {'#665c54', 241}
+local dark4   = {'#7c6f64', 243}
+local aqua    = {'#689d6a', 108}
+local blue    = {'#458588', 66}
+local grey    = {'#83a598', 109}
+local dark    = {'#1d2021', 234}
+local dark0   = {'#32302f', 236}
+--
 function M.load_syntax(colors)
 	local syntax = {}
 
@@ -26,7 +35,8 @@ function M.load_syntax(colors)
 	syntax['ToolbarButton'] = {fg=colors.base1,bg=utils.termtrans(colors.base02),style='bold'}
 	syntax['ToolbarLine'] = {fg=colors.none,bg=utils.termtrans(colors.base02)}
 	-- syntax['CursorLine'] = {fg=colors.none,bg=utils.termtrans(colors.base02)}
-	syntax['CursorLine'] = {fg=colors.none,bg=colors.base02}
+	-- syntax['CursorLine'] = {fg=colors.none,bg=colors.base02}
+	syntax['CursorLine'] = {fg=colors.none,bg=dark0}
 	syntax['LineNr'] = {fg=colors.base00,bg=utils.termtrans(colors.base02)}
 	syntax['FloatBorder'] = {fg=colors.base1, bg=colors.none}
 
