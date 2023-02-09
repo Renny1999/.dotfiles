@@ -459,8 +459,10 @@ function M.load_syntax(colors)
 	-- }}}
 
 	-- Types {{{
-	syntax['@type'] = syntax['Type']
-	syntax['@type.builtin'] = syntax['Type']
+	-- syntax['@type'] = syntax['Type']
+	syntax['@type'] = syntax['String']
+	-- syntax['@type.builtin'] = syntax['Type']
+	syntax['@type.builtin'] = syntax['String']
 	syntax['@type.qualifier'] = syntax['Type']
 	syntax['@type.definition'] = syntax['Typedef']
 
@@ -475,7 +477,8 @@ function M.load_syntax(colors)
 	syntax['@variable.builtin'] = syntax['Special']
 
 	syntax['@constant'] = syntax['Constant']
-	syntax['@constant.builtin'] = syntax['Type']
+	-- syntax['@constant.builtin'] = syntax['Type']
+	syntax['@constant.builtin'] = syntax['String']
 	syntax['@constant.macro'] = syntax['Define']
 
 	syntax['@namespace'] = syntax['Identifier']
