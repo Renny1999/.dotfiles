@@ -5,6 +5,7 @@ require("renny.indent_blankline")
 require("renny.luasnip")
 require("renny.completion")
 require("renny.ts")
+require("renny.ts_context")
 -- require("renny.lsp")
 
 -- Lua

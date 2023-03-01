@@ -8,7 +8,7 @@ Plug 'morhetz/gruvbox'
 " Plug 'ishan9299/nvim-solarized-lua'
 Plug 'folke/tokyonight.nvim'
 Plug 'cranberry-clockworks/coal.nvim'
-Plug 'arturgoms/moonbow.nvim'
+" Plug 'arturgoms/moonbow.nvim'
 
 " real-time markdown
 Plug 'iamcco/markdown-preview.vim'
@@ -29,6 +29,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'nvim-treesitter/nvim-treesitter', {'tag': '0.5-compat'}
 Plug 'nvim-treesitter/playground'
+Plug 'nvim-treesitter/nvim-treesitter-context'
 
 " Draws vertical lines for indents
 Plug 'lukas-reineke/indent-blankline.nvim'
