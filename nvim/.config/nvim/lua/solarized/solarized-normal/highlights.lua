@@ -24,6 +24,8 @@ local blue    = {'#458588', 66}
 local grey    = {'#83a598', 109}
 local dark    = {'#1d2021', 234}
 local dark0   = {'#32302f', 236}
+
+local onedark_bg = {'#1e1e1e', 234}
 --
 function M.load_syntax(colors)
 	local syntax = {}
@@ -122,7 +124,9 @@ function M.load_syntax(colors)
 	syntax['MatchParen'] = {fg=colors.base3,bg=colors.base02,style='bold'}
 	syntax['ModeMsg'] = {fg=colors.blue}
 	syntax['MoreMsg'] = {fg=colors.blue}
-	syntax['Pmenu'] = {fg=colors.base1,bg=colors.base02}
+	-- syntax['Pmenu'] = {fg=colors.base1,bg=colors.base02}
+	syntax['Pmenu'] = {fg=colors.base1,bg=colors.none}
+	syntax['Pmenu'] = {fg=colors.base1,bg=onedark_bg}
 	syntax['PmenuSbar'] = {fg=colors.none,bg=colors.base01}
 	syntax['PmenuSel'] = {fg=colors.base2,bg=colors.base00}
 	syntax['PmenuThumb'] = {fg=colors.none,bg=colors.base0}
