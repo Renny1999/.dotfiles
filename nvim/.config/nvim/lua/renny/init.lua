@@ -5,4 +5,8 @@ require("renny.indent_blankline")
 require("renny.luasnip")
 require("renny.completion")
 require("renny.ts")
-require("renny.lsp")
+require("renny.ts_context")
+-- require("renny.lsp")
+
+-- Lua
+-- vim.cmd[[colorscheme moonbow]]

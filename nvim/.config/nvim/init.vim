@@ -1,4 +1,5 @@
 syntax enable
+
 syntax on
 filetype plugin indent on
 
@@ -55,8 +56,8 @@ nnoremap <C-e> 10<C-e>
 nnoremap <C-y> 10<C-y>
 
 " Keep cursor centered for search (n/N) and J
-" nnoremap n nzz
-" nnoremap N Nzzz
+nnoremap n nzz
+nnoremap N Nzzz
 nnoremap J mzJ`z
 
 " set break points for undo
@@ -70,10 +71,13 @@ inoremap <SPACE> <SPACE><c-g>u
 " Esc in termianl mode will enter insert mode in terminal
 tnoremap <Esc> <C-\><C-n>
 
-nnoremap <M-m> <c-w>h
-nnoremap <M-i> <c-w>l
-nnoremap <M-n> <c-w>j
-nnoremap <M-e> <c-w>k
+" nnoremap <M-m> <c-w>h
+" nnoremap <M-i> <c-w>l
+" nnoremap <M-n> <c-w>j
+" nnoremap <M-e> <c-w>k
+"
+nnoremap <c-w>h <c-w>15<
+nnoremap <c-w>l <c-w>15>
 
 " nnoremap <leader>b :ls<CR>:b<space>
 nnoremap <leader>b :Telescope buffers<CR>
@@ -94,10 +98,11 @@ set background=dark
 " colorscheme gruvbox
 
 """ solarized
-" let g:solarized_visibility= 'low'
-let g:solarized_termtrans = 1
+let g:solarized_visibility= 'low'
+" let g:solarized_termtrans = 1
 colorscheme solarized
 
+" colorsheme moonbow
 
 " colorscheme coal
 
@@ -112,6 +117,13 @@ colorscheme solarized
 " hi ToolbarButton guibg=none ctermbg=none
 " hi ToolbarLine guibg=none ctermbg=none
 " hi FloatBorder guibg=none ctermbg=none
+
+highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
+highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6
+highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
+highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
+highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
+highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
 
 " highlight current line
 set cursorline
