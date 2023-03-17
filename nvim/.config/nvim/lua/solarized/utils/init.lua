@@ -1,5 +1,8 @@
 local M = {}
 
+local dark    = {'#1d2021', 234}
+local darkCursorLine    = {'#32302f', 236}
+
 function M.default_settings()
 	-- default settings function
 	local settings = {
@@ -50,6 +53,44 @@ function M.termtrans(color)
 	else
 		return color
 	end
+end
+
+function M.termtransLineNr(color)
+  if vim.g.solarized_termtrans == 1 then
+    return {'none', 'none'}
+  else
+    return color
+  end
+end
+
+function M.darkbg(color)
+  if vim.g.solarized_termtrans == 1 then
+    M.termtrans(color)
+  elseif vim.g.solarized_darkbg == 1 then
+    return dark
+  else
+    return color
+  end
+end
+
+function M.darkbgNr(color)
+  if vim.g.solarized_termtrans == 1 then
+    M.termtrans(color)
+  elseif vim.g.solarized_darkbg == 1 then
+    return darkCursorLine
+  else
+    return color
+  end
+end
+
+function M.whiteCursorLineNr(color)
+  if vim.g.solarized_termtrans == 1 then
+    M.termtrans(color)
+  elseif vim.g.solarized_darkbg == 1 then
+    return {'#FFFFFF', 256}
+  else
+    return color
+  end
 end
 
 return M

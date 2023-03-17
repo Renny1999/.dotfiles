@@ -24,11 +24,12 @@ local blue    = {'#458588', 66}
 local grey    = {'#83a598', 109}
 local dark    = {'#1d2021', 234}
 local dark0   = {'#32302f', 236}
+local white   = {'#FFFFFF', 256}
 --
 function M.load_syntax(colors)
 	local syntax = {}
 
-	syntax['Normal'] = {fg=colors.base1,bg=utils.termtrans(colors.base03)}
+	syntax['Normal'] = {fg=colors.base1,bg=utils.darkbg(colors.base03)}
 	syntax['FoldColumn'] = {fg=colors.base0,bg=utils.termtrans(colors.base02)}
 	syntax['Folded'] = {fg=colors.base0,bg=utils.termtrans(colors.base02),guisp=colors.base03,style='bold'}
 	syntax['Terminal'] = syntax['Normal']
@@ -101,8 +102,10 @@ function M.load_syntax(colors)
 		syntax['SpellRare'] = {fg=colors.cyan,guisp=colors.cyan,style='undercurl'}
 		syntax['Title'] = {fg=colors.base01,style='bold'}
 	else
-		syntax['CursorLineNr'] = {fg=colors.base0,bg=colors.base02,style='bold'}
-		syntax['LineNr'] = {fg=colors.base00,bg=colors.base02,}
+		syntax['CursorLineNr'] = {fg=utils.whiteCursorLineNr(colors.base0),bg=utils.darkbgNr(colors.base02),style='bold'}
+		-- syntax['CursorLineNr'] = {fg=utils.whiteCursorLineNr(colors.base0),bg=utils.darkbg(colors.base02),style='bold'}
+		-- syntax['LineNr'] = {fg=colors.base00,bg=colors.base02,}
+		syntax['LineNr'] = {fg=colors.base00,bg=utils.darkbg(colors.base02)}
 		syntax['NonText'] = {fg=colors.base00,style='bold'}
 		syntax['SpecialKey'] = {fg=colors.base00,bg=colors.base02,style='bold'}
 		syntax['SpellBad'] = {fg=colors.violet,guisp=colors.violet,style='undercurl'}
