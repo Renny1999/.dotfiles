@@ -6,7 +6,5 @@ require("renny.luasnip")
 require("renny.completion")
 require("renny.ts")
 require("renny.ts_context")
--- require("renny.lsp")
-
--- Lua
--- vim.cmd[[colorscheme moonbow]]
+require("renny.lsp")
+-- require("cscope_maps").setup({})
