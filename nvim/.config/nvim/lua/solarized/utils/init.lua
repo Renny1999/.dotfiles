@@ -65,7 +65,7 @@ end
 
 function M.darkbg(color)
   if vim.g.solarized_termtrans == 1 then
-    M.termtrans(color)
+    return M.termtrans(color)
   elseif vim.g.solarized_darkbg == 1 then
     return dark
   else
@@ -75,7 +75,7 @@ end
 
 function M.darkbgNr(color)
   if vim.g.solarized_termtrans == 1 then
-    M.termtrans(color)
+    return M.termtrans(color)
   elseif vim.g.solarized_darkbg == 1 then
     return darkCursorLine
   else
@@ -85,7 +85,9 @@ end
 
 function M.whiteCursorLineNr(color)
   if vim.g.solarized_termtrans == 1 then
-    M.termtrans(color)
+    return M.termtrans(color)
+  elseif vim.g.solarized_yellow_linenr == 1 then
+    return {'#ffff00', 11}
   elseif vim.g.solarized_darkbg == 1 then
     return {'#FFFFFF', 256}
   else
