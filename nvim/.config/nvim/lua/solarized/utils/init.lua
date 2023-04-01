@@ -1,5 +1,6 @@
 local M = {}
 
+-- this is the dark background
 local dark    = {'#1d2021', 234}
 local darkCursorLine    = {'#32302f', 236}
 
@@ -55,6 +56,7 @@ function M.termtrans(color)
 	end
 end
 
+-- unused
 function M.termtransLineNr(color)
   if vim.g.solarized_termtrans == 1 then
     return {'none', 'none'}
@@ -63,6 +65,7 @@ function M.termtransLineNr(color)
   end
 end
 
+-- this will configure dark background
 function M.darkbg(color)
   if vim.g.solarized_termtrans == 1 then
     return M.termtrans(color)
@@ -73,23 +76,31 @@ function M.darkbg(color)
   end
 end
 
+-- this will set the background for the cursor line number for dark background
 function M.darkbgNr(color)
-  if vim.g.solarized_termtrans == 1 then
-    return M.termtrans(color)
-  elseif vim.g.solarized_darkbg == 1 then
+  -- if vim.g.solarized_termtrans == 1 then
+  --   return M.termtrans(color)
+  -- elseif vim.g.solarized_darkbg == 1 then
+  --   return darkCursorLine
+  -- else
+  --   return color
+  -- end
+  if vim.g.solarized_darkbg == 1 then
     return darkCursorLine
   else
     return color
   end
 end
 
-function M.whiteCursorLineNr(color)
-  if vim.g.solarized_termtrans == 1 then
-    return M.termtrans(color)
-  elseif vim.g.solarized_yellow_linenr == 1 then
+
+-- will set the line number to yellow
+function M.lineNrFn(color)
+  if vim.g.solarized_yellow_linenr == 1 then
     return {'#ffff00', 11}
-  elseif vim.g.solarized_darkbg == 1 then
-    return {'#FFFFFF', 256}
+  elseif vim.g.solarized_termtrans == 1 then
+    return M.termtrans(color)
+  -- elseif vim.g.solarized_darkbg == 1 then
+  --   return {'#FFFFFF', 256}
   else
     return color
   end

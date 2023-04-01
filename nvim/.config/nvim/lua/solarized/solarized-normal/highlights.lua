@@ -26,6 +26,7 @@ local dark    = {'#1d2021', 234}
 local dark0   = {'#32302f', 236}
 local white   = {'#FFFFFF', 256}
 local onedark_bg = {'#1e1e1e', 234}
+local yellow = {'#ffff00', 11}
 --
 function M.load_syntax(colors)
 	local syntax = {}
@@ -103,9 +104,8 @@ function M.load_syntax(colors)
 		syntax['SpellRare'] = {fg=colors.cyan,guisp=colors.cyan,style='undercurl'}
 		syntax['Title'] = {fg=colors.base01,style='bold'}
 	else
-		syntax['CursorLineNr'] = {fg=utils.whiteCursorLineNr(colors.base0),bg=utils.darkbgNr(colors.base02),style='bold'}
-		-- syntax['CursorLineNr'] = {fg=utils.whiteCursorLineNr(colors.base0),bg=utils.darkbg(colors.base02),style='bold'}
-		-- syntax['LineNr'] = {fg=colors.base00,bg=colors.base02,}
+		-- syntax['CursorLineNr'] = {fg=yellow,bg=utils.darkbgNr(colors.base02),style='bold'}
+		syntax['CursorLineNr'] = {fg=yellow,bg=utils.darkbgNr(colors.base02),style='bold'}
 		syntax['LineNr'] = {fg=colors.base00,bg=utils.darkbg(colors.base02)}
 		syntax['NonText'] = {fg=colors.base00,style='bold'}
 		syntax['SpecialKey'] = {fg=colors.base00,bg=colors.base02,style='bold'}
