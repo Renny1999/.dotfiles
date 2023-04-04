@@ -41,7 +41,8 @@ function M.load_syntax(colors)
 	-- syntax['CursorLine'] = {fg=colors.none,bg=colors.base02}
 	syntax['CursorLine'] = {fg=colors.none,bg=dark0}
 	-- syntax['CursorLine'] = {fg=colors.none,bg=colors.base02}
-	syntax['LineNr'] = {fg=colors.base00,bg=utils.darkbg(colors.base03)}
+	-- syntax['LineNr'] = {fg=colors.base00,bg=utils.darkbg(colors.base03)}
+	syntax['LineNr'] = {fg=colors.base0,bg=utils.darkbg(colors.base03)}
 	syntax['FloatBorder'] = {fg=colors.base1, bg=colors.none}
 
 	if g.solarized_diffmode == 'low' then
