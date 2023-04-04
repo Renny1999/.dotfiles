@@ -96,7 +96,7 @@ function M.load_syntax(colors)
 		syntax['Title'] = {fg=colors.yellow,style='bold'}
 	elseif g.solarized_visibility == 'low' then
 		syntax['CursorLineNr'] = {fg=colors.base01,bg=colors.base02,style='bold'}
-		syntax['LineNr'] = {fg=colors.base01,bg=colors.base02,}
+		syntax['LineNr'] = {fg=colors.base0,bg=colors.base02,}
 		syntax['NonText'] = {fg=colors.base02,style='bold'}
 		syntax['SpecialKey'] = {fg=colors.base02,style='reverse'}
 		syntax['SpellBad'] = {fg=colors.violet,guisp=colors.violet,style='undercurl'}
@@ -108,7 +108,7 @@ function M.load_syntax(colors)
 		-- syntax['CursorLineNr'] = {fg=yellow,bg=utils.darkbgNr(colors.base02),style='bold'}
 		syntax['CursorLineNr'] = {fg=yellow,bg=utils.darkbgNr(colors.base03),style='bold'}
 		-- syntax['LineNr'] = {fg=colors.base00,bg=utils.darkbg(colors.base02)}
-		syntax['LineNr'] = {fg=colors.base01,bg=utils.darkbg(colors.base03)}
+		syntax['LineNr'] = {fg=colors.base0,bg=utils.darkbg(colors.base03)}
 		syntax['NonText'] = {fg=colors.base00,style='bold'}
 		syntax['SpecialKey'] = {fg=colors.base00,bg=colors.base02,style='bold'}
 		syntax['SpellBad'] = {fg=colors.violet,guisp=colors.violet,style='undercurl'}
