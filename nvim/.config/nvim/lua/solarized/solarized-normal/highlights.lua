@@ -40,7 +40,8 @@ function M.load_syntax(colors)
 	-- syntax['CursorLine'] = {fg=colors.none,bg=utils.termtrans(colors.base02)}
 	-- syntax['CursorLine'] = {fg=colors.none,bg=colors.base02}
 	syntax['CursorLine'] = {fg=colors.none,bg=dark0}
-	syntax['LineNr'] = {fg=colors.base00,bg=utils.termtrans(colors.base02)}
+	-- syntax['CursorLine'] = {fg=colors.none,bg=colors.base02}
+	syntax['LineNr'] = {fg=colors.base00,bg=utils.darkbg(colors.base03)}
 	syntax['FloatBorder'] = {fg=colors.base1, bg=colors.none}
 
 	if g.solarized_diffmode == 'low' then
@@ -105,8 +106,9 @@ function M.load_syntax(colors)
 		syntax['Title'] = {fg=colors.base01,style='bold'}
 	else
 		-- syntax['CursorLineNr'] = {fg=yellow,bg=utils.darkbgNr(colors.base02),style='bold'}
-		syntax['CursorLineNr'] = {fg=yellow,bg=utils.darkbgNr(colors.base02),style='bold'}
-		syntax['LineNr'] = {fg=colors.base00,bg=utils.darkbg(colors.base02)}
+		syntax['CursorLineNr'] = {fg=yellow,bg=utils.darkbgNr(colors.base03),style='bold'}
+		-- syntax['LineNr'] = {fg=colors.base00,bg=utils.darkbg(colors.base02)}
+		syntax['LineNr'] = {fg=colors.base01,bg=utils.darkbg(colors.base03)}
 		syntax['NonText'] = {fg=colors.base00,style='bold'}
 		syntax['SpecialKey'] = {fg=colors.base00,bg=colors.base02,style='bold'}
 		syntax['SpellBad'] = {fg=colors.violet,guisp=colors.violet,style='undercurl'}
