@@ -29,7 +29,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'nvim-treesitter/nvim-treesitter', {'tag': '0.5-compat'}
 Plug 'nvim-treesitter/playground'
-Plug 'nvim-treesitter/nvim-treesitter-context'
 
 " Draws vertical lines for indents
 Plug 'lukas-reineke/indent-blankline.nvim'

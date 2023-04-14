@@ -609,7 +609,7 @@ function M.load_syntax(colors)
 	syntax['NavicText'] = syntax['LineNr']
 	syntax['NavicSeparator'] = syntax['Comment']
 
-  syntax['TelescopeMatching'] = {fg= colors.cyan}
+  syntax['TelescopeMatching'] = {fg=colors.cyan}
 
 	for group, highlights in pairs(syntax) do
 		utils.highlighter(group, highlights)
