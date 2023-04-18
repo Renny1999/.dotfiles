@@ -1,3 +1,4 @@
+require("impatient")
 require("renny.lualine")
 require("renny.comment")
 require("renny.telescope")

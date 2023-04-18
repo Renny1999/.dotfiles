@@ -100,7 +100,7 @@ set background=dark
 """ solarized
 " let g:solarized_visibility= 'low'
 " let g:solarized_termtrans = 1
-let g:solarized_darkbg = 1
+" let g:solarized_darkbg = 1
 let g:solarized_yellow_linenr = 1
 colorscheme solarized
 
@@ -134,6 +134,6 @@ set wildcharm=<tab>
 lua require("renny")
 
 """ source additional settings
-for f in split(glob('~/.config/nvim/extra-plugins/*.vim'), '\n')
-  exe 'source' f
-endfor
+" for f in split(glob('~/.config/nvim/extra-plugins/*.vim'), '\n')
+"   exe 'source' f
+" endfor

@@ -47,4 +47,6 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'sunjon/shade.nvim'
 
+Plug 'lewis6991/impatient.nvim'
+
 call plug#end()

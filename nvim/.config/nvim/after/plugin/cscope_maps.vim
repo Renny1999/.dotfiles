@@ -8,6 +8,7 @@ if has("cscope")
     " check cscope for definition of a symbol before checking ctags: set to 1
     " if you want the reverse search order.
     set csto=1
+    set nocscopeverbose " suppress 'duplicate connection' error
 
     " add any cscope database in current directory
     if filereadable("cscope.out")
@@ -23,7 +24,7 @@ if has("cscope")
             set nocscopeverbose " suppress 'duplicate connection' error
             " set cscopeverbose
             exe "cs add " . db . " " . path
-            set cscopeverbose
+            " set cscopeverbose
           " else add the database pointed to by environment variable
           elseif $CSCOPE_DB != ""
             cs add $CSCOPE_DB
@@ -33,7 +34,7 @@ if has("cscope")
     endif
 
     " show msg when any other cscope db added
-    set cscopeverbose
+    " set cscopeverbose
 
 
     " keymappings
