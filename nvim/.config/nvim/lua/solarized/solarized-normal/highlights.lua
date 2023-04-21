@@ -146,6 +146,7 @@ function M.load_syntax(colors)
 	syntax['Constant'] = {fg=colors.cyan}
 	syntax['CursorIM'] = {fg=colors.none,bg=colors.base1}
 	syntax['Error'] = {fg=colors.red,bg=colors.err_bg,style='bold,reverse'}
+	-- syntax['Identifier'] = {fg=colors.blue}
 	syntax['Identifier'] = {fg=colors.blue}
 	syntax['Ignore'] = {fg=colors.none,ctermfg=colors.none,ctermbg=colors.none}
 	syntax['PreProc'] = {fg=colors.orange}
@@ -314,7 +315,8 @@ function M.load_syntax(colors)
 	syntax['Delimiter'] = syntax['Special']
 	syntax['Exception'] = syntax['Statement']
 	syntax['Float'] = syntax['Constant']
-	syntax['Function'] = syntax['Identifier']
+	-- syntax['Function'] = syntax['Identifier']
+	syntax['Function'] = {fg=colors.blue}
 	syntax['Include'] = syntax['PreProc']
 	syntax['Keyword'] = syntax['Statement']
 	syntax['Label'] = syntax['Statement']
@@ -388,7 +390,8 @@ function M.load_syntax(colors)
 	syntax['TSNumber'] = syntax['Constant']
 	syntax['TSOperator'] = syntax['Operator']
 	syntax['TSParameterReference'] = syntax['Identifier']
-	syntax['TSProperty'] = syntax['TSField']
+	-- syntax['TSProperty'] = syntax['TSField']
+	syntax['TSProperty'] = {fg=colors.green}
 	syntax['TSPunctDelimiter'] = syntax['Delimiter']
 	syntax['TSPunctBracket'] = syntax['Delimiter']
 	syntax['TSPunctSpecial'] = syntax['Special']
@@ -417,12 +420,14 @@ function M.load_syntax(colors)
 	syntax['@none'] = syntax['NONE']
 	syntax['@preproc'] = syntax['PreProc']
 	syntax['@define'] = syntax['Define']
-	syntax['@operator'] = syntax['Operator']
+	-- syntax['@operator'] = syntax['Operator']
+	syntax['@operator'] = {fg=colors.green}
 	-- }}}
 
 	-- Punctuation {{{
 	syntax['@punctuation.delimiter'] = syntax['Statement']
-	syntax['@punctuation.bracket'] = syntax['Delimiter']
+	-- syntax['@punctuation.bracket'] = syntax['Delimiter']
+	syntax['@punctuation.bracket'] = {fg=colors.base1}
 	syntax['@punctuation.special'] = syntax['Delimiter']
 	-- }}}
 
@@ -477,8 +482,11 @@ function M.load_syntax(colors)
 
 	syntax['@storageclass'] = syntax['StorageClass']
 	syntax['@attribute'] = syntax['Identifier']
-	syntax['@field'] = syntax['Identifier']
-	syntax['@property'] = syntax['Identifier']
+	syntax['@field'] = {fg=colors.green}
+	-- syntax['@field'] = syntax['Identifier']
+	-- syntax['@property'] = syntax['Identifier']
+	-- syntax['@property'] = {fg=colors.green}
+	syntax['@property'] = {fg=colors.base1}
 	-- }}}
 
 	-- Identifiers {{{
