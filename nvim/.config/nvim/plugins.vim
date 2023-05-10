@@ -8,9 +8,10 @@ Plug 'nvim-lualine/lualine.nvim'
 " colorschemes
 " Plug 'morhetz/gruvbox'
 " Plug 'ishan9299/nvim-solarized-lua'
-" Plug 'folke/tokyonight.nvim'
+Plug 'folke/tokyonight.nvim'
 " Plug 'cranberry-clockworks/coal.nvim'
-" Plug 'arturgoms/moonbow.nvim'
+Plug 'arturgoms/moonbow.nvim'
+Plug 'mofiqul/vscode.nvim'
 
 " telescope for fuzzy-finding
 Plug 'nvim-lua/plenary.nvim'

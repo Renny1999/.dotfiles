@@ -103,7 +103,7 @@ set background=dark
 " let g:solarized_darkbg = 1
 let g:solarized_yellow_linenr = 1
 colorscheme solarized
-
+"
 " colorsheme moonbow
 
 " colorscheme coal

@@ -7,6 +7,7 @@ require('telescope').setup{
     mappings = {
       i = {
         ["<esc>"] = require('telescope.actions').close,
+        ['<c-d>'] = require('telescope.actions').delete_buffer
       },
     },
   },
@@ -46,14 +47,20 @@ require('telescope').setup{
 }
 require('telescope').load_extension('fzf')
 
+
 local tt = os.getenv("ADE_PRODUCT_ROOT")
 
 if (tt ~= nil)
 then
   -- print("$ADE_PRODUCT_ROOT="..tt)
-  vim.api.nvim_set_keymap('n', '<C-p>', ":lua require('telescope.builtin').find_files({cwd='" .. tt .. "' })<CR>", {noremap=true})
-  -- vim.api.keymap('n', '<C-p>', ":lua require('telescope.builtin').find_files({cwd='" .. tt .. "' })<CR>", {noremap=true,})
+  vim.keymap.set('n', '<C-p>', ":lua require('telescope.builtin').find_files({cwd='$ADE_PRODUCT_ROOT'})<CR>", {noremap=true})
+  -- vim.keymap.set('n', '<C-p>', ":lua require('telescope.builtin').find_files({cwd='" .. tt .. "' })<CR>", {noremap=true})
 else
   -- vim.api.nvim_set_keymap('n', '<C-p>', ":lua require('telescope.builtin').find_files({follow=true})<CR>", {noremap=true,})
-  vim.api.nvim_set_keymap('n', '<C-p>', ":lua require('telescope.builtin').find_files()<CR>", {noremap=true})
+  vim.keymap.set('n', '<C-p>', ":lua require('telescope.builtin').find_files()<CR>", {noremap=true})
 end
+
+vim.keymap.set('n', '<leader>f', ":lua require('telescope.builtin').find_files()<CR>", {noremap=true})
+
+vim.keymap.set('n', '<leader>c', ":lua require('telescope.builtin').find_files({cwd='~/.config/nvim'})<CR>", {noremap=true})
+vim.keymap.set('n', '<leader>C', ":lua require('telescope.builtin').colorscheme()<CR>", {noremap=true})
