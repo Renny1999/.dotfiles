@@ -127,6 +127,11 @@ highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
 highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
 highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
 
+augroup NoModWhenReadOnly
+    autocmd!
+    autocmd BufRead * let &l:modifiable = !&readonly
+augroup END
+
 " highlight current line
 set cursorline
 set wildcharm=<tab>
