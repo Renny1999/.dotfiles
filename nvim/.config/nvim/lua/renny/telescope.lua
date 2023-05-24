@@ -50,17 +50,37 @@ require('telescope').load_extension('fzf')
 
 local tt = os.getenv("ADE_PRODUCT_ROOT")
 
-if (tt ~= nil)
-then
-  -- print("$ADE_PRODUCT_ROOT="..tt)
-  vim.keymap.set('n', '<C-p>', ":lua require('telescope.builtin').find_files({cwd='$ADE_PRODUCT_ROOT'})<CR>", {noremap=true})
-  -- vim.keymap.set('n', '<C-p>', ":lua require('telescope.builtin').find_files({cwd='" .. tt .. "' })<CR>", {noremap=true})
-else
-  -- vim.api.nvim_set_keymap('n', '<C-p>', ":lua require('telescope.builtin').find_files({follow=true})<CR>", {noremap=true,})
-  vim.keymap.set('n', '<C-p>', ":lua require('telescope.builtin').find_files()<CR>", {noremap=true})
+local find_files_all = function()
+  local dir = tt
+  if dir == nil then
+    dir = vim.fn.getcwd()
+  end
+
+  builtin.find_files({
+    cwd = dir,
+    find_command = {'find'},
+  })
 end
 
-vim.keymap.set('n', '<leader>f', ":lua require('telescope.builtin').find_files()<CR>", {noremap=true})
+local find_files_src = function()
+  local dir = tt
+
+  if dir == nil then
+    dir = vim.loop.cwd()
+  end
+
+  builtin.find_files({
+    cwd = dir,
+    find_command = {'find', '-name', '*.c', '-o', '-name', '*.h'},
+  })
+end
+
+
+vim.keymap.set('n', '<C-p>', find_files_all, {noremap=true})
+
+vim.keymap.set('n', '<leader>f', builtin.find_files, {noremap=true})
+vim.keymap.set('n', '<leader>s', find_files_src, {noremap=true})
 
 vim.keymap.set('n', '<leader>c', ":lua require('telescope.builtin').find_files({cwd='~/.config/nvim'})<CR>", {noremap=true})
-vim.keymap.set('n', '<leader>C', ":lua require('telescope.builtin').colorscheme()<CR>", {noremap=true})
+
+vim.keymap.set('n', '<leader>C', builtin.colorscheme, {noremap=true})
