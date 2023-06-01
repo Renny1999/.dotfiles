@@ -39,7 +39,9 @@ function M.load_syntax(colors)
 	syntax['ToolbarLine'] = {fg=colors.none,bg=utils.termtrans(colors.base02)}
 	-- syntax['CursorLine'] = {fg=colors.none,bg=utils.termtrans(colors.base02)}
 	-- syntax['CursorLine'] = {fg=colors.none,bg=colors.base02}
-	syntax['CursorLine'] = {fg=colors.none,bg=dark0}
+	-- syntax['CursorLine'] = {fg=colors.none,bg=dark0}
+  syntax['CursorLine'] = {fg=colors.none,bg=colors.base02}
+
 	-- syntax['CursorLine'] = {fg=colors.none,bg=colors.base02}
 	-- syntax['LineNr'] = {fg=colors.base00,bg=utils.darkbg(colors.base03)}
 	syntax['LineNr'] = {fg=colors.base0,bg=utils.darkbg(colors.base03)}
