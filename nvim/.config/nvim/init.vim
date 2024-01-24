@@ -29,7 +29,6 @@ command! Src :source $HOME/.config/nvim/init.vim
 let g:python_recommended_style=0
 let g:rust_recommended_style=0
 
-set relativenumber
 set number
 set tabstop=2
 set shiftwidth=2
