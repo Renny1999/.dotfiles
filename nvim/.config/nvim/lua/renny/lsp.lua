@@ -56,6 +56,7 @@ end
 
 -- special one for c and cpp
 local on_attach_c = function(client, bufnr)
+  client.server_capabilities.semanticTokensProvider = nil
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 

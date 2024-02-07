@@ -1,15 +1,13 @@
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'lewis6991/impatient.nvim'
-
 " lualine (prettier vim status bar)
 Plug 'nvim-lualine/lualine.nvim'
 
 " colorschemes
-" Plug 'morhetz/gruvbox'
-" Plug 'ishan9299/nvim-solarized-lua'
+Plug 'morhetz/gruvbox'
+Plug 'ishan9299/nvim-solarized-lua'
 Plug 'folke/tokyonight.nvim'
-" Plug 'cranberry-clockworks/coal.nvim'
+Plug 'cranberry-clockworks/coal.nvim'
 Plug 'arturgoms/moonbow.nvim'
 Plug 'mofiqul/vscode.nvim'
 
@@ -47,10 +45,11 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 
-Plug 'sunjon/shade.nvim'
-
+" Plug 'sunjon/shade.nvim'
 
 Plug 'ggandor/leap.nvim'
+
+Plug 'https://github.com/Renny1999/cscope_maps.nvim.git'
 
 
 call plug#end()

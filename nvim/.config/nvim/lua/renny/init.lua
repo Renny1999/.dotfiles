@@ -1,4 +1,5 @@
-require("impatient").enable_profile()
+vim.loader.enable()
+
 require("renny.lualine")
 require("renny.comment")
 require("renny.telescope")
@@ -8,7 +9,9 @@ require("renny.completion")
 require("renny.ts")
 require("renny.lsp")
 require("renny.leap")
--- require("cscope_maps").setup({})
+-- require("renny.shade")
+require("renny.cscope")
+
 
 
 -- our goal is to delete buffer when going back the stack with ctrl-t
