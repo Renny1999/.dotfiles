@@ -84,33 +84,33 @@ require'lspconfig'.clangd.setup{on_attach = on_attach_c, capabilities=capabiliti
 require'lspconfig'.rust_analyzer.setup{on_attach = on_attach, capabilities=capabilities}
 require'lspconfig'.pyright.setup{on_attach = on_attach, capabilities=capabilities}
 
-require'lspconfig'.sumneko_lua.setup({
-  -- cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = vim.split(package.path, ';'),
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = {
-          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-        },
-      },
-    }
-  },
-
-  on_attach = on_attach,
-  capabilities = capabilities
-})
+-- require'lspconfig'.sumneko_lua.setup({
+--   -- cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+--   settings = {
+--     Lua = {
+--       runtime = {
+--         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+--         version = 'LuaJIT',
+--         -- Setup your lua path
+--         path = vim.split(package.path, ';'),
+--       },
+--       diagnostics = {
+--         -- Get the language server to recognize the `vim` global
+--         globals = {'vim'},
+--       },
+--       workspace = {
+--         -- Make the server aware of Neovim runtime files
+--         library = {
+--           [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+--           [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+--         },
+--       },
+--     }
+--   },
+--
+--   on_attach = on_attach,
+--   capabilities = capabilities
+-- })
 
 -- vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
 -- vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]

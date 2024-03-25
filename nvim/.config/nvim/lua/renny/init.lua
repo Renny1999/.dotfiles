@@ -7,6 +7,8 @@ require("renny.indent_blankline")
 require("renny.luasnip")
 require("renny.completion")
 require("renny.ts")
+require("mason").setup()
+require("mason-lspconfig").setup()
 require("renny.lsp")
 require("renny.leap")
 -- require("renny.shade")
@@ -15,7 +17,7 @@ require("renny.cscope")
 
 
 -- our goal is to delete buffer when going back the stack with ctrl-t
-DBG = 1
+DBG = 0
 function mydbg(x)
   if (DBG == 1) then
     print(x)

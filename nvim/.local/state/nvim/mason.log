@@ -1,0 +1,9 @@
+[INFO  Mon 25 Mar 2024 07:12:53 PM UTC] ...vim/plugged/mason.nvim/lua/mason-core/installer/init.lua:184: Executing installer for Package(name=pyright) {}
+[ERROR Mon 25 Mar 2024 07:13:01 PM UTC] ...vim/plugged/mason.nvim/lua/mason-core/installer/init.lua:249: Installation failed for Package(name=pyright) error=spawn: npm failed with exit code 1 and signal 0. 
+[ERROR Mon 25 Mar 2024 07:14:54 PM UTC] ...hare/nvim/plugged/mason.nvim/lua/mason-registry/init.lua:79: Cannot find package "\"lua\"".
+[ERROR Mon 25 Mar 2024 07:14:58 PM UTC] ...vim/plugged/mason.nvim/lua/mason-core/providers/init.lua:80: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code 4 and signal 0. 
+[ERROR Mon 25 Mar 2024 07:14:58 PM UTC] ...vim/plugged/mason.nvim/lua/mason-core/providers/init.lua:80: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code 4 and signal 0. 
+[ERROR Mon 25 Mar 2024 07:14:58 PM UTC] ...vim/plugged/mason.nvim/lua/mason-core/providers/init.lua:91: No provider implementation succeeded for github.get_latest_release
+[ERROR Mon 25 Mar 2024 07:14:58 PM UTC] ...plugged/mason.nvim/lua/mason-registry/sources/github.lua:146: Failed to install registry GitHubRegistrySource(repo=mason-org/mason-registry). "Failed to fetch latest registry version from GitHub API."
+[INFO  Mon 25 Mar 2024 07:15:05 PM UTC] ...vim/plugged/mason.nvim/lua/mason-core/installer/init.lua:184: Executing installer for Package(name=lua-language-server) {}
+[ERROR Mon 25 Mar 2024 07:15:05 PM UTC] ...vim/plugged/mason.nvim/lua/mason-core/installer/init.lua:249: Installation failed for Package(name=lua-language-server) error='spawn: wget failed with exit code 4 and signal 0. \nFailed to download file "https://github.com/luals/lua-language-server/releases/download/3.7.4/lua-language-server-3.7.4-linux-x64.tar.gz".'
