@@ -8,7 +8,7 @@ nvim/.local/share/nvim/.netrwhist
 nvim/.local/share/nvim/telescope_history
 nvim/.local/share/nvim/tree-sitter-help
 #!nvim/.local/share/nvim/plugged/nvim-lspconfig
-nvim/.local/site
+nvim/.local/site/
 
 vim/.vim/colors/*
 vim/.vim/plugged/*
