@@ -1,5 +1,6 @@
-vim.loader.enable()
+vim.loader.disable()
 
+-- require("config.lazy")
 require("renny.lualine")
 require("renny.comment")
 require("renny.telescope")

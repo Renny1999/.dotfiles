@@ -4,18 +4,18 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'nvim-lualine/lualine.nvim'
 
 " colorschemes
-Plug 'morhetz/gruvbox'
-Plug 'ishan9299/nvim-solarized-lua'
-Plug 'folke/tokyonight.nvim'
-Plug 'cranberry-clockworks/coal.nvim'
-Plug 'arturgoms/moonbow.nvim'
+" Plug 'morhetz/gruvbox'
+" Plug 'ishan9299/nvim-solarized-lua'
+" Plug 'folke/tokyonight.nvim'
+" Plug 'cranberry-clockworks/coal.nvim'
+" Plug 'arturgoms/moonbow.nvim'
 Plug 'mofiqul/vscode.nvim'
 
 " telescope for fuzzy-finding
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
-"Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+" Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " tagbar
 Plug 'preservim/tagbar'
