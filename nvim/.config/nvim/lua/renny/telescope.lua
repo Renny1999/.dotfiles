@@ -10,6 +10,12 @@ require('telescope').setup{
         ['<c-d>'] = require('telescope.actions').delete_buffer
       },
     },
+    path_display = {
+      -- smart = true,
+      filename_first = {
+        reverse_directories = false
+      }
+    },
   },
   pickers = {
     -- Default configuration for builtin pickers goes here:
@@ -24,7 +30,7 @@ require('telescope').setup{
         --   "fd",
         --   "-j",
         --   "2",
-        -- }
+        -- },
         find_command = {
           "find",
         },
@@ -43,7 +49,7 @@ require('telescope').setup{
       override_file_sorter = true,
       case_mode = "smart_case"
     }
-  }
+  },
 }
 
 require('telescope').load_extension('fzf')
