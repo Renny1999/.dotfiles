@@ -47,79 +47,29 @@ function M.load_syntax(colors)
 	syntax['LineNr'] = {fg=colors.base0,bg=utils.darkbg(colors.base03)}
 	syntax['FloatBorder'] = {fg=colors.base1, bg=colors.none}
 
-	if g.solarized_diffmode == 'low' then
-		syntax['DiffAdd'] = {fg=colors.green, bg=colors.none, guisp=colors.green}
-		syntax['DiffChange'] = {fg=colors.yellow, bg=colors.none, guisp=colors.yellow}
-		syntax['DiffDelete'] = {fg=colors.red, bg=colors.none, style='bold'}
-		syntax['DiffText'] = {fg=colors.blue, bg=colors.none, guisp=colors.blue}
-	elseif g.solarized_diffmode == 'high' then
-		syntax['DiffAdd'] = {fg=colors.green, bg=colors.none, style='reverse'}
-		syntax['DiffChange'] = {fg=colors.yellow, bg=colors.none, style='reverse'}
-		syntax['DiffDelete'] = {fg=colors.red, bg=colors.none, style='reverse'}
-		syntax['DiffText'] = {fg=colors.blue, bg=colors.none, style='reverse'}
-	else
-		syntax['DiffAdd'] = {fg=colors.green,bg=colors.base02,guisp=colors.green}
-		syntax['DiffChange'] = {fg=colors.yellow,bg=colors.base02,guisp=colors.yellow}
-		syntax['DiffDelete'] = {fg=colors.red,bg=colors.base02,style='bold'}
-		syntax['DiffText'] = {fg=colors.blue,bg=colors.base02,guisp=colors.blue}
-	end
+  syntax['DiffAdd'] = {fg=colors.green,bg=colors.base02,guisp=colors.green}
+  syntax['DiffChange'] = {fg=colors.yellow,bg=colors.base02,guisp=colors.yellow}
+  syntax['DiffDelete'] = {fg=colors.red,bg=colors.base02,style='bold'}
+  syntax['DiffText'] = {fg=colors.blue,bg=colors.base02,guisp=colors.blue}
 
-	if g.solarized_statusline == 'low' then
-		syntax['StatusLine'] = {fg=colors.base01, bg=colors.base2, style='reverse'}
-		syntax['StatusLineNC'] = {fg=colors.base01, bg=colors.base02, style='reverse'}
-		syntax['TabLine'] = {fg=colors.base01, bg=colors.base02, style='reverse'}
-		syntax['TabLineFill'] = {fg=colors.base01, bg=colors.base02, style='reverse'}
-		syntax['TabLineSel'] = {fg=colors.base0, bg=colors.base3, style='reverse'}
-		syntax['VertSplit'] = {fg=colors.base01, bg=colors.none}
-	elseif g.solarized_statusline == 'flat' then
-		syntax['StatusLine'] = {fg=colors.base02, bg=colors.base2, style='reverse'}
-		syntax['StatusLineNC'] = {fg=colors.base02, bg=colors.base1, style='reverse'}
-		syntax['TabLineSel'] = {fg=colors.base2, bg=colors.base02}
-		syntax['TabLine'] = {fg=colors.base01, bg=colors.base02}
-		syntax['TabLineFill'] = {fg=colors.base01, bg=colors.base02}
-		syntax['VertSplit'] = {fg=colors.base02, bg=colors.none}
-	else
-		syntax['StatusLine'] = {fg=colors.base0,bg=colors.base02,style='reverse'}
-		syntax['StatusLineNC'] = {fg=colors.base01,bg=colors.base02,style='reverse'}
-		syntax['TabLine'] = {fg=colors.base01,bg=colors.base02,style='reverse'}
-		syntax['TabLineFill'] = {fg=colors.base01,bg=colors.base02,style='reverse'}
-		syntax['TabLineSel'] = {fg=colors.base0,bg=colors.base02,style='reverse'}
-		syntax['VertSplit'] = {fg=colors.base01}
-	end
+  syntax['StatusLine'] = {fg=colors.base0,bg=colors.base02,style='reverse'}
+  syntax['StatusLineNC'] = {fg=colors.base01,bg=colors.base02,style='reverse'}
+  syntax['TabLine'] = {fg=colors.base01,bg=colors.base02,style='reverse'}
+  syntax['TabLineFill'] = {fg=colors.base01,bg=colors.base02,style='reverse'}
+  syntax['TabLineSel'] = {fg=colors.base0,bg=colors.base02,style='reverse'}
+  syntax['VertSplit'] = {fg=colors.base01}
 
-	if g.solarized_visibility == 'high' then
-		syntax['CursorLineNr'] = {fg=colors.orange,bg=colors.base02,style='bold'}
-		syntax['LineNr'] = {fg=colors.base0,bg=colors.base02,}
-		syntax['NonText'] = {fg=colors.orange,style='bold'}
-		syntax['SpecialKey'] = {fg=colors.orange,style='reverse'}
-		syntax['SpellBad'] = {fg=colors.violet,bg=colors.base3,guisp=colors.red,style='reverse,undercurl'}
-		syntax['SpellCap'] = {fg=colors.violet,bg=colors.base3,guisp=colors.red,style='reverse,undercurl'}
-		syntax['SpellLocal'] = {fg=colors.yellow,bg=colors.base3,guisp=colors.red,style='reverse,undercurl'}
-		syntax['SpellRare'] = {fg=colors.cyan,bg=colors.base3,guisp=colors.red,style='reverse,undercurl'}
-		syntax['Title'] = {fg=colors.yellow,style='bold'}
-	elseif g.solarized_visibility == 'low' then
-		syntax['CursorLineNr'] = {fg=colors.base01,bg=colors.base02,style='bold'}
-		syntax['LineNr'] = {fg=colors.base0,bg=colors.base02,}
-		syntax['NonText'] = {fg=colors.base02,style='bold'}
-		syntax['SpecialKey'] = {fg=colors.base02,style='reverse'}
-		syntax['SpellBad'] = {fg=colors.violet,guisp=colors.violet,style='undercurl'}
-		syntax['SpellCap'] = {fg=colors.violet,guisp=colors.violet,style='undercurl'}
-		syntax['SpellLocal'] = {fg=colors.yellow,guisp=colors.yellow,style='undercurl'}
-		syntax['SpellRare'] = {fg=colors.cyan,guisp=colors.cyan,style='undercurl'}
-		syntax['Title'] = {fg=colors.base01,style='bold'}
-	else
-		-- syntax['CursorLineNr'] = {fg=yellow,bg=utils.darkbgNr(colors.base02),style='bold'}
-		syntax['CursorLineNr'] = {fg=yellow,bg=utils.darkbgNr(colors.base03),style='bold'}
-		-- syntax['LineNr'] = {fg=colors.base00,bg=utils.darkbg(colors.base02)}
-		syntax['LineNr'] = {fg=colors.base0,bg=utils.darkbg(colors.base03)}
-		syntax['NonText'] = {fg=colors.base00,style='bold'}
-		syntax['SpecialKey'] = {fg=colors.base00,bg=colors.base02,style='bold'}
-		syntax['SpellBad'] = {fg=colors.violet,guisp=colors.violet,style='undercurl'}
-		syntax['SpellCap'] = {fg=colors.violet,guisp=colors.violet,style='undercurl'}
-		syntax['SpellLocal'] = {fg=colors.yellow,guisp=colors.yellow,style='undercurl'}
-		syntax['SpellRare'] = {fg=colors.cyan,guisp=colors.cyan,style='undercurl'}
-		syntax['Title'] = {fg=colors.orange,style='bold'}
-	end
+  -- syntax['CursorLineNr'] = {fg=yellow,bg=utils.darkbgNr(colors.base02),style='bold'}
+  syntax['CursorLineNr'] = {fg=yellow,bg=utils.darkbgNr(colors.base03),style='bold'}
+  -- syntax['LineNr'] = {fg=colors.base00,bg=utils.darkbg(colors.base02)}
+  syntax['LineNr'] = {fg=colors.base0,bg=utils.darkbg(colors.base03)}
+  syntax['NonText'] = {fg=colors.base00,style='bold'}
+  syntax['SpecialKey'] = {fg=colors.base00,bg=colors.base02,style='bold'}
+  syntax['SpellBad'] = {fg=colors.violet,guisp=colors.violet,style='undercurl'}
+  syntax['SpellCap'] = {fg=colors.violet,guisp=colors.violet,style='undercurl'}
+  syntax['SpellLocal'] = {fg=colors.yellow,guisp=colors.yellow,style='undercurl'}
+  syntax['SpellRare'] = {fg=colors.cyan,guisp=colors.cyan,style='undercurl'}
+  syntax['Title'] = {fg=colors.orange,style='bold'}
 
 	syntax['ColorColumn'] = {fg=colors.none,bg=colors.base02}
 	syntax['Conceal'] = {fg=colors.blue}
