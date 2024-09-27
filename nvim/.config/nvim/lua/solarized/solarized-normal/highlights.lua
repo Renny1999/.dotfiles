@@ -5,6 +5,7 @@ local o = vim.o
 local fn = vim.fn
 local utils = require('solarized.utils')
 local colors
+local hl = vim.api.nvim_set_hl
 
 cmd('hi clear')
 
@@ -15,615 +16,566 @@ if fn.exists("syntax_on") then
 end
 
 g.colors_name = 'solarized'
-local dark1   = {'#3c3836', 237}
-local dark2   = {'#504945', 239}
-local dark3   = {'#665c54', 241}
-local dark4   = {'#7c6f64', 243}
-local aqua    = {'#689d6a', 108}
-local blue    = {'#458588', 66}
-local grey    = {'#83a598', 109}
-local dark    = {'#1d2021', 234}
-local dark0   = {'#32302f', 236}
-local white   = {'#FFFFFF', 256}
-local onedark_bg = {'#1e1e1e', 234}
-local yellow = {'#ffff00', 11}
+local dark1   = '#3c3836'
+local dark2   = '#504945'
+local dark3   = '#665c54'
+local dark4   = '#7c6f64'
+local aqua    = '#689d6a'
+local blue    = '#458588'
+local grey    = '#83a598'
+local dark    = '#1d2021'
+local dark0   = '#32302f'
+local white   = '#FFFFFF'
+local onedark_bg = '#1e1e1e'
+local yellow = '#ffff00'
 --
 function M.load_syntax(colors)
 	local syntax = {}
 
-	syntax['Normal'] = {fg=colors.base1,bg=utils.darkbg(colors.base03)}
-	syntax['FoldColumn'] = {fg=colors.base0,bg=utils.termtrans(colors.base02)}
-	syntax['Folded'] = {fg=colors.base0,bg=utils.termtrans(colors.base02),guisp=colors.base03,style='bold'}
-	syntax['Terminal'] = syntax['Normal']
-	syntax['ToolbarButton'] = {fg=colors.base1,bg=utils.termtrans(colors.base02),style='bold'}
-	syntax['ToolbarLine'] = {fg=colors.none,bg=utils.termtrans(colors.base02)}
-	-- syntax['CursorLine'] = {fg=colors.none,bg=utils.termtrans(colors.base02)}
-	-- syntax['CursorLine'] = {fg=colors.none,bg=colors.base02}
-	-- syntax['CursorLine'] = {fg=colors.none,bg=dark0}
-  syntax['CursorLine'] = {fg=colors.none,bg=colors.base02}
+	hl(0,'Normal',{fg=colors.base1,bg=utils.darkbg(colors.base03)})
+	hl(0,'FoldColumn',{fg=colors.base0,bg=utils.termtrans(colors.base02)})
+	hl(0,'Folded',{fg=colors.base0,bg=utils.termtrans(colors.base02), bold = true})
+	hl(0,'Terminal', { link = 'Normal' })
+	hl(0,'ToolbarButton',{fg=colors.base1,bg=utils.termtrans(colors.base02), bold = true})
+	hl(0,'ToolbarLine',{fg=colors.none,bg=utils.termtrans(colors.base02)})
+	-- hl(0,'CursorLine',{fg=colors.none,bg=utils.termtrans(colors.base02)})
+	-- hl(0,'CursorLine',{fg=colors.none,bg=colors.base02})
+	-- hl(0,'CursorLine',{fg=colors.none,bg=dark0})
+  hl(0,'CursorLine',{fg=colors.none,bg=colors.base02})
 
-	-- syntax['CursorLine'] = {fg=colors.none,bg=colors.base02}
-	-- syntax['LineNr'] = {fg=colors.base00,bg=utils.darkbg(colors.base03)}
-	syntax['LineNr'] = {fg=colors.base0,bg=utils.darkbg(colors.base03)}
-	syntax['FloatBorder'] = {fg=colors.base1, bg=colors.none}
+	-- hl(0,'CursorLine',{fg=colors.none,bg=colors.base02})
+	-- hl(0,'LineNr',{fg=colors.base00,bg=utils.darkbg(colors.base03)})
+	hl(0,'LineNr',{fg=colors.base0,bg=utils.darkbg(colors.base03)})
+	hl(0,'FloatBorder',{fg=colors.base1, bg=colors.none})
 
-	if g.solarized_diffmode == 'low' then
-		syntax['DiffAdd'] = {fg=colors.green, bg=colors.none, guisp=colors.green}
-		syntax['DiffChange'] = {fg=colors.yellow, bg=colors.none, guisp=colors.yellow}
-		syntax['DiffDelete'] = {fg=colors.red, bg=colors.none, style='bold'}
-		syntax['DiffText'] = {fg=colors.blue, bg=colors.none, guisp=colors.blue}
-	elseif g.solarized_diffmode == 'high' then
-		syntax['DiffAdd'] = {fg=colors.green, bg=colors.none, style='reverse'}
-		syntax['DiffChange'] = {fg=colors.yellow, bg=colors.none, style='reverse'}
-		syntax['DiffDelete'] = {fg=colors.red, bg=colors.none, style='reverse'}
-		syntax['DiffText'] = {fg=colors.blue, bg=colors.none, style='reverse'}
-	else
-		syntax['DiffAdd'] = {fg=colors.green,bg=colors.base02,guisp=colors.green}
-		syntax['DiffChange'] = {fg=colors.yellow,bg=colors.base02,guisp=colors.yellow}
-		syntax['DiffDelete'] = {fg=colors.red,bg=colors.base02,style='bold'}
-		syntax['DiffText'] = {fg=colors.blue,bg=colors.base02,guisp=colors.blue}
-	end
+  hl(0,'DiffAdd',{fg=colors.green,bg=colors.base02})
+  hl(0,'DiffChange',{fg=colors.yellow,bg=colors.base02})
+  hl(0,'DiffDelete',{fg=colors.red,bg=colors.base02, bold = true})
+  hl(0,'DiffText',{fg=colors.blue,bg=colors.base02})
 
-	if g.solarized_statusline == 'low' then
-		syntax['StatusLine'] = {fg=colors.base01, bg=colors.base2, style='reverse'}
-		syntax['StatusLineNC'] = {fg=colors.base01, bg=colors.base02, style='reverse'}
-		syntax['TabLine'] = {fg=colors.base01, bg=colors.base02, style='reverse'}
-		syntax['TabLineFill'] = {fg=colors.base01, bg=colors.base02, style='reverse'}
-		syntax['TabLineSel'] = {fg=colors.base0, bg=colors.base3, style='reverse'}
-		syntax['VertSplit'] = {fg=colors.base01, bg=colors.none}
-	elseif g.solarized_statusline == 'flat' then
-		syntax['StatusLine'] = {fg=colors.base02, bg=colors.base2, style='reverse'}
-		syntax['StatusLineNC'] = {fg=colors.base02, bg=colors.base1, style='reverse'}
-		syntax['TabLineSel'] = {fg=colors.base2, bg=colors.base02}
-		syntax['TabLine'] = {fg=colors.base01, bg=colors.base02}
-		syntax['TabLineFill'] = {fg=colors.base01, bg=colors.base02}
-		syntax['VertSplit'] = {fg=colors.base02, bg=colors.none}
-	else
-		syntax['StatusLine'] = {fg=colors.base0,bg=colors.base02,style='reverse'}
-		syntax['StatusLineNC'] = {fg=colors.base01,bg=colors.base02,style='reverse'}
-		syntax['TabLine'] = {fg=colors.base01,bg=colors.base02,style='reverse'}
-		syntax['TabLineFill'] = {fg=colors.base01,bg=colors.base02,style='reverse'}
-		syntax['TabLineSel'] = {fg=colors.base0,bg=colors.base02,style='reverse'}
-		syntax['VertSplit'] = {fg=colors.base01}
-	end
+  hl(0,'StatusLine',{fg=colors.base0,bg=colors.base02, reverse = true})
+  hl(0,'StatusLineNC',{fg=colors.base01,bg=colors.base02, reverse = true})
+  hl(0,'TabLine',{fg=colors.base01,bg=colors.base02, reverse = true})
+  hl(0,'TabLineFill',{fg=colors.base01,bg=colors.base02, reverse = true})
+  hl(0,'TabLineSel',{fg=colors.base0,bg=colors.base02, reverse = true})
+  hl(0,'VertSplit',{fg=colors.base01})
 
-	if g.solarized_visibility == 'high' then
-		syntax['CursorLineNr'] = {fg=colors.orange,bg=colors.base02,style='bold'}
-		syntax['LineNr'] = {fg=colors.base0,bg=colors.base02,}
-		syntax['NonText'] = {fg=colors.orange,style='bold'}
-		syntax['SpecialKey'] = {fg=colors.orange,style='reverse'}
-		syntax['SpellBad'] = {fg=colors.violet,bg=colors.base3,guisp=colors.red,style='reverse,undercurl'}
-		syntax['SpellCap'] = {fg=colors.violet,bg=colors.base3,guisp=colors.red,style='reverse,undercurl'}
-		syntax['SpellLocal'] = {fg=colors.yellow,bg=colors.base3,guisp=colors.red,style='reverse,undercurl'}
-		syntax['SpellRare'] = {fg=colors.cyan,bg=colors.base3,guisp=colors.red,style='reverse,undercurl'}
-		syntax['Title'] = {fg=colors.yellow,style='bold'}
-	elseif g.solarized_visibility == 'low' then
-		syntax['CursorLineNr'] = {fg=colors.base01,bg=colors.base02,style='bold'}
-		syntax['LineNr'] = {fg=colors.base0,bg=colors.base02,}
-		syntax['NonText'] = {fg=colors.base02,style='bold'}
-		syntax['SpecialKey'] = {fg=colors.base02,style='reverse'}
-		syntax['SpellBad'] = {fg=colors.violet,guisp=colors.violet,style='undercurl'}
-		syntax['SpellCap'] = {fg=colors.violet,guisp=colors.violet,style='undercurl'}
-		syntax['SpellLocal'] = {fg=colors.yellow,guisp=colors.yellow,style='undercurl'}
-		syntax['SpellRare'] = {fg=colors.cyan,guisp=colors.cyan,style='undercurl'}
-		syntax['Title'] = {fg=colors.base01,style='bold'}
-	else
-		-- syntax['CursorLineNr'] = {fg=yellow,bg=utils.darkbgNr(colors.base02),style='bold'}
-		syntax['CursorLineNr'] = {fg=yellow,bg=utils.darkbgNr(colors.base03),style='bold'}
-		-- syntax['LineNr'] = {fg=colors.base00,bg=utils.darkbg(colors.base02)}
-		syntax['LineNr'] = {fg=colors.base0,bg=utils.darkbg(colors.base03)}
-		syntax['NonText'] = {fg=colors.base00,style='bold'}
-		syntax['SpecialKey'] = {fg=colors.base00,bg=colors.base02,style='bold'}
-		syntax['SpellBad'] = {fg=colors.violet,guisp=colors.violet,style='undercurl'}
-		syntax['SpellCap'] = {fg=colors.violet,guisp=colors.violet,style='undercurl'}
-		syntax['SpellLocal'] = {fg=colors.yellow,guisp=colors.yellow,style='undercurl'}
-		syntax['SpellRare'] = {fg=colors.cyan,guisp=colors.cyan,style='undercurl'}
-		syntax['Title'] = {fg=colors.orange,style='bold'}
-	end
+  -- hl(0,'CursorLineNr',{fg=yellow,bg=utils.darkbgNr(colors.base02), bold = true})
+  hl(0,'CursorLineNr',{fg=yellow,bg=utils.darkbgNr(colors.base03), bold = true})
+  -- hl(0,'LineNr',{fg=colors.base00,bg=utils.darkbg(colors.base02)})
+  hl(0,'LineNr',{fg=colors.base0,bg=utils.darkbg(colors.base03)})
+  hl(0,'NonText',{fg=colors.base00, bold = true})
+  hl(0,'SpecialKey',{fg=colors.base00,bg=colors.base02, bold = true})
+  hl(0,'SpellBad',{fg=colors.violet, undercurl = true})
+  hl(0,'SpellCap',{fg=colors.violet, undercurl = true})
+  hl(0,'SpellLocal',{fg=colors.yellow, undercurl = true})
+  hl(0,'SpellRare',{fg=colors.cyan, undercurl = true})
+  hl(0,'Title',{fg=colors.orange, bold = true})
 
-	syntax['ColorColumn'] = {fg=colors.none,bg=colors.base02}
-	syntax['Conceal'] = {fg=colors.blue}
-	syntax['CursorColumn'] = {fg=colors.none,bg=colors.base02}
-	syntax['Directory'] = {fg=colors.blue}
-	syntax['EndOfBuffer'] = {fg=colors.none,ctermfg=colors.none,ctermbg=colors.none}
-	syntax['ErrorMsg'] = {fg=colors.red,bg=colors.err_bg,style='reverse'}
-	syntax['IncSearch'] = {fg=colors.orange,style='standout'}
-	syntax['MatchParen'] = {fg=colors.base3,bg=colors.base02,style='bold'}
-	syntax['ModeMsg'] = {fg=colors.blue}
-	syntax['MoreMsg'] = {fg=colors.blue}
-	-- syntax['Pmenu'] = {fg=colors.base1,bg=colors.base02}
-	syntax['Pmenu'] = {fg=colors.base1,bg=colors.none}
-	syntax['Pmenu'] = {fg=colors.base1,bg=onedark_bg}
-	syntax['PmenuSbar'] = {fg=colors.none,bg=colors.base01}
-	syntax['PmenuSel'] = {fg=colors.base2,bg=colors.base00}
-	syntax['PmenuThumb'] = {fg=colors.none,bg=colors.base0}
-	syntax['Question'] = {fg=colors.cyan,style='bold'}
-	syntax['Search'] = {fg=colors.yellow,style='reverse'}
-	syntax['SignColumn'] = {fg=colors.base0}
-	syntax['Visual'] = {fg=colors.base01,bg=colors.base03,style='reverse'}
-	syntax['VisualNOS'] = {fg=colors.none,bg=colors.base02,style='reverse'}
-	syntax['WarningMsg'] = {fg=colors.orange,style='bold'}
-	syntax['WildMenu'] = {fg=colors.base2,bg=colors.base02,style='reverse'}
-	syntax['Comment'] = {fg=colors.base01,style=utils.italics()}
-	syntax['Constant'] = {fg=colors.cyan}
-	syntax['CursorIM'] = {fg=colors.none,bg=colors.base1}
-	syntax['Error'] = {fg=colors.red,bg=colors.err_bg,style='bold,reverse'}
-	-- syntax['Identifier'] = {fg=colors.blue}
-	syntax['Identifier'] = {fg=colors.blue}
-	syntax['Ignore'] = {fg=colors.none,ctermfg=colors.none,ctermbg=colors.none}
-	syntax['PreProc'] = {fg=colors.orange}
-	syntax['Special'] = {fg=colors.orange}
-	syntax['Statement'] = {fg=colors.green}
-	syntax['Todo'] = {fg=colors.magenta,style='bold'}
-	syntax['Type'] = {fg=colors.yellow}
-	syntax['Text'] = {fg=colors.cyan}
-	syntax['Strikethrough'] = {fg=colors.base01,strikethrough=true}
-	syntax['Underlined'] = {fg=colors.violet}
-	syntax['NormalMode'] = {fg=colors.base0,bg=colors.base3,style='reverse'}
-	syntax['InsertMode'] = {fg=colors.cyan,bg=colors.base3,style='reverse'}
-	syntax['ReplaceMode'] = {fg=colors.orange,bg=colors.base3,style='reverse'}
-	syntax['VisualMode'] = {fg=colors.magenta,bg=colors.base3,style='reverse'}
-	syntax['CommandMode'] = {fg=colors.magenta,bg=colors.base3,style='reverse'}
-	syntax['vimCommentString'] = {fg=colors.violet}
-	syntax['vimCommand'] = {fg=colors.yellow}
-	syntax['vimCmdSep'] = {fg=colors.blue,style='bold'}
-	syntax['helpExample'] = {fg=colors.base1}
-	syntax['helpOption'] = {fg=colors.cyan}
-	syntax['helpNote'] = {fg=colors.magenta}
-	syntax['helpVim'] = {fg=colors.magenta}
-	syntax['helpHyperTextJump'] = {fg=colors.blue}
-	syntax['helpHyperTextEntry'] = {fg=colors.green}
-	syntax['vimIsCommand'] = {fg=colors.base00}
-	syntax['vimSynMtchOpt'] = {fg=colors.yellow}
-	syntax['vimSynType'] = {fg=colors.cyan}
-	syntax['vimHiLink'] = {fg=colors.blue}
-	syntax['vimHiGroup'] = {fg=colors.blue}
-	syntax['vimGroup'] = {fg=colors.blue,style='bold'}
-	syntax['gitcommitComment'] = {fg=colors.base01,style=utils.italics()}
-	syntax['gitcommitUnmerged'] = {fg=colors.green,style='bold'}
-	syntax['gitcommitOnBranch'] = {fg=colors.base01,style='bold'}
-	syntax['gitcommitBranch'] = {fg=colors.magenta,style='bold'}
-	syntax['gitcommitdiscardedtype'] = {fg=colors.red}
-	syntax['gitcommitselectedtype'] = {fg=colors.green}
-	syntax['gitcommitHeader'] = {fg=colors.base01}
-	syntax['gitcommitUntrackedFile'] = {fg=colors.cyan,style='bold'}
-	syntax['gitcommitDiscardedFile'] = {fg=colors.red,style='bold'}
-	syntax['gitcommitSelectedFile'] = {fg=colors.green,style='bold'}
-	syntax['gitcommitUnmergedFile'] = {fg=colors.yellow,style='bold'}
-	syntax['gitcommitFile'] = {fg=colors.base0,style='bold'}
-	syntax['htmlTag'] = {fg=colors.base01}
-	syntax['htmlEndTag'] = {fg=colors.base01}
-	syntax['htmlTagN'] = {fg=colors.base1,style='bold'}
-	syntax['htmlTagName'] = {fg=colors.blue,style='bold'}
-	syntax['htmlSpecialTagName'] = {fg=colors.blue,style=utils.italics()}
-	syntax['htmlArg'] = {fg=colors.base00}
-	syntax['javaScript'] = {fg=colors.yellow}
-	syntax['perlHereDoc'] = {fg=colors.base1}
-	syntax['perlVarPlain'] = {fg=colors.yellow}
-	syntax['perlStatementFileDesc'] = {fg=colors.cyan}
-	syntax['texstatement'] = {fg=colors.cyan}
-	syntax['texmathzonex'] = {fg=colors.yellow}
-	syntax['texmathmatcher'] = {fg=colors.yellow}
-	syntax['texreflabel'] = {fg=colors.yellow}
-	syntax['rubyDefine'] = {fg=colors.base1,style='bold'}
-	syntax['rubyBoolean'] = {fg=colors.magenta}
-	syntax['cPreCondit'] = {fg=colors.orange}
-	syntax['VarId'] = {fg=colors.blue}
-	syntax['ConId'] = {fg=colors.yellow}
-	syntax['hsImport'] = {fg=colors.magenta}
-	syntax['hsString'] = {fg=colors.base00}
-	syntax['hsStructure'] = {fg=colors.cyan}
-	syntax['hs_hlFunctionName'] = {fg=colors.blue}
-	syntax['hsStatement'] = {fg=colors.cyan}
-	syntax['hsImportLabel'] = {fg=colors.cyan}
-	syntax['hs_OpFunctionName'] = {fg=colors.yellow}
-	syntax['hs_DeclareFunction'] = {fg=colors.orange}
-	syntax['hsVarSym'] = {fg=colors.cyan}
-	syntax['hsType'] = {fg=colors.yellow}
-	syntax['hsTypedef'] = {fg=colors.cyan}
-	syntax['hsModuleName'] = {fg=colors.green}
-	syntax['pandocTitleBlock'] = {fg=colors.blue}
-	syntax['pandocTitleBlockTitle'] = {fg=colors.blue,style='bold'}
-	syntax['pandocTitleComment'] = {fg=colors.blue,style='bold'}
-	syntax['pandocComment'] = {fg=colors.base01,style=utils.italics()}
-	syntax['pandocVerbatimBlock'] = {fg=colors.yellow}
-	syntax['pandocBlockQuote'] = {fg=colors.blue}
-	syntax['pandocBlockQuoteLeader1'] = {fg=colors.blue}
-	syntax['pandocBlockQuoteLeader2'] = {fg=colors.cyan}
-	syntax['pandocBlockQuoteLeader3'] = {fg=colors.yellow}
-	syntax['pandocBlockQuoteLeader4'] = {fg=colors.red}
-	syntax['pandocBlockQuoteLeader5'] = {fg=colors.base0}
-	syntax['pandocBlockQuoteLeader6'] = {fg=colors.base01}
-	syntax['pandocListMarker'] = {fg=colors.magenta}
-	syntax['pandocListReference'] = {fg=colors.magenta}
-	syntax['pandocDefinitionBlock'] = {fg=colors.violet}
-	syntax['pandocDefinitionTerm'] = {fg=colors.violet,style='standout'}
-	syntax['pandocDefinitionIndctr'] = {fg=colors.violet,style='bold'}
-	syntax['pandocEmphasisDefinition'] = {fg=colors.violet,style=utils.italics()}
-	syntax['pandocEmphasisNestedDefinition'] = {fg=colors.violet,style='bold'}
-	syntax['pandocStrongEmphasisDefinition'] = {fg=colors.violet,style='bold'}
-	syntax['pandocStrongEmphasisNestedDefinition'] = {fg=colors.violet,style='bold'}
-	syntax['pandocStrongEmphasisEmphasisDefinition'] = {fg=colors.violet,style='bold'}
-	syntax['pandocStrikeoutDefinition'] = {fg=colors.violet,style='reverse'}
-	syntax['pandocVerbatimInlineDefinition'] = {fg=colors.violet}
-	syntax['pandocSuperscriptDefinition'] = {fg=colors.violet}
-	syntax['pandocSubscriptDefinition'] = {fg=colors.violet}
-	syntax['pandocTable'] = {fg=colors.blue}
-	syntax['pandocTableStructure'] = {fg=colors.blue}
-	syntax['pandocTableZebraLight'] = {fg=colors.blue,bg=colors.base03}
-	syntax['pandocTableZebraDark'] = {fg=colors.blue,bg=colors.base02}
-	syntax['pandocEmphasisTable'] = {fg=colors.blue,style=utils.italics()}
-	syntax['pandocEmphasisNestedTable'] = {fg=colors.blue,style='bold'}
-	syntax['pandocStrongEmphasisTable'] = {fg=colors.blue,style='bold'}
-	syntax['pandocStrongEmphasisNestedTable'] = {fg=colors.blue,style='bold'}
-	syntax['pandocStrongEmphasisEmphasisTable'] = {fg=colors.blue,style='bold'}
-	syntax['pandocStrikeoutTable'] = {fg=colors.blue,style='reverse'}
-	syntax['pandocVerbatimInlineTable'] = {fg=colors.blue}
-	syntax['pandocSuperscriptTable'] = {fg=colors.blue}
-	syntax['pandocSubscriptTable'] = {fg=colors.blue}
-	syntax['pandocHeading'] = {fg=colors.orange,style='bold'}
-	syntax['pandocHeadingMarker'] = {fg=colors.orange,style='bold'}
-	syntax['pandocEmphasisHeading'] = {fg=colors.orange,style='bold'}
-	syntax['pandocEmphasisNestedHeading'] = {fg=colors.orange,style='bold'}
-	syntax['pandocStrongEmphasisHeading'] = {fg=colors.orange,style='bold'}
-	syntax['pandocStrongEmphasisNestedHeading'] = {fg=colors.orange,style='bold'}
-	syntax['pandocStrongEmphasisEmphasisHeading'] = {fg=colors.orange,style='bold'}
-	syntax['pandocStrikeoutHeading'] = {fg=colors.orange,style='reverse'}
-	syntax['pandocVerbatimInlineHeading'] = {fg=colors.orange,style='bold'}
-	syntax['pandocSuperscriptHeading'] = {fg=colors.orange,style='bold'}
-	syntax['pandocSubscriptHeading'] = {fg=colors.orange,style='bold'}
-	syntax['pandocLinkDelim'] = {fg=colors.base01}
-	syntax['pandocLinkLabel'] = {fg=colors.blue}
-	syntax['pandocLinkText'] = {fg=colors.blue}
-	syntax['pandocLinkURL'] = {fg=colors.base00}
-	syntax['pandocLinkTitle'] = {fg=colors.base00}
-	syntax['pandocLinkTitleDelim'] = {fg=colors.base01,guisp=colors.base00}
-	syntax['pandocLinkDefinition'] = {fg=colors.cyan,guisp=colors.base00}
-	syntax['pandocLinkDefinitionID'] = {fg=colors.blue,style='bold'}
-	syntax['pandocImageCaption'] = {fg=colors.violet,style='bold'}
-	syntax['pandocFootnoteLink'] = {fg=colors.green}
-	syntax['pandocFootnoteDefLink'] = {fg=colors.green,style='bold'}
-	syntax['pandocFootnoteInline'] = {fg=colors.green,style='bold'}
-	syntax['pandocFootnote'] = {fg=colors.green}
-	syntax['pandocCitationDelim'] = {fg=colors.magenta}
-	syntax['pandocCitation'] = {fg=colors.magenta}
-	syntax['pandocCitationID'] = {fg=colors.magenta}
-	syntax['pandocCitationRef'] = {fg=colors.magenta}
-	syntax['pandocStyleDelim'] = {fg=colors.base01}
-	syntax['pandocEmphasis'] = {fg=colors.base0,style=utils.italics()}
-	syntax['pandocEmphasisNested'] = {fg=colors.base0,style='bold'}
-	syntax['pandocStrongEmphasis'] = {fg=colors.base0,style='bold'}
-	syntax['pandocStrongEmphasisNested'] = {fg=colors.base0,style='bold'}
-	syntax['pandocStrongEmphasisEmphasis'] = {fg=colors.base0,style='bold'}
-	syntax['pandocStrikeout'] = {fg=colors.base01,style='reverse'}
-	syntax['pandocVerbatimInline'] = {fg=colors.yellow}
-	syntax['pandocSuperscript'] = {fg=colors.violet}
-	syntax['pandocSubscript'] = {fg=colors.violet}
-	syntax['pandocRule'] = {fg=colors.blue,style='bold'}
-	syntax['pandocRuleLine'] = {fg=colors.blue,style='bold'}
-	syntax['pandocEscapePair'] = {fg=colors.red,style='bold'}
-	syntax['pandocCitationRef'] = {fg=colors.magenta}
-	syntax['pandocNonBreakingSpace'] = {fg=colors.red,style='reverse'}
-	syntax['pandocMetadataDelim'] = {fg=colors.base01}
-	syntax['pandocMetadata'] = {fg=colors.blue}
-	syntax['pandocMetadataKey'] = {fg=colors.blue}
-	syntax['pandocMetadata'] = {fg=colors.blue,style='bold'}
+	hl(0,'ColorColumn',{fg=colors.none,bg=colors.base02})
+	hl(0,'Conceal',{fg=colors.blue})
+	hl(0,'CursorColumn',{fg=colors.none,bg=colors.base02})
+	hl(0,'Directory',{fg=colors.blue})
+	hl(0,'EndOfBuffer',{fg=colors.none,ctermfg=colors.none,ctermbg=colors.none})
+	hl(0,'ErrorMsg',{fg=colors.red,bg=colors.err_bg, reverse = true})
+  
+  -- IncSearch was making leap not show highlighting 
+	-- hl(0,'IncSearch',{fg=colors.orange, standout = true})
+  --
+	hl(0,'MatchParen',{fg=colors.base3,bg=colors.base02, bold = true})
+	hl(0,'ModeMsg',{fg=colors.blue})
+	hl(0,'MoreMsg',{fg=colors.blue})
+	hl(0,'Pmenu',{fg=colors.base1,bg=colors.none})
+	hl(0,'Pmenu',{fg=colors.base1,bg=onedark_bg})
+	hl(0,'PmenuSbar',{fg=colors.none,bg=colors.base01})
+	hl(0,'PmenuSel',{fg=colors.base2,bg=colors.base00})
+	hl(0,'PmenuThumb',{fg=colors.none,bg=colors.base0})
+	hl(0,'Question',{fg=colors.cyan, bold = true})
+	hl(0,'Search',{fg=colors.yellow, reverse = true})
+	hl(0,'SignColumn',{fg=colors.base0})
+	hl(0,'Visual',{fg=colors.base01,bg=colors.base03, reverse = true})
+	hl(0,'VisualNOS',{fg=colors.none,bg=colors.base02, reverse = true})
+	hl(0,'WarningMsg',{fg=colors.orange, bold = true})
+	hl(0,'WildMenu',{fg=colors.base2,bg=colors.base02, reverse = true})
+	hl(0,'Comment',{fg=colors.base01, italic = true})
+	hl(0,'Constant',{fg=colors.cyan})
+	hl(0,'CursorIM',{fg=colors.none,bg=colors.base1})
+	hl(0,'Error',{fg=colors.red,bg=colors.err_bg, bold = true, reverse = true})
+	hl(0,'Identifier',{fg=colors.blue})
+	hl(0,'Ignore',{fg=colors.none,ctermfg=colors.none,ctermbg=colors.none})
+	hl(0,'PreProc',{fg=colors.orange})
+	hl(0,'Special',{fg=colors.orange})
+	hl(0,'Statement',{fg=colors.green})
+	hl(0,'Todo',{fg=colors.magenta, bold = true})
+	hl(0,'Type',{fg=colors.yellow})
+	hl(0,'Text',{fg=colors.cyan})
+	hl(0,'Strikethrough',{fg=colors.base01,strikethrough=true})
+	hl(0,'Underlined',{fg=colors.violet})
+	hl(0,'NormalMode',{fg=colors.base0,bg=colors.base3, reverse = true})
+	hl(0,'InsertMode',{fg=colors.cyan,bg=colors.base3, reverse = true})
+	hl(0,'ReplaceMode',{fg=colors.orange,bg=colors.base3, reverse = true})
+	hl(0,'VisualMode',{fg=colors.magenta,bg=colors.base3, reverse = true})
+	hl(0,'CommandMode',{fg=colors.magenta,bg=colors.base3, reverse = true})
+	hl(0,'vimCommentString',{fg=colors.violet})
+	hl(0,'vimCommand',{fg=colors.yellow})
+	hl(0,'vimCmdSep',{fg=colors.blue, bold = true})
+	hl(0,'helpExample',{fg=colors.base1})
+	hl(0,'helpOption',{fg=colors.cyan})
+	hl(0,'helpNote',{fg=colors.magenta})
+	hl(0,'helpVim',{fg=colors.magenta})
+	hl(0,'helpHyperTextJump',{fg=colors.blue})
+	hl(0,'helpHyperTextEntry',{fg=colors.green})
+	hl(0,'vimIsCommand',{fg=colors.base00})
+	hl(0,'vimSynMtchOpt',{fg=colors.yellow})
+	hl(0,'vimSynType',{fg=colors.cyan})
+	hl(0,'vimHiLink',{fg=colors.blue})
+	hl(0,'vimHiGroup',{fg=colors.blue})
+	hl(0,'vimGroup',{fg=colors.blue, bold = true})
+	hl(0,'gitcommitComment',{fg=colors.base01, italic = true})
+	hl(0,'gitcommitUnmerged',{fg=colors.green, bold = true})
+	hl(0,'gitcommitOnBranch',{fg=colors.base01, bold = true})
+	hl(0,'gitcommitBranch',{fg=colors.magenta, bold = true})
+	hl(0,'gitcommitdiscardedtype',{fg=colors.red})
+	hl(0,'gitcommitselectedtype',{fg=colors.green})
+	hl(0,'gitcommitHeader',{fg=colors.base01})
+	hl(0,'gitcommitUntrackedFile',{fg=colors.cyan, bold = true})
+	hl(0,'gitcommitDiscardedFile',{fg=colors.red, bold = true})
+	hl(0,'gitcommitSelectedFile',{fg=colors.green, bold = true})
+	hl(0,'gitcommitUnmergedFile',{fg=colors.yellow, bold = true})
+	hl(0,'gitcommitFile',{fg=colors.base0, bold = true})
+	hl(0,'htmlTag',{fg=colors.base01})
+	hl(0,'htmlEndTag',{fg=colors.base01})
+	hl(0,'htmlTagN',{fg=colors.base1, bold = true})
+	hl(0,'htmlTagName',{fg=colors.blue, bold = true})
+	hl(0,'htmlSpecialTagName',{fg=colors.blue, italic = true})
+	hl(0,'htmlArg',{fg=colors.base00})
+	hl(0,'javaScript',{fg=colors.yellow})
+	hl(0,'perlHereDoc',{fg=colors.base1})
+	hl(0,'perlVarPlain',{fg=colors.yellow})
+	hl(0,'perlStatementFileDesc',{fg=colors.cyan})
+	hl(0,'texstatement',{fg=colors.cyan})
+	hl(0,'texmathzonex',{fg=colors.yellow})
+	hl(0,'texmathmatcher',{fg=colors.yellow})
+	hl(0,'texreflabel',{fg=colors.yellow})
+	hl(0,'rubyDefine',{fg=colors.base1, bold = true})
+	hl(0,'rubyBoolean',{fg=colors.magenta})
+	hl(0,'cPreCondit',{fg=colors.orange})
+	hl(0,'VarId',{fg=colors.blue})
+	hl(0,'ConId',{fg=colors.yellow})
+	hl(0,'hsImport',{fg=colors.magenta})
+	hl(0,'hsString',{fg=colors.base00})
+	hl(0,'hsStructure',{fg=colors.cyan})
+	hl(0,'hs_hlFunctionName',{fg=colors.blue})
+	hl(0,'hsStatement',{fg=colors.cyan})
+	hl(0,'hsImportLabel',{fg=colors.cyan})
+	hl(0,'hs_OpFunctionName',{fg=colors.yellow})
+	hl(0,'hs_DeclareFunction',{fg=colors.orange})
+	hl(0,'hsVarSym',{fg=colors.cyan})
+	hl(0,'hsType',{fg=colors.yellow})
+	hl(0,'hsTypedef',{fg=colors.cyan})
+	hl(0,'hsModuleName',{fg=colors.green})
+	hl(0,'pandocTitleBlock',{fg=colors.blue})
+	hl(0,'pandocTitleBlockTitle',{fg=colors.blue, bold = true})
+	hl(0,'pandocTitleComment',{fg=colors.blue, bold = true})
+	hl(0,'pandocComment',{fg=colors.base01, italic = true})
+	hl(0,'pandocVerbatimBlock',{fg=colors.yellow})
+	hl(0,'pandocBlockQuote',{fg=colors.blue})
+	hl(0,'pandocBlockQuoteLeader1',{fg=colors.blue})
+	hl(0,'pandocBlockQuoteLeader2',{fg=colors.cyan})
+	hl(0,'pandocBlockQuoteLeader3',{fg=colors.yellow})
+	hl(0,'pandocBlockQuoteLeader4',{fg=colors.red})
+	hl(0,'pandocBlockQuoteLeader5',{fg=colors.base0})
+	hl(0,'pandocBlockQuoteLeader6',{fg=colors.base01})
+	hl(0,'pandocListMarker',{fg=colors.magenta})
+	hl(0,'pandocListReference',{fg=colors.magenta})
+	hl(0,'pandocDefinitionBlock',{fg=colors.violet})
+	hl(0,'pandocDefinitionTerm',{fg=colors.violet, standout = true})
+	hl(0,'pandocDefinitionIndctr',{fg=colors.violet, bold = true})
+	hl(0,'pandocEmphasisDefinition',{fg=colors.violet, italic = true})
+	hl(0,'pandocEmphasisNestedDefinition',{fg=colors.violet, bold = true})
+	hl(0,'pandocStrongEmphasisDefinition',{fg=colors.violet, bold = true})
+	hl(0,'pandocStrongEmphasisNestedDefinition',{fg=colors.violet, bold = true})
+	hl(0,'pandocStrongEmphasisEmphasisDefinition',{fg=colors.violet, bold = true})
+	hl(0,'pandocStrikeoutDefinition',{fg=colors.violet, reverse = true})
+	hl(0,'pandocVerbatimInlineDefinition',{fg=colors.violet})
+	hl(0,'pandocSuperscriptDefinition',{fg=colors.violet})
+	hl(0,'pandocSubscriptDefinition',{fg=colors.violet})
+	hl(0,'pandocTable',{fg=colors.blue})
+	hl(0,'pandocTableStructure',{fg=colors.blue})
+	hl(0,'pandocTableZebraLight',{fg=colors.blue,bg=colors.base03})
+	hl(0,'pandocTableZebraDark',{fg=colors.blue,bg=colors.base02})
+	hl(0,'pandocEmphasisTable',{fg=colors.blue, italic = true})
+	hl(0,'pandocEmphasisNestedTable',{fg=colors.blue, bold = true})
+	hl(0,'pandocStrongEmphasisTable',{fg=colors.blue, bold = true})
+	hl(0,'pandocStrongEmphasisNestedTable',{fg=colors.blue, bold = true})
+	hl(0,'pandocStrongEmphasisEmphasisTable',{fg=colors.blue, bold = true})
+	hl(0,'pandocStrikeoutTable',{fg=colors.blue, reverse = true})
+	hl(0,'pandocVerbatimInlineTable',{fg=colors.blue})
+	hl(0,'pandocSuperscriptTable',{fg=colors.blue})
+	hl(0,'pandocSubscriptTable',{fg=colors.blue})
+	hl(0,'pandocHeading',{fg=colors.orange, bold = true})
+	hl(0,'pandocHeadingMarker',{fg=colors.orange, bold = true})
+	hl(0,'pandocEmphasisHeading',{fg=colors.orange, bold = true})
+	hl(0,'pandocEmphasisNestedHeading',{fg=colors.orange, bold = true})
+	hl(0,'pandocStrongEmphasisHeading',{fg=colors.orange, bold = true})
+	hl(0,'pandocStrongEmphasisNestedHeading',{fg=colors.orange, bold = true})
+	hl(0,'pandocStrongEmphasisEmphasisHeading',{fg=colors.orange, bold = true})
+	hl(0,'pandocStrikeoutHeading',{fg=colors.orange, reverse = true})
+	hl(0,'pandocVerbatimInlineHeading',{fg=colors.orange, bold = true})
+	hl(0,'pandocSuperscriptHeading',{fg=colors.orange, bold = true})
+	hl(0,'pandocSubscriptHeading',{fg=colors.orange, bold = true})
+	hl(0,'pandocLinkDelim',{fg=colors.base01})
+	hl(0,'pandocLinkLabel',{fg=colors.blue})
+	hl(0,'pandocLinkText',{fg=colors.blue})
+	hl(0,'pandocLinkURL',{fg=colors.base00})
+	hl(0,'pandocLinkTitle',{fg=colors.base00})
+	hl(0,'pandocLinkTitleDelim',{fg=colors.base01})
+	hl(0,'pandocLinkDefinition',{fg=colors.cyan})
+	hl(0,'pandocLinkDefinitionID',{fg=colors.blue, bold = true})
+	hl(0,'pandocImageCaption',{fg=colors.violet, bold = true})
+	hl(0,'pandocFootnoteLink',{fg=colors.green})
+	hl(0,'pandocFootnoteDefLink',{fg=colors.green, bold = true})
+	hl(0,'pandocFootnoteInline',{fg=colors.green, bold = true})
+	hl(0,'pandocFootnote',{fg=colors.green})
+	hl(0,'pandocCitationDelim',{fg=colors.magenta})
+	hl(0,'pandocCitation',{fg=colors.magenta})
+	hl(0,'pandocCitationID',{fg=colors.magenta})
+	hl(0,'pandocCitationRef',{fg=colors.magenta})
+	hl(0,'pandocStyleDelim',{fg=colors.base01})
+	hl(0,'pandocEmphasis',{fg=colors.base0, italic = true})
+	hl(0,'pandocEmphasisNested',{fg=colors.base0, bold = true})
+	hl(0,'pandocStrongEmphasis',{fg=colors.base0, bold = true})
+	hl(0,'pandocStrongEmphasisNested',{fg=colors.base0, bold = true})
+	hl(0,'pandocStrongEmphasisEmphasis',{fg=colors.base0, bold = true})
+	hl(0,'pandocStrikeout',{fg=colors.base01, reverse = true})
+	hl(0,'pandocVerbatimInline',{fg=colors.yellow})
+	hl(0,'pandocSuperscript',{fg=colors.violet})
+	hl(0,'pandocSubscript',{fg=colors.violet})
+	hl(0,'pandocRule',{fg=colors.blue, bold = true})
+	hl(0,'pandocRuleLine',{fg=colors.blue, bold = true})
+	hl(0,'pandocEscapePair',{fg=colors.red, bold = true})
+	hl(0,'pandocCitationRef',{fg=colors.magenta})
+	hl(0,'pandocNonBreakingSpace',{fg=colors.red, reverse = true})
+	hl(0,'pandocMetadataDelim',{fg=colors.base01})
+	hl(0,'pandocMetadata',{fg=colors.blue})
+	hl(0,'pandocMetadataKey',{fg=colors.blue})
+	hl(0,'pandocMetadata',{fg=colors.blue, bold = true})
 
-	syntax['Boolean'] = syntax['Constant']
-	syntax['Character'] = syntax['Constant']
-	syntax['Conditional'] = syntax['Statement']
-	syntax['Debug'] = syntax['Special']
-	syntax['Define'] = syntax['PreProc']
-	syntax['Delimiter'] = syntax['Special']
-	syntax['Exception'] = syntax['Statement']
-	syntax['Float'] = syntax['Constant']
-	-- syntax['Function'] = syntax['Identifier']
-	syntax['Function'] = {fg=colors.blue}
-	syntax['Include'] = syntax['PreProc']
-	syntax['Keyword'] = syntax['Statement']
-	syntax['Label'] = syntax['Statement']
-	syntax['Macro'] = syntax['PreProc']
-	syntax['Number'] = syntax['Constant']
-	syntax['Operator'] = syntax['Statement']
-	syntax['PreCondit'] = syntax['PreProc']
-	syntax['QuickFixLine'] = syntax['Search']
-	syntax['Repeat'] = syntax['Statement']
-	syntax['SpecialChar'] = syntax['Special']
-	syntax['SpecialComment'] = syntax['Special']
-	syntax['StatusLineTerm'] = syntax['StatusLine']
-	syntax['StatusLineTermNC'] = syntax['StatusLineNC']
-	syntax['StorageClass'] = syntax['Type']
-	syntax['String'] = syntax['Text']
-	syntax['Structure'] = syntax['Type']
-	syntax['Tag'] = syntax['Special']
-	syntax['Typedef'] = syntax['Type']
-	syntax['lCursor'] = syntax['Cursor']
-	syntax['vimVar'] = syntax['Identifier']
-	syntax['vimFunc'] = syntax['Function']
-	syntax['vimUserFunc'] = syntax['Function']
-	syntax['helpSpecial'] = syntax['Special']
-	syntax['vimSet'] = syntax['Normal']
-	syntax['vimSetEqual'] = syntax['Normal']
-	syntax['diffAdded'] = syntax['Statement']
-	syntax['diffLine'] = syntax['Identifier']
-	syntax['gitcommitUntracked'] = syntax['gitcommitComment']
-	syntax['gitcommitDiscarded'] = syntax['gitcommitComment']
-	syntax['gitcommitSelected'] = syntax['gitcommitComment']
-	syntax['gitcommitNoBranch'] = syntax['gitcommitBranch']
-	syntax['gitcommitDiscardedArrow'] = syntax['gitcommitDiscardedFile']
-	syntax['gitcommitSelectedArrow'] = syntax['gitcommitSelectedFile']
-	syntax['gitcommitUnmergedArrow'] = syntax['gitcommitUnmergedFile']
-	syntax['jsFuncCall'] = syntax['Function']
-	syntax['rubySymbol'] = syntax['String']
-	syntax['hsImportParams'] = syntax['Delimiter']
-	syntax['hsDelimTypeExport'] = syntax['Delimiter']
-	syntax['hsModuleStartLabel'] = syntax['hsStructure']
-	syntax['hsModuleWhereLabel'] = syntax['hsModuleStartLabel']
-	syntax['pandocVerbatimBlockDeep'] = syntax['pandocVerbatimBlock']
-	syntax['pandocCodeBlock'] = syntax['pandocVerbatimBlock']
-	syntax['pandocCodeBlockDelim'] = syntax['pandocVerbatimBlock']
-	syntax['pandocTableStructureTop'] = syntax['pandocTableStructre']
-	syntax['pandocTableStructureEnd'] = syntax['pandocTableStructre']
-	syntax['pandocEscapedCharacter'] = syntax['pandocEscapePair']
-	syntax['pandocLineBreak'] = syntax['pandocEscapePair']
-	syntax['pandocMetadataTitle'] = syntax['pandocMetadata']
+	hl(0,'Boolean', { link = 'Constant' })
+	hl(0,'Character', { link = 'Constant' })
+	hl(0,'Conditional', { link = 'Statement' })
+	hl(0,'Debug', { link = 'Special' })
+	hl(0,'Define', { link = 'PreProc' })
+	hl(0,'Delimiter', { link = 'Special' })
+	hl(0,'Exception', { link = 'Statement' })
+	hl(0,'Float', { link = 'Constant' })
+	-- hl(0,'Function', { link = 'Identifier' })
+	hl(0,'Function',{fg=colors.blue})
+	hl(0,'Include', { link = 'PreProc' })
+	hl(0,'Keyword', { link = 'Statement' })
+	hl(0,'Label', { link = 'Statement' })
+	hl(0,'Macro', { link = 'PreProc' })
+	hl(0,'Number', { link = 'Constant' })
+	hl(0,'Operator', { link = 'Statement' })
+	hl(0,'PreCondit', { link = 'PreProc' })
+	hl(0,'QuickFixLine', { link = 'Search' })
+	hl(0,'Repeat', { link = 'Statement' })
+	hl(0,'SpecialChar', { link = 'Special' })
+	hl(0,'SpecialComment', { link = 'Special' })
+	hl(0,'StatusLineTerm', { link = 'StatusLine' })
+	hl(0,'StatusLineTermNC', { link = 'StatusLineNC' })
+	hl(0,'StorageClass', { link = 'Type' })
+	hl(0,'String', { link = 'Text' })
+	hl(0,'Structure', { link = 'Type' })
+	hl(0,'Tag', { link = 'Special' })
+	hl(0,'Typedef', { link = 'Type' })
+	hl(0,'lCursor', { link = 'Cursor' })
+	hl(0,'vimVar', { link = 'Identifier' })
+	hl(0,'vimFunc', { link = 'Function' })
+	hl(0,'vimUserFunc', { link = 'Function' })
+	hl(0,'helpSpecial', { link = 'Special' })
+	hl(0,'vimSet', { link = 'Normal' })
+	hl(0,'vimSetEqual', { link = 'Normal' })
+	hl(0,'diffAdded', { link = 'Statement' })
+	hl(0,'diffLine', { link = 'Identifier' })
+	hl(0,'gitcommitUntracked', { link = 'gitcommitComment' })
+	hl(0,'gitcommitDiscarded', { link = 'gitcommitComment' })
+	hl(0,'gitcommitSelected', { link = 'gitcommitComment' })
+	hl(0,'gitcommitNoBranch', { link = 'gitcommitBranch' })
+	hl(0,'gitcommitDiscardedArrow', { link = 'gitcommitDiscardedFile' })
+	hl(0,'gitcommitSelectedArrow', { link = 'gitcommitSelectedFile' })
+	hl(0,'gitcommitUnmergedArrow', { link = 'gitcommitUnmergedFile' })
+	hl(0,'jsFuncCall', { link = 'Function' })
+	hl(0,'rubySymbol', { link = 'String' })
+	hl(0,'hsImportParams', { link = 'Delimiter' })
+	hl(0,'hsDelimTypeExport', { link = 'Delimiter' })
+	hl(0,'hsModuleStartLabel', { link = 'hsStructure' })
+	hl(0,'hsModuleWhereLabel', { link = 'hsModuleStartLabel' })
+	hl(0,'pandocVerbatimBlockDeep', { link = 'pandocVerbatimBlock' })
+	hl(0,'pandocCodeBlock', { link = 'pandocVerbatimBlock' })
+	hl(0,'pandocCodeBlockDelim', { link = 'pandocVerbatimBlock' })
+	hl(0,'pandocTableStructureTop', { link = 'pandocTableStructre' })
+	hl(0,'pandocTableStructureEnd', { link = 'pandocTableStructre' })
+	hl(0,'pandocEscapedCharacter', { link = 'pandocEscapePair' })
+	hl(0,'pandocLineBreak', { link = 'pandocEscapePair' })
+	hl(0,'pandocMetadataTitle', { link = 'pandocMetadata' })
 
 	-- TreeSitter
-	-- syntax['TSAnnotation'] = syntax['']
-	syntax['TSBoolean'] = syntax['Constant']
-	syntax['TSCharacter'] = syntax['Constant']
-	syntax['TSComment'] = syntax['Comment']
-	syntax['TSConditional'] = syntax['Conditional']
-	syntax['TSConstant'] = syntax['Constant']
-	syntax['TSConstBuiltin'] = syntax['Constant']
-	syntax['TSConstMacro'] = syntax['Constant']
-	syntax['TSError'] = {fg=colors.red}
-	syntax['TSException'] = syntax['Exception']
-	syntax['TSField'] = syntax['Identifier']
-	syntax['TSFloat'] = syntax['Float']
-	syntax['TSFunction'] = syntax['Function']
-	syntax['TSFuncBuiltin'] = syntax['Function']
-	syntax['TSFuncMacro'] = syntax['Function']
-	syntax['TSInclude'] = syntax['Include']
-	syntax['TSKeyword'] = syntax['Keyword']
-	syntax['TSLabel'] = syntax['Label']
-	syntax['TSMethod'] = syntax['Function']
-	syntax['TSNamespace'] = syntax['Identifier']
-	syntax['TSNumber'] = syntax['Constant']
-	syntax['TSOperator'] = syntax['Operator']
-	syntax['TSParameterReference'] = syntax['Identifier']
-	-- syntax['TSProperty'] = syntax['TSField']
-	syntax['TSProperty'] = {fg=colors.green}
-	syntax['TSPunctDelimiter'] = syntax['Delimiter']
-	syntax['TSPunctBracket'] = syntax['Delimiter']
-	syntax['TSPunctSpecial'] = syntax['Special']
-	syntax['TSRepeat'] = syntax['Repeat']
-	syntax['TSString'] = syntax['Constant']
-	syntax['TSStringRegex'] = syntax['Constant']
-	syntax['TSStringEscape'] = syntax['Constant']
-	syntax['TSStrong'] = {fg=colors.base1,bg=colors.base03,style='bold'}
-	syntax['TSConstructor'] = syntax['Function']
-	syntax['TSKeywordFunction'] = syntax['Identifier']
-	syntax['TSLiteral'] = syntax['Normal']
-	syntax['TSParameter'] = syntax['Identifier']
-	syntax['TSVariable'] = {fg=colors.base1}
-	syntax['TSVariableBuiltin'] = syntax['Identifier']
-	syntax['TSTag'] = syntax['Special']
-	syntax['TSTagDelimiter'] = syntax['Delimiter']
-	syntax['TSTitle'] = syntax['Title']
-	syntax['TSType'] = syntax['Type']
-	syntax['TSTypeBuiltin'] = syntax['Type']
-	-- syntax['TSEmphasis'] = syntax['']
+	-- hl(0,'TSAnnotation', { link = '' })
+	hl(0,'TSBoolean', { link = 'Constant' })
+	hl(0,'TSCharacter', { link = 'Constant' })
+	hl(0,'TSComment', { link = 'Comment' })
+	hl(0,'TSConditional', { link = 'Conditional' })
+	hl(0,'TSConstant', { link = 'Constant' })
+	hl(0,'TSConstBuiltin', { link = 'Constant' })
+	hl(0,'TSConstMacro', { link = 'Constant' })
+	hl(0,'TSError',{fg=colors.red})
+	hl(0,'TSException', { link = 'Exception' })
+	hl(0,'TSField', { link = 'Identifier' })
+	hl(0,'TSFloat', { link = 'Float' })
+	hl(0,'TSFunction', { link = 'Function' })
+	hl(0,'TSFuncBuiltin', { link = 'Function' })
+	hl(0,'TSFuncMacro', { link = 'Function' })
+	hl(0,'TSInclude', { link = 'Include' })
+	hl(0,'TSKeyword', { link = 'Keyword' })
+	hl(0,'TSLabel', { link = 'Label' })
+	hl(0,'TSMethod', { link = 'Function' })
+	hl(0,'TSNamespace', { link = 'Identifier' })
+	hl(0,'TSNumber', { link = 'Constant' })
+	hl(0,'TSOperator', { link = 'Operator' })
+	hl(0,'TSParameterReference', { link = 'Identifier' })
+	-- hl(0,'TSProperty', { link = 'TSField' })
+	hl(0,'TSProperty',{fg=colors.green})
+	hl(0,'TSPunctDelimiter', { link = 'Delimiter' })
+	hl(0,'TSPunctBracket', { link = 'Delimiter' })
+	hl(0,'TSPunctSpecial', { link = 'Special' })
+	hl(0,'TSRepeat', { link = 'Repeat' })
+	hl(0,'TSString', { link = 'Constant' })
+	hl(0,'TSStringRegex', { link = 'Constant' })
+	hl(0,'TSStringEscape', { link = 'Constant' })
+	hl(0,'TSStrong',{fg=colors.base1,bg=colors.base03, bold = true})
+	hl(0,'TSConstructor', { link = 'Function' })
+	hl(0,'TSKeywordFunction', { link = 'Identifier' })
+	hl(0,'TSLiteral', { link = 'Normal' })
+	hl(0,'TSParameter', { link = 'Identifier' })
+	hl(0,'TSVariable',{fg=colors.base1})
+	hl(0,'TSVariableBuiltin', { link = 'Identifier' })
+	hl(0,'TSTag', { link = 'Special' })
+	hl(0,'TSTagDelimiter', { link = 'Delimiter' })
+	hl(0,'TSTitle', { link = 'Title' })
+	hl(0,'TSType', { link = 'Type' })
+	hl(0,'TSTypeBuiltin', { link = 'Type' })
+	-- hl(0,'TSEmphasis', { link = '' })
 
 	-- BEGIN Neovim >= 0.8
 	-- Misc {{{
-	syntax['@comment'] = syntax['Comment']
-	syntax['@error'] = {fg=colors.red}
-	syntax['@none'] = syntax['NONE']
-	syntax['@preproc'] = syntax['PreProc']
-	syntax['@define'] = syntax['Define']
-	-- syntax['@operator'] = syntax['Operator']
-	syntax['@operator'] = {fg=colors.green}
+	hl(0,'@comment', { link = 'Comment' })
+	hl(0,'@error',{fg=colors.red})
+	hl(0,'@none', { link = 'NONE' })
+	hl(0,'@preproc', { link = 'PreProc' })
+	hl(0,'@define', { link = 'Define' })
+	-- hl(0,'@operator', { link = 'Operator' })
+	hl(0,'@operator',{fg=colors.green})
 	-- }}}
 
 	-- Punctuation {{{
-	syntax['@punctuation.delimiter'] = syntax['Statement']
-	-- syntax['@punctuation.bracket'] = syntax['Delimiter']
-	syntax['@punctuation.bracket'] = {fg=colors.base1}
-	syntax['@punctuation.special'] = syntax['Delimiter']
+	hl(0,'@punctuation.delimiter', { link = 'Statement' })
+	-- hl(0,'@punctuation.bracket', { link = 'Delimiter' })
+	hl(0,'@punctuation.bracket',{fg=colors.base1})
+	hl(0,'@punctuation.special', { link = 'Delimiter' })
 	-- }}}
 
 	-- Literals {{{
-	syntax['@string'] = syntax['String']
-	syntax['@string.regex'] = syntax['String']
-	syntax['@string.escape'] = syntax['Special']
-	syntax['@string.special'] = syntax['Special']
+	hl(0,'@string', { link = 'String' })
+	hl(0,'@string.regex', { link = 'String' })
+	hl(0,'@string.escape', { link = 'Special' })
+	hl(0,'@string.special', { link = 'Special' })
 
-	syntax['@character'] = syntax['Character']
-	syntax['@character.special'] = syntax['Special']
+	hl(0,'@character', { link = 'Character' })
+	hl(0,'@character.special', { link = 'Special' })
 
-	syntax['@boolean'] = syntax['Boolean']
-	syntax['@number'] = syntax['Number']
-	syntax['@float'] = syntax['Float']
+	hl(0,'@boolean', { link = 'Boolean' })
+	hl(0,'@number', { link = 'Number' })
+	hl(0,'@float', { link = 'Float' })
 	-- }}}
 
 	-- Functions {{{
-	syntax['@function'] = syntax['Function']
-	syntax['@function.call'] = syntax['Function']
-	syntax['@function.builtin'] = syntax['Function']
-	syntax['@function.macro'] = syntax['Macro']
+	hl(0,'@function', { link = 'Function' })
+	hl(0,'@function.call', { link = 'Function' })
+	hl(0,'@function.builtin', { link = 'Function' })
+	hl(0,'@function.macro', { link = 'Macro' })
 
-	syntax['@method'] = syntax['Function']
-	syntax['@method.call'] = syntax['Function']
+	hl(0,'@method', { link = 'Function' })
+	hl(0,'@method.call', { link = 'Function' })
 
-	syntax['@constructor'] = syntax['Special']
-	syntax['@parameter'] = syntax['Normal']
+	hl(0,'@constructor', { link = 'Special' })
+	hl(0,'@parameter', { link = 'Normal' })
 	-- }}}
 
 	-- Keywords {{{
-	syntax['@keyword'] = syntax['Keyword']
-	syntax['@keyword.function'] = syntax['Keyword']
-	syntax['@keyword.operator'] = syntax['Keyword']
-	syntax['@keyword.return'] = syntax['Keyword']
+	hl(0,'@keyword', { link = 'Keyword' })
+	hl(0,'@keyword.function', { link = 'Keyword' })
+	hl(0,'@keyword.operator', { link = 'Keyword' })
+	hl(0,'@keyword.return', { link = 'Keyword' })
 
-	syntax['@conditional'] = syntax['Conditional']
-	syntax['@repeat'] = syntax['Repeat']
-	syntax['@debug'] = syntax['Debug']
-	syntax['@label'] = syntax['Label']
-	syntax['@include'] = syntax['Include']
-	syntax['@exception'] = syntax['Exception']
+	hl(0,'@conditional', { link = 'Conditional' })
+	hl(0,'@repeat', { link = 'Repeat' })
+	hl(0,'@debug', { link = 'Debug' })
+	hl(0,'@label', { link = 'Label' })
+	hl(0,'@include', { link = 'Include' })
+	hl(0,'@exception', { link = 'Exception' })
 	-- }}}
 
 	-- Types {{{
-	-- syntax['@type'] = syntax['Type']
-	syntax['@type'] = syntax['String']
-	-- syntax['@type.builtin'] = syntax['Type']
-	syntax['@type.builtin'] = syntax['String']
-	syntax['@type.qualifier'] = syntax['Type']
-	syntax['@type.definition'] = syntax['Typedef']
+	-- hl(0,'@type', { link = 'Type' })
+	hl(0,'@type', { link = 'String' })
+	-- hl(0,'@type.builtin', { link = 'Type' })
+	hl(0,'@type.builtin', { link = 'String' })
+	hl(0,'@type.qualifier', { link = 'Type' })
+	hl(0,'@type.definition', { link = 'Typedef' })
 
-	syntax['@storageclass'] = syntax['StorageClass']
-	syntax['@attribute'] = syntax['Identifier']
-	syntax['@field'] = {fg=colors.green}
-	-- syntax['@field'] = syntax['Identifier']
-	-- syntax['@property'] = syntax['Identifier']
-	-- syntax['@property'] = {fg=colors.green}
-	syntax['@property'] = {fg=colors.base1}
+	hl(0,'@storageclass', { link = 'StorageClass' })
+	hl(0,'@attribute', { link = 'Identifier' })
+	hl(0,'@field',{fg=colors.green})
+	-- hl(0,'@field', { link = 'Identifier' })
+	-- hl(0,'@property', { link = 'Identifier' })
+	-- hl(0,'@property',{fg=colors.green})
+	hl(0,'@property',{fg=colors.base1})
 	-- }}}
 
 	-- Identifiers {{{
-	syntax['@variable'] = {fg=colors.base1}
-	syntax['@variable.builtin'] = syntax['Special']
+	hl(0,'@variable',{fg=colors.base1})
+	hl(0,'@variable.builtin', { link = 'Special' })
 
-	syntax['@constant'] = syntax['Constant']
-	-- syntax['@constant.builtin'] = syntax['Type']
-	syntax['@constant.builtin'] = syntax['String']
-	syntax['@constant.macro'] = syntax['Define']
+	hl(0,'@constant', { link = 'Constant' })
+	-- hl(0,'@constant.builtin', { link = 'Type' })
+	hl(0,'@constant.builtin', { link = 'String' })
+	hl(0,'@constant.macro', { link = 'Define' })
 
-	syntax['@namespace'] = syntax['Identifier']
-	syntax['@symbol'] = syntax['Identifier']
+	hl(0,'@namespace', { link = 'Identifier' })
+	hl(0,'@symbol', { link = 'Identifier' })
 	-- }}}
 
 	-- Text {{{
-	syntax['@text'] = syntax['Normal']
-	syntax['@text.strong'] = {fg=colors.base1,bg=colors.base03,style='bold'}
-	syntax['@text.emphasis'] = {fg=colors.base1,bg=colors.base03,style='bold'}
-	syntax['@text.underline'] = syntax['Underlined']
-	syntax['@text.strike'] = syntax['Strikethrough']
-	syntax['@text.title'] = syntax['Title']
-	syntax['@text.literal'] = syntax['String']
-	syntax['@text.uri'] = syntax['Underlined']
-	syntax['@text.math'] = syntax['Special']
-	syntax['@text.environment'] = syntax['Macro']
-	syntax['@text.environment.name'] = syntax['Type']
-	syntax['@text.reference'] = syntax['Constant']
+	hl(0,'@text', { link = 'Normal' })
+	hl(0,'@text.strong',{fg=colors.base1,bg=colors.base03, bold = true})
+	hl(0,'@text.emphasis',{fg=colors.base1,bg=colors.base03, bold = true})
+	hl(0,'@text.underline', { link = 'Underlined' })
+	hl(0,'@text.strike', { link = 'Strikethrough' })
+	hl(0,'@text.title', { link = 'Title' })
+	hl(0,'@text.literal', { link = 'String' })
+	hl(0,'@text.uri', { link = 'Underlined' })
+	hl(0,'@text.math', { link = 'Special' })
+	hl(0,'@text.environment', { link = 'Macro' })
+	hl(0,'@text.environment.name', { link = 'Type' })
+	hl(0,'@text.reference', { link = 'Constant' })
 
-	syntax['@text.todo'] = syntax['Todo']
-	syntax['@text.note'] = syntax['WarningMsg']
-	syntax['@text.warning'] = syntax['WarningMsg']
-	syntax['@text.danger'] = {fg=colors.red,style='bold'}
+	hl(0,'@text.todo', { link = 'Todo' })
+	hl(0,'@text.note', { link = 'WarningMsg' })
+	hl(0,'@text.warning', { link = 'WarningMsg' })
+	hl(0,'@text.danger',{fg=colors.red, bold = true})
 	-- }}}
 
 	-- Tags {{{
-	syntax['@tag'] = syntax['Tag']
-	syntax['@tag.attribute'] = syntax['Identifier']
-	syntax['@tag.delimiter'] = syntax['Delimiter']
+	hl(0,'@tag', { link = 'Tag' })
+	hl(0,'@tag.attribute', { link = 'Identifier' })
+	hl(0,'@tag.delimiter', { link = 'Delimiter' })
 	-- }}}
 	-- END Neovim >= 0.8
 
-	syntax['DiagnosticError'] = {fg=colors.red,guisp=colors.red,style='none'}
-	syntax['DiagnosticWarn'] = {fg=colors.yellow,guisp=colors.yellow,style='none'}
-	syntax['DiagnosticInfo'] = {fg=colors.cyan,guisp=colors.cyan,style='none'}
-	syntax['DiagnosticHint'] = {fg=colors.green,guisp=colors.green,style='none'}
-	syntax['DiagnosticUnderlineError'] = {fg=colors.none,guisp=colors.red,style='underline'}
-	syntax['DiagnosticUnderlineWarn'] = {fg=colors.none,guisp=colors.yellow,style='underline'}
-	syntax['DiagnosticUnderlineInfo'] = {fg=colors.none,guisp=colors.cyan,style='underline'}
-	syntax['DiagnosticUnderlineHint'] = {fg=colors.none,guisp=colors.green,style='underline'}
+	hl(0,'DiagnosticError',{fg=colors.red})
+	hl(0,'DiagnosticWarn',{fg=colors.yellow})
+	hl(0,'DiagnosticInfo',{fg=colors.cyan})
+	hl(0,'DiagnosticHint',{fg=colors.green})
+	hl(0,'DiagnosticUnderlineError',{fg=colors.none, underline = true})
+	hl(0,'DiagnosticUnderlineWarn',{fg=colors.none, underline = true})
+	hl(0,'DiagnosticUnderlineInfo',{fg=colors.none, underline = true})
+	hl(0,'DiagnosticUnderlineHint',{fg=colors.none, underline = true})
 
-	syntax['LspReferenceRead'] = {fg=colors.none,style='underline'}
-	syntax['LspReferenceText'] = syntax['LspReferenceRead']
-	syntax['LspReferenceWrite'] = {fg=colors.none,style='underline,bold'}
+	hl(0,'LspReferenceRead',{fg=colors.none, underline = true})
+	hl(0,'LspReferenceText', { link = 'LspReferenceRead' })
+	hl(0,'LspReferenceWrite',{fg=colors.none, underline = true, bold = true})
 
 	-- Lspsaga
-	syntax['LspSagaFinderSelection'] = syntax['Search']
-	syntax['TargetWord'] = syntax['Title']
+	hl(0,'LspSagaFinderSelection', { link = 'Search' })
+	hl(0,'TargetWord', { link = 'Title' })
 
-	syntax['GitSignsAdd'] = syntax['DiffAdd']
-	syntax['GitSignsChange'] = syntax['DiffChange']
-	syntax['GitSignsDelete'] = syntax['DiffDelete']
+	hl(0,'GitSignsAdd', { link = 'DiffAdd' })
+	hl(0,'GitSignsChange', { link = 'DiffChange' })
+	hl(0,'GitSignsDelete', { link = 'DiffDelete' })
 
-	syntax['VGitSignAdd'] = syntax['DiffAdd']
-	syntax['VgitSignChange'] = syntax['DiffChange']
-	syntax['VGitSignRemove'] = syntax['DiffDelete']
+	hl(0,'VGitSignAdd', { link = 'DiffAdd' })
+	hl(0,'VgitSignChange', { link = 'DiffChange' })
+	hl(0,'VGitSignRemove', { link = 'DiffDelete' })
 
 	-- nvim-cmp syntax support
-	syntax['CmpDocumentation' ] = {fg=colors.base2, bg=colors.base02 }
-	syntax['CmpDocumentationBorder' ] = {fg=colors.base2, bg=colors.base02 }
+	hl(0,'CmpDocumentation' ,{fg=colors.base2, bg=colors.base02 })
+	hl(0,'CmpDocumentationBorder' ,{fg=colors.base2, bg=colors.base02 })
 
-	syntax['CmpItemAbbr' ] = {fg=colors.base1, bg=colors.none }
-	syntax['CmpItemAbbrDeprecated' ] = {fg=colors.base0, bg=colors.none }
-	syntax['CmpItemAbbrMatch' ] = {fg=colors.base2, bg=colors.none }
-	syntax['CmpItemAbbrMatchFuzzy' ] = {fg=colors.base2, bg=colors.none }
+	hl(0,'CmpItemAbbr' ,{fg=colors.base1, bg=colors.none })
+	hl(0,'CmpItemAbbrDeprecated' ,{fg=colors.base0, bg=colors.none })
+	hl(0,'CmpItemAbbrMatch' ,{fg=colors.base2, bg=colors.none })
+	hl(0,'CmpItemAbbrMatchFuzzy' ,{fg=colors.base2, bg=colors.none })
 
-	syntax['CmpItemKindDefault' ] = {fg=colors.base1, bg=colors.none }
-	syntax['CmpItemMenu' ] = {fg=colors.base1, bg=colors.none }
-	syntax['CmpItemKindKeyword' ] = {fg=colors.yellow, bg=colors.none }
-	syntax['CmpItemKindVariable' ] = {fg=colors.green, bg=colors.none }
-	syntax['CmpItemKindConstant' ] = {fg=colors.base1, bg=colors.none }
-	syntax['CmpItemKindReference' ] = {fg=colors.base1, bg=colors.none }
-	syntax['CmpItemKindValue' ] = {fg=colors.base1, bg=colors.none }
-	syntax['CmpItemKindFunction' ] = {fg=colors.blue, bg=colors.none }
-	syntax['CmpItemKindMethod' ] = {fg=colors.blue, bg=colors.none }
-	syntax['CmpItemKindConstructor' ] = {fg=colors.blue, bg=colors.none }
-	syntax['CmpItemKindClass' ] = {fg=colors.red, bg=colors.none }
-	syntax['CmpItemKindInterface' ] = {fg=colors.base1, bg=colors.none }
-	syntax['CmpItemKindStruct' ] = {fg=colors.base1, bg=colors.none }
-	syntax['CmpItemKindEvent' ] = {fg=colors.base1, bg=colors.none }
-	syntax['CmpItemKindEnum' ] = {fg=colors.base1, bg=colors.none }
-	syntax['CmpItemKindUnit' ] = {fg=colors.base1, bg=colors.none }
-	syntax['CmpItemKindModule' ] = {fg=colors.base1, bg=colors.none }
-	syntax['CmpItemKindProperty' ] = {fg=colors.base1, bg=colors.none }
-	syntax['CmpItemKindField' ] = {fg=colors.base1, bg=colors.none }
-	syntax['CmpItemKindTypeParameter' ] = {fg=colors.base1, bg=colors.none }
-	syntax['CmpItemKindEnumMember' ] = {fg=colors.base1, bg=colors.none }
-	syntax['CmpItemKindOperator' ] = {fg=colors.base1, bg=colors.none }
-	syntax['CmpItemKindSnippet' ] = {fg=colors.orange, bg=colors.none }
+	hl(0,'CmpItemKindDefault' ,{fg=colors.base1, bg=colors.none })
+	hl(0,'CmpItemMenu' ,{fg=colors.base1, bg=colors.none })
+	hl(0,'CmpItemKindKeyword' ,{fg=colors.yellow, bg=colors.none })
+	hl(0,'CmpItemKindVariable' ,{fg=colors.green, bg=colors.none })
+	hl(0,'CmpItemKindConstant' ,{fg=colors.base1, bg=colors.none })
+	hl(0,'CmpItemKindReference' ,{fg=colors.base1, bg=colors.none })
+	hl(0,'CmpItemKindValue' ,{fg=colors.base1, bg=colors.none })
+	hl(0,'CmpItemKindFunction' ,{fg=colors.blue, bg=colors.none })
+	hl(0,'CmpItemKindMethod' ,{fg=colors.blue, bg=colors.none })
+	hl(0,'CmpItemKindConstructor' ,{fg=colors.blue, bg=colors.none })
+	hl(0,'CmpItemKindClass' ,{fg=colors.red, bg=colors.none })
+	hl(0,'CmpItemKindInterface' ,{fg=colors.base1, bg=colors.none })
+	hl(0,'CmpItemKindStruct' ,{fg=colors.base1, bg=colors.none })
+	hl(0,'CmpItemKindEvent' ,{fg=colors.base1, bg=colors.none })
+	hl(0,'CmpItemKindEnum' ,{fg=colors.base1, bg=colors.none })
+	hl(0,'CmpItemKindUnit' ,{fg=colors.base1, bg=colors.none })
+	hl(0,'CmpItemKindModule' ,{fg=colors.base1, bg=colors.none })
+	hl(0,'CmpItemKindProperty' ,{fg=colors.base1, bg=colors.none })
+	hl(0,'CmpItemKindField' ,{fg=colors.base1, bg=colors.none })
+	hl(0,'CmpItemKindTypeParameter' ,{fg=colors.base1, bg=colors.none })
+	hl(0,'CmpItemKindEnumMember' ,{fg=colors.base1, bg=colors.none })
+	hl(0,'CmpItemKindOperator' ,{fg=colors.base1, bg=colors.none })
+	hl(0,'CmpItemKindSnippet' ,{fg=colors.orange, bg=colors.none })
 
-	syntax['NavicIconsFile'] = syntax['CmpItemKindFile']
-	syntax['NavicIconsModule'] = syntax['CmpItemKindModule']
-	syntax['NavicIconsNamespace'] = syntax['CmpItemKindModule']
-	syntax['NavicIconsPackage'] = syntax['CmpItemKindModule']
-	syntax['NavicIconsClass'] = syntax['CmpItemKindClass']
-	syntax['NavicIconsMethod'] = syntax['CmpItemKindMethod']
-	syntax['NavicIconsProperty'] = syntax['CmpItemKindProperty']
-	syntax['NavicIconsField'] = syntax['CmpItemKindField']
-	syntax['NavicIconsConstructor'] = syntax['CmpItemKindConstructor']
-	syntax['NavicIconsEnum'] = syntax['CmpItemKindEnum']
-	syntax['NavicIconsInterface'] = syntax['CmpItemKindInterface']
-	syntax['NavicIconsFunction'] = syntax['CmpItemKindFunction']
-	syntax['NavicIconsVariable'] = syntax ['CmpItemKindVariable']
-	syntax['NavicIconsConstant'] = syntax['CmpItemKindConstant']
-	syntax['NavicIconsString'] = syntax['String']
-	syntax['NavicIconsNumber'] = syntax['Number']
-	syntax['NavicIconsBoolean'] = syntax['Boolean']
-	syntax['NavicIconsArray'] = syntax['CmpItemKindClass']
-	syntax['NavicIconsObject'] = syntax['CmpItemKindClass']
-	syntax['NavicIconsKey'] = syntax['CmpItemKindKeyword']
-	syntax['NavicIconsKeyword'] = syntax['CmpItemKindKeyword']
-	syntax['NavicIconsNull'] =  {fg=colors.blue, bg=colors.none }
-	syntax['NavicIconsEnumMember'] = syntax['CmpItemKindEnumMember']
-	syntax['NavicIconsStruct'] = syntax['CmpItemKindStruct']
-	syntax['NavicIconsEvent'] = syntax['CmpItemKindEvent']
-	syntax['NavicIconsOperator'] = syntax['CmpItemKindOperator']
-	syntax['NavicIconsTypeParameter'] = syntax['CmpItemKindTypeParameter']
-	syntax['NavicText'] = syntax['LineNr']
-	syntax['NavicSeparator'] = syntax['Comment']
+	hl(0,'NavicIconsFile', { link = 'CmpItemKindFile' })
+	hl(0,'NavicIconsModule', { link = 'CmpItemKindModule' })
+	hl(0,'NavicIconsNamespace', { link = 'CmpItemKindModule' })
+	hl(0,'NavicIconsPackage', { link = 'CmpItemKindModule' })
+	hl(0,'NavicIconsClass', { link = 'CmpItemKindClass' })
+	hl(0,'NavicIconsMethod', { link = 'CmpItemKindMethod' })
+	hl(0,'NavicIconsProperty', { link = 'CmpItemKindProperty' })
+	hl(0,'NavicIconsField', { link = 'CmpItemKindField' })
+	hl(0,'NavicIconsConstructor', { link = 'CmpItemKindConstructor' })
+	hl(0,'NavicIconsEnum', { link = 'CmpItemKindEnum' })
+	hl(0,'NavicIconsInterface', { link = 'CmpItemKindInterface' })
+	hl(0,'NavicIconsFunction', { link = 'CmpItemKindFunction' })
+	hl(0,'NavicIconsVariable', { link = 'CmpItemKindVariable' })
+	hl(0,'NavicIconsConstant', { link = 'CmpItemKindConstant' })
+	hl(0,'NavicIconsString', { link = 'String' })
+	hl(0,'NavicIconsNumber', { link = 'Number' })
+	hl(0,'NavicIconsBoolean', { link = 'Boolean' })
+	hl(0,'NavicIconsArray', { link = 'CmpItemKindClass' })
+	hl(0,'NavicIconsObject', { link = 'CmpItemKindClass' })
+	hl(0,'NavicIconsKey', { link = 'CmpItemKindKeyword' })
+	hl(0,'NavicIconsKeyword', { link = 'CmpItemKindKeyword' })
+	hl(0,'NavicIconsNull', {fg=colors.blue, bg=colors.none })
+	hl(0,'NavicIconsEnumMember', { link = 'CmpItemKindEnumMember' })
+	hl(0,'NavicIconsStruct', { link = 'CmpItemKindStruct' })
+	hl(0,'NavicIconsEvent', { link = 'CmpItemKindEvent' })
+	hl(0,'NavicIconsOperator', { link = 'CmpItemKindOperator' })
+	hl(0,'NavicIconsTypeParameter', { link = 'CmpItemKindTypeParameter' })
+	hl(0,'NavicText', { link = 'LineNr' })
+	hl(0,'NavicSeparator', { link = 'Comment' })
 
-  syntax['TelescopeMatching'] = {fg=colors.cyan}
+  hl(0,'TelescopeMatching',{fg=colors.cyan})
 
-	for group, highlights in pairs(syntax) do
-		utils.highlighter(group, highlights)
-	end
+	-- for group, highlights in pairs(syntax) do
+	-- 	utils.highlighter(group, highlights)
+	-- end
 end
 
 function M.terminal_colors(colors)
