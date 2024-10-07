@@ -44,13 +44,14 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', bufopts)
   vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', bufopts)
   vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', bufopts)
-  vim.keymap.set('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', bufopts)
+  -- vim.keymap.set('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', bufopts)
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<C-space>', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 end
 
@@ -83,6 +84,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require'lspconfig'.clangd.setup{on_attach = on_attach_c, capabilities=capabilities}
 require'lspconfig'.rust_analyzer.setup{on_attach = on_attach, capabilities=capabilities}
 require'lspconfig'.pyright.setup{on_attach = on_attach, capabilities=capabilities}
+require'lspconfig'.jdtls.setup{on_attach = on_attach, capabilities=capabilities}
 
 -- require'lspconfig'.sumneko_lua.setup({
 --   -- cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};

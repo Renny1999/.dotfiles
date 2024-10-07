@@ -53,6 +53,7 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'ggandor/leap.nvim'
 
 Plug 'https://github.com/Renny1999/cscope_maps.nvim.git'
+Plug 'mfussenegger/nvim-jdtls'
 
 
 call plug#end()
