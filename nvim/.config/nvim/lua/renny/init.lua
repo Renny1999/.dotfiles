@@ -14,6 +14,7 @@ require("renny.leap")
 require("renny.cscope")
 require("renny.lsp")
 require("renny.telescope")
+require("oil").setup()
 
 
 

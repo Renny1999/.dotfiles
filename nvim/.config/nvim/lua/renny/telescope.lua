@@ -2,8 +2,11 @@ local builtin = require('telescope.builtin');
 
 require('telescope').setup{
   defaults = {
-    -- layout_strategy = 'horizontal',
-    -- layout_config = {'height = 0.95'},
+    layout_config = {
+        -- 'height = 0.95', 
+        prompt_position = 'top'
+    },
+    sorting_strategy = "ascending",
     mappings = {
       i = {
         ["<esc>"] = require('telescope.actions').close,

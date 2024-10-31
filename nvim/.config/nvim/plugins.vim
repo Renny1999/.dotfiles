@@ -55,5 +55,7 @@ Plug 'ggandor/leap.nvim'
 Plug 'https://github.com/Renny1999/cscope_maps.nvim.git'
 Plug 'mfussenegger/nvim-jdtls'
 
+Plug 'stevearc/oil.nvim'
+
 
 call plug#end()
