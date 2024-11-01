@@ -1,8 +1,8 @@
 local M = {}
 
 -- this is the dark background
-local dark    = {'#1d2021', 234}
-local darkCursorLine    = {'#32302f', 236}
+local dark    = '#1d2021'
+local darkCursorLine    = '#32302f'
 
 function M.default_settings()
 	-- default settings function
@@ -50,7 +50,7 @@ end
 
 function M.termtrans(color)
 	if vim.g.solarized_termtrans == 1 then
-		return {'none', 'none'}
+		return 'none'
 	else
 		return color
 	end
